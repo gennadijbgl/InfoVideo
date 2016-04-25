@@ -1,12 +1,12 @@
 ﻿<div class="logo">
-    <div class="logo-text" value="#" onclick="btn_click(this)">
+    <div class="logo-text" onclick="location.href = '@Url.Action("Index", "Home")'">
         Hienadź Budkoŭski
     </div>
     <img id="img" class="logo-img" src="/Media/Images/movie.png" alt="" />
 </div>
 <div class="header-menu right">
     <ul>
-        <a href="js_lab.html" title="" value="js_lab.html">
+        <a href="@Url.Action("Index", "Home")" title="Дамоў" >
             <li>
                 JavaScript
                 <i class="zmdi zmdi-language-javascript zmdi-hc-lg"></i>
@@ -19,7 +19,7 @@
             </li>
         </a>
         <a href="" title="">
-            <li> 
+            <li>
                 Пошук
                 <i class="zmdi zmdi-search zmdi-hc-lg"></i>
             </li>
@@ -31,7 +31,9 @@
             </li>
         </a>
         <li id="profile">
-            Профіль
+            @(User?.Identity?.Name.Length>0 ? User.Identity.Name : Html.Raw("Профіль").ToString())
+           
+            
             <i class="zmdi zmdi-account zmdi-hc-lg"></i>
             <i class="angle"></i>
         </li>

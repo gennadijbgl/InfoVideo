@@ -5,17 +5,12 @@ namespace InfoVideo.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+       using System.Security.Principal;
+
 
     [Table("User")]
     public partial class User
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
-        {
-            History = new HashSet<History>();
-            UserRoles = new HashSet<UserRoles>();
-        }
-
         public int Id { get; set; }
 
         [StringLength(30)]
@@ -36,18 +31,23 @@ namespace InfoVideo.Models
         [StringLength(50)]
         public string Address { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<History> History { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserRoles> UserRoles { get; set; }
+        [Required]
+        [StringLength(20)]
+        public string Login { get; set; }
+
+        public virtual ICollection<History> History { get; set; } = new HashSet<History>();
+
+
+        public virtual ICollection<UserRoles> UserRoles { get; set; } = new HashSet<UserRoles>();
     }
 
     public class LoginModel
     {
         [Required]
-        [Display(Name = "Логин")]
-        public string Email { get; set; }
+        [StringLength(20)]
+     
+        public string Login { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

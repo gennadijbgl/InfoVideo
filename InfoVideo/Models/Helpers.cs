@@ -17,8 +17,8 @@ namespace InfoVideo.Models
             context.Roles.Add(userR);
 
 
-            var admin = new User { Email = "asd@mail1.ru", FirstName = "Leon", LastName = "Budkouski", Password = ("asd123") };
-            var user = new User { Email = "kross@mail.ru", FirstName = "Dylan", LastName = "Kross", Password = ("asd111") };
+            var admin = new User { Email = "asd@mail1.ru", FirstName = "Leon", LastName = "Budkouski", Password = ("asd123"),Login = "Hienadz"};
+            var user = new User { Email = "kross@mail.ru", FirstName = "Dylan", LastName = "Kross", Password = ("asd111"), Login = "HienadzA" };
 
             context.Users.Add(admin);
             context.Users.Add(user);

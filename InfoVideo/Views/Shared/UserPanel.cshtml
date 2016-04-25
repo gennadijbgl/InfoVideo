@@ -2,12 +2,16 @@
     <div class="head-user-content" id="head-panel-one">
 
         @{
+     
             if (User.Identity.IsAuthenticated)
             {
                 <p class="head-title">Мой профіль</p>
-                <p>
-                    @(User?.Identity?.Name)
-                </p>
+
+                <button class="btn gray" onclick="location.href='@Url.Action("Logoff", "Account")';" >
+                    <i class="btn-logo zmdi zmdi-sign-in zmdi-hc-fw"></i>Выйсці
+                </button>
+
+             
             }
             else
             {
@@ -44,16 +48,17 @@
                 @model InfoVideo.Models.LoginModel
                 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
                 {
+            
                     @Html.AntiForgeryToken()
 
                     <div class="form-horizontal">
                         @Html.ValidationSummary(true)
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Email, new {@class = "control-label col-md-2"})
+                            @Html.LabelFor(model => model.Login, new {@class = "control-label col-md-2"})
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.Email)
-                                @Html.ValidationMessageFor(model => model.Email)
+                                @Html.EditorFor(model => model.Login)
+                                @Html.ValidationMessageFor(model => model.Login)
                             </div>
                         </div>
 

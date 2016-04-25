@@ -21,8 +21,8 @@ namespace InfoVideo
                 "~/Scripts/FrontEnd/ninja-slider.js",
                  "~/Scripts/FrontEnd/lab2.js",
                  "~/Scripts/FrontEnd/site.js",
-                "~/Scripts/FrontEnd/ion.sound.js" ,
-                   "~/Scripts/main.js"
+                "~/Scripts/FrontEnd/ion.sound.js",
+                "~/Scripts/main.js"
                 ));
 
 

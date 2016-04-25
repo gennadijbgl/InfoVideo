@@ -60,6 +60,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -143,6 +144,11 @@
     <Compile Include="Models\UserRoles.cs" />
     <Compile Include="Models\Video.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\font-awesome.css" />
@@ -171,13 +177,23 @@
     <Content Include="Scripts\FrontEnd\ninjaVideoPlugin.es5.js" />
     <Content Include="Scripts\FrontEnd\ninjaVideoPlugin.es5.min.js" />
     <Content Include="Scripts\FrontEnd\ninjaVideoPlugin.js" />
-    <Content Include="Scripts\FrontEnd\site.es5.js" />
-    <Content Include="Scripts\FrontEnd\site.es5.min.js" />
-    <Content Include="Scripts\FrontEnd\site.js" />
-    <Content Include="Scripts\FrontEnd\site.min.js" />
+    <Content Include="Scripts\FrontEnd\site.js">
+      <DependentUpon>site.coffee</DependentUpon>
+    </Content>
+    <Content Include="Scripts\FrontEnd\site.min.js">
+      <DependentUpon>site.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\Libs\jquery-2.2.3.min.map" />
     <Content Include="Scripts\FrontEnd\lab2.coffee" />
     <Content Include="Scripts\FrontEnd\site.coffee" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\Libs\jquery.validate-vsdoc.js" />
     <None Include="Scripts\Libs\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\Libs\jquery-2.2.3.js" />

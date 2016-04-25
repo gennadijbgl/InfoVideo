@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "Scripts/FrontEnd/site.js",
+    "inputFile": "Scripts/main.js"
+  },
+  {
+    "outputFile": "Scripts/FrontEnd/site.js",
+    "inputFile": "Scripts/FrontEnd/site.es5.js"
+  },
+  {
+    "outputFile": "Scripts/FrontEnd/site.js",
+    "inputFile": "Scripts/FrontEnd/site.coffee"
+  }
+]

@@ -1,5 +1,5 @@
 
-rat = 0
+
 
 head_panel_click_open = ->
   if $('.head-user-panel').hasClass('display-block')
@@ -7,9 +7,10 @@ head_panel_click_open = ->
   else
     $('.head-user-panel').addClass 'display-block'
     $('.head-user-panel').css("display", "block").css("opacity", "1").unbind("transitionend webkitTransitionEnd oTransitionEnd otransitionend");
+    
+rat = 0
 
-
-head_panel_close1 = ->
+head_panel_close = ->
   $('.head-user-panel').css "opacity", "0"
   .on 'transitionend webkitTransitionEnd oTransitionEnd otransitionend'
   , -> $(".head-user-panel").css "display", "none" ; $('.head-user-panel').removeClass 'display-block'   
@@ -70,7 +71,7 @@ all_scripts = ->
         }
     ],
     volume: 0.5,
-    path: "Media/Sounds/",
+    path: "/Media/Sounds/",
     preload: true,
     multiplay:true
   })
@@ -82,8 +83,8 @@ all_scripts = ->
     e.stopPropagation()
   left_menu_update(jQuery)
   $(window).scroll main_menu_update
-  $(document).click (e)->
-    head_panel_close()  
+  #$(document).click (e)->
+    #head_panel_close()  
   $("input[name='rating']").change rating
 
 
@@ -94,9 +95,6 @@ rating = ->
     rat = rat / 2
   else 
     rat = vl
-
-
- 
   $('input[name="rating"]').attr('checked', false)
   $("#ratS").text +rat.toFixed(2)
 
