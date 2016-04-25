@@ -2,16 +2,16 @@
     <div class="head-user-content" id="head-panel-one">
 
         @{
-     
+
             if (User.Identity.IsAuthenticated)
             {
                 <p class="head-title">Мой профіль</p>
 
-                <button class="btn gray" onclick="location.href='@Url.Action("Logoff", "Account")';" >
+                <button class="btn gray" onclick="location.href='@Url.Action("Logoff", "Account")';">
                     <i class="btn-logo zmdi zmdi-sign-in zmdi-hc-fw"></i>Выйсці
                 </button>
 
-             
+
             }
             else
             {
@@ -24,7 +24,7 @@
                     <i class="btn-logo zmdi zmdi-google zmdi-hc-fw"></i> Sign by Google
                 </button>
 
-                <button type="" link="user-profile.html" class="red btn" onclick="user_login(this)">
+                <button type="" link="user-profile.html" class="red btn" onclick="user_login_show(this)">
                     <i class="btn-logo zmdi zmdi-sign-in zmdi-hc-fw"></i> Login
                 </button>
 
@@ -48,33 +48,40 @@
                 @model InfoVideo.Models.LoginModel
                 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
                 {
-            
+
                     @Html.AntiForgeryToken()
 
                     <div class="form-horizontal">
                         @Html.ValidationSummary(true)
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Login, new {@class = "control-label col-md-2"})
-                            <div class="col-md-10">
+                            @Html.LabelFor(model => model.Login, new { @class = "control-label col-md-2" })
+                            <div>
                                 @Html.EditorFor(model => model.Login)
                                 @Html.ValidationMessageFor(model => model.Login)
                             </div>
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Password, new {@class = "control-label col-md-2"})
-                            <div class="col-md-10">
+                            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+                            <div>
                                 @Html.EditorFor(model => model.Password)
                                 @Html.ValidationMessageFor(model => model.Password)
                             </div>
                         </div>
 
-                        <div class="head-sep"></div>
+
 
                         <button type="submit" id="btn-reg" class="gray btn" value="Reg">
                             <i class="btn-logo zmdi zmdi-account-add zmdi-hc-fw"></i>Увайсці
                         </button>
+
+                        <div class="head-sep"></div>
+                        <a href="#" class="" id="head-panel-back" onclick="user_login_hide(this)">
+                            <i class="zmdi zmdi-chevron-left"></i>
+                            Назад
+                        </a>
+
                     </div>
                 }
             </div>

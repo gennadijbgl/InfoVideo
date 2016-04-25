@@ -17,22 +17,27 @@
     @RenderPage("Header.cshtml", false)
 </header>
 
-@RenderPage("Slider.cshtml", false)
+    @if(HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString() == "Index")
+    {
 
-    <div class="wrapper">
+        @RenderPage("Slider.cshtml", false)
+    }
+
+        <div class="wrapper">
 
         <div class="sidebar-left">
             @RenderPage("SidebarLeft.cshtml", false)
         </div>
 
-
         <div class="sidebar-right">
             @RenderPage("SidebarRight.cshtml", false)
         </div>
 
-
+        <div id="content">
         @RenderBody()
-        <hr />
+        </div>
+       
+
 
 
     </div>

@@ -6,10 +6,14 @@
     }
 };
 
-var user_login = function (e) {
+var user_login_show = function (e) {
 
-    $("#head-panel-one").slideUp(500, function () { $("#head-panel-two").slideDown(500); });
+    $("#head-panel-one").slideUp(300, function () { $("#head-panel-two").slideDown(300); });
   
-   
+};
+
+var user_login_hide = function (e) {
+
+    $("#head-panel-two").slideUp(300, function () { $("#head-panel-one").slideDown(300); });
 
 };

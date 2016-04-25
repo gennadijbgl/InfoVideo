@@ -1,4 +1,4 @@
-namespace InfoVideo.Models
+﻿namespace InfoVideo.Models
 {
     using System;
     using System.Collections.Generic;

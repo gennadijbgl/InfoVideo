@@ -108,7 +108,7 @@
 
     font-size: 15px !important;
 
-    line-height: 16px;
+    line-height: 1px;
 
     margin-top: 25px;
     padding: 0;
@@ -153,25 +153,51 @@
 
 .input-txt { padding-bottom: 10px; }
 
-.input-txt input[type='text'] {
-    background: #fff !important;
-    border: 1px solid #ccc;
+.form-group{
+    margin:20px 0;
+}
 
+.form-group div{
+    margin-top:0px;
+}
+
+.form-group:last-child{
+    margin:40px 0 20px 0;
+}
+
+.form-group label{
+color:white;
+float:left;
+font-size:16px;
+}
+
+.registration .form-group label{
+color:black;
+}
+
+.head-user-panel .form-group label{
+
+margin: 10px 0;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'] {
+   background: #fff !important;
+    border: 1px solid #ccc;
     border-radius: 3px;
     color: #ccc;
     font-family: Tahoma;
-    font-size: 11px;
-    height: 24px;
+    font-size: 14px;
+    height: 28px;
     outline: none;
-    width: 120px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 0 0 10px;
 }
-
-input[type='password'],
-input[type='email'] {
-
-}
-
-.input-txt input[type='text']:focus {
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='email']:focus {
     background-color: #fff;
     border: 1px solid #79a1db;
     border-radius: 2px;
@@ -180,10 +206,6 @@ input[type='email'] {
     box-sizing: border-box;
     color: #000;
 
-    font-family: open_sansregular, sans-serif;
-
-    font-size: 14px;
-    line-height: 21px;
     outline: 0 none;
     padding: 0 0 0 10px;
 
@@ -193,12 +215,6 @@ input[type='email'] {
     -o-transition: border .2s linear 0s, box-shadow .2s linear 0s;
     transition: border .2s linear 0s, box-shadow .2s linear 0s;
 
-    width: 100%;
-}
-
-input[type='password']:focus,
-input[type='email']:focus {
- 
 }
 
 
@@ -379,10 +395,9 @@ h6 { font-size: 10px; }
 #content {
     margin: auto;
     margin-bottom: 10px;
-    max-width: 60%;
+    max-width: 58%;
     min-height: 300px;
     text-align: center;
-
     width: 100%;
 }
 
@@ -493,8 +508,9 @@ footer {
     padding: 0;
 }
 
-.header-menu ul a { color: inherit; }
 
+.header-menu ul a { color: inherit; }
+.header-menu  a { text-decoration:none; }
 .header-menu li {
     cursor: pointer;
 
@@ -676,13 +692,13 @@ footer {
 
     color: #303033;
     font-size: 30px;
-    margin: 0;
+    margin: 0 auto;
     margin-bottom: 40px !important;
 
     padding: 0;
 
     text-align: center;
-    width: 35% !important;
+    width: 60% !important;
 }
 
 .right { float: right !important; }
@@ -787,13 +803,24 @@ header {
 
     opacity: 0;
 
-    padding: 25px 25px 30px;
+    padding: 25px 30px 30px;
     position: absolute;
     right: 0;
 
     top: 60px;
     transition: opacity .5s linear;
     z-index: 15;
+}
+
+
+.head-user-panel a{
+   color: #e1dfdf;
+   text-decoration:none;
+   letter-spacing: 0.2px;
+}
+
+.head-user-panel a:hover {
+   text-decoration:underline;
 }
 
 .news-title {
@@ -828,7 +855,7 @@ header {
 }
 
 .head-user-content {
-     margin-left: 10px;
+
     min-width: 200px;
 }
 
@@ -903,6 +930,11 @@ header {
 
 .gray:active,
 .gray:hover { background: #6a6969; }
+
+.green { background:#43A047; }
+
+.green:active,
+.green:hover { background: #388E3C; }
 
 .btn-reg {
     float: left; 

@@ -1,6 +1,3 @@
-
-
-
 head_panel_click_open = ->
   if $('.head-user-panel').hasClass('display-block')
     head_panel_close()

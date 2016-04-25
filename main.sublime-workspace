@@ -1,0 +1,1363 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Math",
+				"Math.cos()	Math"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"appent",
+				"appendTo	.appendTo()"
+			],
+			[
+				"f",
+				"Function"
+			],
+			[
+				"a",
+				"array"
+			],
+			[
+				"ds",
+				"display"
+			],
+			[
+				"alert",
+				"alert(message)	Window"
+			],
+			[
+				"for",
+				"for	for (…) {…} (Improved Native For-Loop)"
+			],
+			[
+				"replace",
+				"replaceWith	.replaceWith()"
+			],
+			[
+				"repla",
+				"replaceAll	.replaceAll()"
+			],
+			[
+				"in",
+				"inputt	input - text"
+			],
+			[
+				"filter",
+				"filter	.filter() function"
+			],
+			[
+				"filte",
+				"filter(callback)	Array"
+			],
+			[
+				"forea",
+				"forEach(callback)	Array"
+			],
+			[
+				"Arra",
+				"new Array()	Array"
+			],
+			[
+				"S",
+				"SolarSystem"
+			],
+			[
+				"table",
+				"table	table - Placeholder"
+			],
+			[
+				"Pla",
+				"Planet6"
+			],
+			[
+				"js",
+				"js_lab.html"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"lab",
+				"label"
+			],
+			[
+				"bo",
+				"border-color"
+			],
+			[
+				"btn",
+				"btn_click"
+			],
+			[
+				"le",
+				"length	String"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"po",
+				"pointer"
+			],
+			[
+				"this",
+				"this	Object"
+			],
+			[
+				"li",
+				"link_reg"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"imag",
+				"images/"
+			],
+			[
+				"im",
+				"img	img"
+			],
+			[
+				"img",
+				"img	Image - Placeholder"
+			],
+			[
+				"th",
+				"the100.png	w:1200 h:900"
+			],
+			[
+				"slid",
+				"slider-toggle"
+			],
+			[
+				"bc",
+				"background-color"
+			],
+			[
+				"st",
+				"style	Attr"
+			],
+			[
+				"bord",
+				"border-bottom"
+			],
+			[
+				"con",
+				"align-content"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"alg",
+				"align-content"
+			],
+			[
+				"scr",
+				"script	Tag"
+			],
+			[
+				"j",
+				"jquery.playSound.js.htm"
+			],
+			[
+				"slide",
+				"slideDown"
+			],
+			[
+				"bor",
+				"border"
+			],
+			[
+				"fons",
+				"font-size"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"align",
+				"alignment"
+			],
+			[
+				"ali",
+				"align-content"
+			],
+			[
+				"rg",
+				"rgba()"
+			],
+			[
+				"re",
+				"removeClass"
+			],
+			[
+				"css",
+				"css	.css() - single"
+			],
+			[
+				"sc",
+				"script	<script>"
+			],
+			[
+				"onli",
+				"onclick	Attr"
+			],
+			[
+				"b",
+				"button	Tag"
+			],
+			[
+				"pad",
+				"padding-bottom"
+			],
+			[
+				"n",
+				"ninja-slider.css"
+			],
+			[
+				"jq",
+				"jquery.blueberry.js"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"lis",
+				"list-style"
+			],
+			[
+				"zmdi-git",
+				"zmdi-github	zmdi-github"
+			],
+			[
+				"tab",
+				"table-cell"
+			],
+			[
+				"inli",
+				"inline-block"
+			],
+			[
+				"lo",
+				"logo2.png	w:500 h:500"
+			],
+			[
+				"logo",
+				"logo_mr.png	w:500 h:500"
+			],
+			[
+				"borde",
+				"border-top"
+			],
+			[
+				"lgo",
+				"logo2.png	w:500 h:500"
+			],
+			[
+				"ab",
+				"absolute"
+			],
+			[
+				"wh",
+				"white"
+			],
+			[
+				"cli",
+				"click	Event"
+			],
+			[
+				"cl",
+				"click	Event"
+			],
+			[
+				"cu",
+				"cursor"
+			],
+			[
+				"op",
+				"opacity"
+			],
+			[
+				"ha",
+				"hasClass"
+			],
+			[
+				"zmdi-sig",
+				"zmdi-sign-in	zmdi-sign-in"
+			],
+			[
+				"alig",
+				"alignment"
+			],
+			[
+				"rig",
+				"right"
+			],
+			[
+				"zmdi-sear",
+				"zmdi-search	zmdi-search"
+			],
+			[
+				"sty",
+				"style	Attr"
+			],
+			[
+				"Se",
+				"serif"
+			],
+			[
+				"font",
+				"font-style"
+			],
+			[
+				"foi",
+				"font-weight"
+			],
+			[
+				"us",
+				"user.png	w:900 h:900"
+			],
+			[
+				"i",
+				"inline-block"
+			],
+			[
+				"vis",
+				"visibility"
+			],
+			[
+				"ri",
+				"right"
+			],
+			[
+				"au",
+				"auto"
+			],
+			[
+				"lore",
+				"lorem	lorem - Medium paragraph"
+			],
+			[
+				"blo",
+				"block"
+			],
+			[
+				"cla",
+				"class	Attr"
+			],
+			[
+				"d",
+				"div	Tag"
+			],
+			[
+				"marg",
+				"margin-left"
+			],
+			[
+				"fl",
+				"float"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"vi",
+				"visibility"
+			],
+			[
+				"hei",
+				"height"
+			],
+			[
+				"ma-t",
+				"margin-top"
+			],
+			[
+				"he",
+				"height"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"menu",
+				"menu_update"
+			],
+			[
+				"me",
+				"menu"
+			],
+			[
+				"pop",
+				"popup"
+			],
+			[
+				"foot",
+				"footer"
+			],
+			[
+				"aler",
+				"alert(message)	Window"
+			],
+			[
+				"fo",
+				"font-size"
+			],
+			[
+				"CO",
+				"content"
+			],
+			[
+				"al",
+				"alert(\"message"
+			],
+			[
+				"top",
+				"top"
+			],
+			[
+				"s",
+				"style	<style>"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"line-",
+				"line-stacking"
+			],
+			[
+				"line",
+				"line-height"
+			],
+			[
+				"gre",
+				"grey"
+			],
+			[
+				"h",
+				"height"
+			],
+			[
+				"lef",
+				"left"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"ale",
+				"alert(message)	Window"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"A",
+				"Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"bott",
+				"border-bottom"
+			],
+			[
+				"fonts",
+				"font-size"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"list-style-t",
+				"list-style-type"
+			],
+			[
+				"input",
+				"inputb	input - button"
+			],
+			[
+				"m",
+				"menu	<menu>"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "InfoVideo/Content/Site.css",
+			"settings":
+			{
+				"buffer_size": 19561,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Better CoffeeScript/CoffeeScript.sublime-build",
+					""
+				],
+				[
+					"Packages/Better CoffeeScript/CoffeeScript.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/Better CoffeeScript/CoffeeScript.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Better CoffeeScript/CoffeeScript.sublime-build",
+					""
+				],
+				[
+					"Packages/Better CoffeeScript/CoffeeScript.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/JavaScript & Coffeescript Build Systems/xCoffee.sublime-build",
+					""
+				],
+				[
+					"Packages/JavaScript & Coffeescript Build Systems/xCoffee.sublime-build",
+					"Compile"
+				]
+			],
+			[
+				"Packages/JavaScript & Coffeescript Build Systems/xCoffee.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/JavaScript & Coffeescript Build Systems/xBabel.sublime-build",
+					""
+				],
+				[
+					"Packages/JavaScript & Coffeescript Build Systems/xBabel.sublime-build",
+					"Compile"
+				],
+				[
+					"Packages/JavaScript & Coffeescript Build Systems/xJs.sublime-build",
+					""
+				],
+				[
+					"Packages/JavaScript & Coffeescript Build Systems/xJs.sublime-build",
+					"Compile"
+				],
+				[
+					"Packages/JavaScript & Coffeescript Build Systems/xJs.sublime-build",
+					"Harmony"
+				]
+			],
+			[
+				"Packages/JavaScript & Coffeescript Build Systems/xJs.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/JavaScript & Coffeescript Build Systems/xCoffee.sublime-build",
+					""
+				],
+				[
+					"Packages/JavaScript & Coffeescript Build Systems/xCoffee.sublime-build",
+					"Compile"
+				]
+			],
+			[
+				"Packages/JavaScript & Coffeescript Build Systems/xCoffee.sublime-build",
+				"Compile"
+			]
+		],
+		[
+			[
+				[
+					"Packages/LESS-build/LESS.sublime-build",
+					""
+				],
+				[
+					"Packages/LESS-build/LESS.sublime-build",
+					"Minify"
+				]
+			],
+			[
+				"Packages/LESS-build/LESS.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 530.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"theme",
+				"ColorSchemeSelector: Select Color Scheme"
+			],
+			[
+				"stylus",
+				"Build With: Stylus"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"di",
+				"Package Control: Disable Package"
+			],
+			[
+				"csslin",
+				"CSSLint: Run CSSLint"
+			],
+			[
+				"ena",
+				"Package Control: Enable Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"cssc",
+				"Run CSScomb"
+			],
+			[
+				"auto",
+				"Autoprefix CSS"
+			],
+			[
+				"sass",
+				"SassBeautify"
+			],
+			[
+				"less",
+				"List LESS variables"
+			],
+			[
+				"d",
+				"Package Control: Disable Package"
+			],
+			[
+				"disa",
+				"Package Control: Disable Package"
+			],
+			[
+				"",
+				"Autoprefix CSS"
+			],
+			[
+				"lint",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"delsale p",
+				"SublimeCodeIntel: Disable Plugin"
+			],
+			[
+				"Package Control: re",
+				"Package Control: Remove Package"
+			],
+			[
+				"remova",
+				"Package Control: Remove Package"
+			],
+			[
+				"enab",
+				"Package Control: Enable Package"
+			],
+			[
+				"jq",
+				"Snippet: jQuery Plugin"
+			],
+			[
+				"coffee",
+				"Coffee: Display JavaScript"
+			],
+			[
+				"theme ",
+				"ColorSchemeSelector: Select Color Scheme"
+			],
+			[
+				"lin",
+				"Coffee: Lint"
+			],
+			[
+				"disable",
+				"Package Control: Disable Package"
+			],
+			[
+				"syntax coffee",
+				"Set Syntax: CoffeeScript (Colorcode)"
+			],
+			[
+				"paca",
+				"Package Control: Disable Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Repository"
+			],
+			[
+				"prefi",
+				"Autoprefix CSS"
+			],
+			[
+				"check",
+				"Coffee: Check Syntax"
+			],
+			[
+				"build",
+				"Build: New Build System"
+			],
+			[
+				"build w",
+				"Build With: CoffeeScript"
+			],
+			[
+				"font",
+				"Snippet: font"
+			],
+			[
+				"color",
+				"Color Picker"
+			],
+			[
+				"coffee s",
+				"Coffee: Check Syntax"
+			],
+			[
+				"coffe",
+				"CoffeeToJs: Convert file"
+			],
+			[
+				"set color s",
+				"ColorSchemeSelector: Select Color Scheme"
+			],
+			[
+				"coff",
+				"Set Syntax: CoffeeScript"
+			],
+			[
+				"colose",
+				"ColorSchemeSelector: Select Color Scheme"
+			],
+			[
+				"sele",
+				"ColorSchemeSelector: Select Color Scheme"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"clolo",
+				"ColorSchemeSelector: Select Color Scheme"
+			],
+			[
+				"select co",
+				"ColorSchemeSelector: Select Color Scheme"
+			],
+			[
+				"a",
+				"Autoprefix CSS"
+			],
+			[
+				"au",
+				"Autoprefix CSS"
+			],
+			[
+				"Snippet: ",
+				"Snippet: color"
+			]
+		],
+		"width": 764.0
+	},
+	"console":
+	{
+		"height": 432.0,
+		"history":
+		[
+			"lessc",
+			"C:>lessc",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/BNTU/UNI32/Web/InfoVideo/InfoVideo",
+		"/E/BNTU/UNI32/Web/InfoVideo/InfoVideo/Content"
+	],
+	"file_history":
+	[
+		"/E/BNTU/UNI32/Web/Site/css/migr.css",
+		"/E/BNTU/UNI32/Web/Site/css/main.css",
+		"/E/BNTU/UNI32/Web/Site/registration.html",
+		"/E/BNTU/UNI32/Web/Site/index.html",
+		"/E/BNTU/UNI32/Web/Site/css/PreCSS/main.scss",
+		"/E/BNTU/UNI32/Web/Site/css/1.stylus",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/E/BNTU/UNI32/Web/Site/footer.html",
+		"/E/BNTU/UNI32/Web/Site/js/main.coffee",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/css_to_sass.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/CSS To Sass And Stylus Converter/css_to_sass.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/E/BNTU/UNI32/Web/Site/css/scss/main.scss",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/Stylus.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/Stylus/Stylus.sublime-settings",
+		"/E/BNTU/UNI32/Web/Site/css/scss/main.sass",
+		"/E/BNTU/UNI32/Web/Site/css/less/main.less",
+		"/E/BNTU/UNI32/Web/Site/js/lab2.js",
+		"/E/BNTU/UNI32/Web/Site/js/main.js",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/Libsass Build.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/Autoprefixer.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/List LESS Variables/lessvariables.sublime-settings",
+		"/E/BNTU/UNI32/Web/Site/css/1.scss",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/Libsass Build/Libsass Build.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/less2css.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/Less2Css/less2css.sublime-settings",
+		"/E/BNTU/UNI32/Web/Site/css/less/1.less",
+		"/E/BNTU/UNI32/Web/Site/css/1.less",
+		"/E/BNTU/UNI32/Web/Site/css/1.css",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/LESS.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/CSSLint.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/LESS/LESS.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/Less2Css/README.md",
+		"/E/BNTU/UNI32/Web/Site/css/1.css.map",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/LESS/README.md",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/CSSLint/CSSLint.sublime-settings",
+		"/E/BNTU/UNI32/Web/Site/js/lab2.coffee",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/BracketHighlighter/bh_core.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/coffee.sublime-build",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/CoffeeScript.sublime-settings",
+		"/E/BNTU/UNI32/Web/Site/project.sublime-project",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/Better CoffeeScript/CoffeeScript.sublime-settings",
+		"/E/BNTU/UNI32/Web/Site/header.html",
+		"/E/BNTU/UNI32/Web/Site/user-profile.html",
+		"/E/BNTU/UNI32/Web/Site/css/migr2.css",
+		"/E/BNTU/UNI32/Web/Site/s.html",
+		"/E/BNTU/UNI32/Web/Site/css/migr2",
+		"/E/BNTU/UNI32/Web/Site/css/ninja-slider.css",
+		"/E/BNTU/UNI32/Web/Site/js/ninjaVideoPlugin.js",
+		"/E/BNTU/UNI32/Web/Site/index_balup.html",
+		"/E/BNTU/UNI32/Web/Site/js/ninja-slider.js",
+		"/E/BNTU/UNI32/Web/Site/css/blueberry.css",
+		"/E/BNTU/UNI32/Web/Site/css/migr",
+		"/E/BNTU/UNI32/Web/Site/css/liquidcarousel.css",
+		"/E/BNTU/UNI32/Web/Site/css/material-design-iconic-font.css",
+		"/E/BNTU/UNI32/Web/Site/css/main-bakcup.css",
+		"/E/BNTU/UNI32/Web/index.html",
+		"/E/BNTU/UNI32/Web/css/liquidcarousel.css",
+		"/E/BNTU/UNI32/Web/js/main.coffee",
+		"/E/BNTU/UNI32/Web/js/liquidcarousel.coffee",
+		"/E/BNTU/UNI32/Web/css/main.css",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/CoffeeComplete Plus (Autocompletion)/README.md",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/CSSLint/Default (Windows).sublime-keymap",
+		"/E/BNTU/UNI32/Web/js/jquery.liquidcarousel.coffee",
+		"/E/BNTU/UNI32/Web/js/main.js",
+		"/E/BNTU/UNI32/Web/js/main",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/CoffeeScript (Colorcoded).sublime-syntax",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/Autoprefixer/Autoprefixer.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/CSS3/CSS3.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/CSScomb/README.md",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/CSScomb/Default.sublime-keymap",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/ColorPicker/ColorPicker.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/Emmet/Default (Windows).sublime-keymap",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/Alignment/Base File.sublime-settings",
+		"/E/BNTU/UNI32/Web/js/jquery.liquidcarousel.js",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/Default (OSX).sublime-mousemap",
+		"/E/BNTU/UNI32/Web/main.js",
+		"/E/BNTU/UNI32/Web/scripts/main.js",
+		"/E/BNTU/UNI32/Web/js/menu.js",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/LiveStyle/LiveStyle.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/LiveStyle.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/LiveReload.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/User/Emmet.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/Emmet/Emmet.sublime-settings",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/Colorcoder/colorcoder.sublime-settings",
+		"/E/Servers/wh/Root/www/index.php",
+		"/E/Servers/wh/Root/www/_modules/admin/admin.module.php",
+		"/C/Users/Hienadz/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 101.0
+	},
+	"find_in_files":
+	{
+		"height": 286.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"btn",
+			"input[type='text']",
+			"input-t",
+			"docu",
+			"int",
+			"&gt;",
+			"&amp;",
+			"asf",
+			"content",
+			"w",
+			"input",
+			"footer-bottom",
+			"registration",
+			"}\n",
+			"check",
+			"check ",
+			"check",
+			"+",
+			"type=",
+			"type",
+			"input",
+			"checkbox",
+			"box-sha",
+			"input",
+			" box-shadow:",
+			"	box-shadow:inset 0 1px 1px rgba(0,0,0,.075),-3.25px 0 -1.25px 0 #fff,0 0 4px 0 #89b9bb;",
+			"box-shadow",
+			"input ",
+			"input-txt",
+			"registro_email",
+			"head",
+			"shado",
+			"loginContainer",
+			"login-content",
+			"mia-googl",
+			"btn",
+			"transition",
+			"btn",
+			"mia-googl",
+			".btn:active",
+			"btn",
+			">\n",
+			"zmdi-google",
+			"head",
+			"mia-googl",
+			".googl",
+			"googl",
+			"google_button",
+			"news-item",
+			"item",
+			"item-header",
+			"Raleway",
+			"    background-image",
+			"vertical",
+			"header-menu",
+			"item-header",
+			"body",
+			".footer",
+			"footer",
+			".footer",
+			"header-menu",
+			"right",
+			"rigth",
+			"header",
+			".header",
+			"header",
+			"horizontal-menu",
+			"menu",
+			"header-prop",
+			"footer-top",
+			"header-pro",
+			"header",
+			"head-mia-sep",
+			"regis",
+			"hide-for-small-only",
+			"h3",
+			"registration",
+			"boton",
+			"floatl",
+			"js-save",
+			"btn-crear-cuenta",
+			"input-h38",
+			"checkbox",
+			"labels",
+			".block",
+			".block ",
+			"block ",
+			"input-txt ",
+			"label-top",
+			"input-txt",
+			"delimiter-txt",
+			"delim-form-reg",
+			"delimiter",
+			"delim-form-reg",
+			"delimiter-txt",
+			"open_sanssemibold",
+			"openFontSemiBold",
+			"100px",
+			".slider",
+			"\"slider\"",
+			"slider\"",
+			"slider",
+			".slider",
+			"header",
+			".header",
+			"slider",
+			"content",
+			"%;",
+			"footer",
+			"ion.",
+			"ion",
+			"f_r",
+			"f_left",
+			"#cssmenu",
+			".menumy",
+			"menumy",
+			"header-menu",
+			"#logo",
+			"header",
+			"logo",
+			"header",
+			"top-panel",
+			"logo-text-small",
+			"@",
+			"head-user-panel",
+			"head-us",
+			"head-user-",
+			"head-user-panel"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			">",
+			"&",
+			".header-slider",
+			"\"header-slider\"",
+			"header-slider\"",
+			"header-slider",
+			".header-slider",
+			"footer-bottom",
+			"footer-top",
+			".sidebar-left-menu",
+			".header-menu ",
+			".logo",
+			"header-menu",
+			"",
+			"wrapper-slider",
+			".menu",
+			"#menu"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "InfoVideo/Content/Site.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19561,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13428,
+								13428
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"bs_sintax": "css3",
+							"buffer_scroll_name": "903ad224",
+							"colorcode": true,
+							"syntax": "Packages/CSS3/CSS3.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 26293.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 40.0
+	},
+	"input":
+	{
+		"height": 389.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.CSS Extended Completions":
+	{
+		"height": 0.0
+	},
+	"output.coffee_compile_output":
+	{
+		"height": 239.0
+	},
+	"output.csslint_result_view":
+	{
+		"height": 80.0
+	},
+	"output.exec":
+	{
+		"height": 83.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 172.0
+	},
+	"pinned_build_system": "",
+	"project": "main.sublime-project",
+	"replace":
+	{
+		"height": 76.0
+	},
+	"save_all_on_build": false,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"aus",
+				"C:\\Users\\Hienadz\\AppData\\Roaming\\Sublime Text 3\\Packages\\Autoprefixer\\Autoprefixer.sublime-settings"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 360.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

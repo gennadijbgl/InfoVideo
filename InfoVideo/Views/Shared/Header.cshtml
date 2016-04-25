@@ -6,39 +6,54 @@
 </div>
 <div class="header-menu right">
     <ul>
-        <a href="@Url.Action("Index", "Home")" title="Дамоў" >
-            <li>
+
+        <li>
+            <a href="@Url.Action("Index", "Home")" title="Дамоў">
                 JavaScript
                 <i class="zmdi zmdi-language-javascript zmdi-hc-lg"></i>
-            </li>
-        </a>
-        <a href="" title="">
-            <li>
+            </a>
+        </li>
+
+
+        <li>
+            <a href="" title="">
                 Серыялы
                 <i class="zmdi zmdi-view-list-alt zmdi-hc-lg"></i>
-            </li>
-        </a>
-        <a href="" title="">
-            <li>
-                Пошук
-                <i class="zmdi zmdi-search zmdi-hc-lg"></i>
-            </li>
-        </a>
-        <a href="" title="">
-            <li>
-                Кошык
-                <i class="zmdi zmdi-shopping-cart zmdi-hc-lg"></i>
-            </li>
-        </a>
+            </a>
+        </li>
+
+      
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li>
+                    <a href="" title="">
+                        Пошук
+                        <i class="zmdi zmdi-search zmdi-hc-lg"></i>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="" title="">
+                        Кошык
+                        <i class="zmdi zmdi-shopping-cart zmdi-hc-lg"></i>
+                    </a>
+                </li>
+            }
+
+        
+
         <li id="profile">
-            @(User?.Identity?.Name.Length>0 ? User.Identity.Name : Html.Raw("Профіль").ToString())
-           
-            
+            @(User?.Identity?.Name.Length > 0 ? User.Identity.Name : Html.Raw("Профіль").ToString())
+
+
             <i class="zmdi zmdi-account zmdi-hc-lg"></i>
             <i class="angle"></i>
         </li>
     </ul>
 
-        @RenderPage("UserPanel.cshtml", false)
-   
+
+
+    @RenderPage("UserPanel.cshtml", false)
+
 </div>

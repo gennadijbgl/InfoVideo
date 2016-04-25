@@ -1,3 +1,5 @@
+ï»¿using System.ComponentModel;
+
 namespace InfoVideo.Models
 {
     using System;
@@ -51,7 +53,7 @@ namespace InfoVideo.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Ïàðîëü")]
+        [DisplayName("ÐŸÐ°Ñ€Ð¾Ð»ÑŒ")]
         public string Password { get; set; }
     }
 }

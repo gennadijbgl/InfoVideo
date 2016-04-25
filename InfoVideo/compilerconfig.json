@@ -10,5 +10,21 @@
   {
     "outputFile": "Scripts/FrontEnd/site.js",
     "inputFile": "Scripts/FrontEnd/site.coffee"
+  },
+  {
+    "outputFile": "Scripts/FrontEnd/ninja-slider.es5.js",
+    "inputFile": "Scripts/FrontEnd/ninja-slider.js"
+  },
+  {
+    "outputFile": "Scripts/FrontEnd/ninjaVideoPlugin.es5.js",
+    "inputFile": "Scripts/FrontEnd/ninjaVideoPlugin.js"
+  },
+  {
+    "outputFile": "Scripts/FrontEnd/lab2.js",
+    "inputFile": "Scripts/FrontEnd/lab2.coffee"
+  },
+  {
+    "outputFile": "Scripts/FrontEnd/ion.sound.es5.js",
+    "inputFile": "Scripts/FrontEnd/ion.sound.js"
   }
 ]

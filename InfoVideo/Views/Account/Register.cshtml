@@ -4,9 +4,21 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>User</h4>
-        <hr />
+    <div class="registration">
+        <h1 style="font-size: 30px;">Стварэнне ўліковага запісу</h1>
+        <h4>Можна ўвайсці праз</h4>
+        <div class="row-social">
+            <button type="" class="btn btn-reg blue">
+                <i class="btn-logo zmdi zmdi-facebook zmdi-hc-fw"></i> Sign by Facebook
+            </button>
+
+            <button type="" class="btn btn-reg ligth-blue right">
+                <i class="btn-logo zmdi zmdi-google zmdi-hc-fw"></i> Sign by Google
+            </button>
+
+        </div>
+        <p class="delimiter-txt"><span>Або зарэгістравацца</span></p>
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -41,17 +53,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+         
+            @Html.LabelFor(model => model.Password)
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+          
+         <input type="submit" value="Create" class="btn paddind-zero green" />
+           
         </div>
     </div>
 }
