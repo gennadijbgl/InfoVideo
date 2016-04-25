@@ -1,0 +1,50 @@
+﻿@model InfoVideo.Models.User
+
+@{
+    ViewBag.Title = "Вход в системы";
+}
+
+@{
+
+    if ((Request.Params["ReturnUrl"]) != null)
+    {
+        <h4>У Вас нет доступа к данному ресурсу </h4>
+        @(Request.Params["ReturnUrl"])
+    }
+
+}
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+        </div>
+
+
+        <input type="submit" class="button rounded green" value="Войти" />
+
+        <input type="button" class="button rounded orange" value="Регистрация" onclick="location.href='@Url.Action("Register", "Account")'" />
+
+
+
+
+
+    </div>
+}

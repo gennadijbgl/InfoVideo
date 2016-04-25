@@ -1,0 +1,78 @@
+﻿<div class="head-user-panel">
+    <div class="head-user-content" id="head-panel-one">
+
+        @{
+            if (User.Identity.IsAuthenticated)
+            {
+                <p class="head-title">Мой профіль</p>
+                <p>
+                    @(User?.Identity?.Name)
+                </p>
+            }
+            else
+            {
+                <p class="head-title">Вітаем Вас!</p>
+                <button type="" class="btn blue">
+                    <i class="btn-logo zmdi zmdi-facebook zmdi-hc-fw"></i> Sign by Facebook
+                </button>
+
+                <button type="" class="btn ligth-blue">
+                    <i class="btn-logo zmdi zmdi-google zmdi-hc-fw"></i> Sign by Google
+                </button>
+
+                <button type="" link="user-profile.html" class="red btn" onclick="user_login(this)">
+                    <i class="btn-logo zmdi zmdi-sign-in zmdi-hc-fw"></i> Login
+                </button>
+
+                <div class="head-sep"></div>
+
+                <button id="btn-reg" class="gray btn" onclick="location.href = '@Url.Action("Register", "Account")'" value="Reg">
+                    <i class="btn-logo zmdi zmdi-account-add zmdi-hc-fw"></i> Registration
+                </button>
+            }
+
+        }
+
+
+
+    </div>
+    @{
+        if (!User.Identity.IsAuthenticated)
+        {
+            <div class="head-user-content" id="head-panel-two" style="display: none">
+                <p class="head-title">Уваход</p>
+                @model InfoVideo.Models.LoginModel
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, new {@class = "control-label col-md-2"})
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Email)
+                                @Html.ValidationMessageFor(model => model.Email)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, new {@class = "control-label col-md-2"})
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Password)
+                                @Html.ValidationMessageFor(model => model.Password)
+                            </div>
+                        </div>
+
+                        <div class="head-sep"></div>
+
+                        <button type="submit" id="btn-reg" class="gray btn" value="Reg">
+                            <i class="btn-logo zmdi zmdi-account-add zmdi-hc-fw"></i>Увайсці
+                        </button>
+                    </div>
+                }
+            </div>
+        }
+    }
+</div>
