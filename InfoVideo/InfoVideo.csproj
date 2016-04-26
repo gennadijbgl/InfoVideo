@@ -200,6 +200,8 @@
       <DependentUpon>site.js</DependentUpon>
     </Content>
     <None Include="Scripts\Libs\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\Libs\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\Libs\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\Libs\jquery.validate.js" />
     <Content Include="Scripts\Libs\jquery.validate.min.js" />
     <Content Include="Scripts\Libs\jquery-2.2.3.min.map" />
@@ -246,6 +248,7 @@
     <Content Include="Views\Shared\UserPanel.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\UsersList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,13 +1,22 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 
 namespace InfoVideo.Models
 {
     public partial class InfoVideoContext : DbContext
     {
+       
+
+      
+
         public InfoVideoContext()
             : base("name=InfoVideoContext")
         {
             Database.SetInitializer(new MyDbUserInitializer());
+
+            //Configuration.LazyLoadingEnabled = false;
+
+            //Configuration.ProxyCreationEnabled = false;
         }
 
         public virtual DbSet<Edition> Edition { get; set; }

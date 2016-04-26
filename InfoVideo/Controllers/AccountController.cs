@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Security.Claims;
@@ -7,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using InfoVideo.Models;
+using Newtonsoft.Json;
 
 
 namespace InfoVideo.Controllers
@@ -93,6 +95,25 @@ namespace InfoVideo.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
+        }
+
+
+        public ActionResult UsersList()
+        {
+            using (var b = new InfoVideoContext())
+            {
+                var c = b.Users.ToList();
+                return PartialView(c);
+            }
+        }
+
+        public JsonResult JsonSearch(string email)
+        {
+            var user = new InfoVideoContext().Users?.First(y => y.Email == email);
+                            
+            var jsondata = user?.UserRoles.Select(t=>t.Role.Name);
+
+            return Json(jsondata, JsonRequestBehavior.AllowGet);
         }
     }
 }

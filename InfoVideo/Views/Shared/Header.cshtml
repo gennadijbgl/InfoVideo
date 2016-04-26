@@ -1,4 +1,6 @@
-﻿<div class="logo">
+﻿@using System.Web.Mvc.Html
+@using InfoVideo.Models
+<div class="logo">
     <div class="logo-text" onclick="location.href = '@Url.Action("Index", "Home")'">
         Hienadź Budkoŭski
     </div>
@@ -54,6 +56,6 @@
 
 
 
-    @RenderPage("UserPanel.cshtml", false)
+    @{ Html.RenderPartial("UserPanel",new LoginModel()); }
 
 </div>

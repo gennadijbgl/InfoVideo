@@ -1,4 +1,7 @@
-﻿<div class="head-user-panel">
+﻿@model InfoVideo.Models.LoginModel
+
+
+<div class="head-user-panel">
     <div class="head-user-content" id="head-panel-one">
 
         @{
@@ -45,7 +48,7 @@
         {
             <div class="head-user-content" id="head-panel-two" style="display: none">
                 <p class="head-title">Уваход</p>
-                @model InfoVideo.Models.LoginModel
+                
                 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
                 {
 

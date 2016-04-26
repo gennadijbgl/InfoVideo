@@ -1,4 +1,5 @@
 ﻿using System.Web;
+using System.Web.Mvc;
 using System.Web.Optimization;
 
 namespace InfoVideo
@@ -8,15 +9,17 @@ namespace InfoVideo
    
         public static void RegisterBundles(BundleCollection bundles)
         {
+           
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/Libs/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/Libs/jquery.validate*"));
-     
-              
+
+
             bundles.Add(new ScriptBundle("~/bundles/Scripts")
                    .Include(
+                     "~/Scripts/Libs/jquery.unobtrusive-ajax.js",
                 "~/Scripts/FrontEnd/ninjaVideoPlugin.js",
                 "~/Scripts/FrontEnd/ninja-slider.js",
                  "~/Scripts/FrontEnd/lab2.js",

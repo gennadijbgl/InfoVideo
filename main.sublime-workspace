@@ -4,12 +4,12 @@
 		"selected_items":
 		[
 			[
-				"Math",
-				"Math.cos()	Math"
+				"mar",
+				"margin"
 			],
 			[
-				"mar",
-				"margin-top"
+				"Math",
+				"Math.cos()	Math"
 			],
 			[
 				"appent",
@@ -520,10 +520,18 @@
 	"buffers":
 	[
 		{
+			"file": "/E/BNTU/UNI32/Web/Site/registration.html",
+			"settings":
+			{
+				"buffer_size": 4025,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "InfoVideo/Content/Site.css",
 			"settings":
 			{
-				"buffer_size": 19561,
+				"buffer_size": 19877,
 				"line_ending": "Windows"
 			}
 		}
@@ -885,6 +893,7 @@
 	],
 	"file_history":
 	[
+		"/E/BNTU/UNI32/Web/InfoVideo/InfoVideo/Content/Site.css",
 		"/E/BNTU/UNI32/Web/Site/css/migr.css",
 		"/E/BNTU/UNI32/Web/Site/css/main.css",
 		"/E/BNTU/UNI32/Web/Site/registration.html",
@@ -994,6 +1003,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			".regi",
+			".content",
+			"content",
+			"header-menu ul a ",
 			"btn",
 			"input[type='text']",
 			"input-t",
@@ -1117,11 +1130,7 @@
 			"header",
 			"top-panel",
 			"logo-text-small",
-			"@",
-			"head-user-panel",
-			"head-us",
-			"head-user-",
-			"head-user-panel"
+			"@"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1156,24 +1165,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "InfoVideo/Content/Site.css",
+					"file": "/E/BNTU/UNI32/Web/Site/registration.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 19561,
+						"buffer_size": 4025,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								13428,
-								13428
+								3906,
+								3906
 							]
 						],
 						"settings":
@@ -1181,71 +1190,165 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"bs_sintax": "html",
+							"buffer_scroll_name": "fe467f68",
+							"colorcode": true,
+							"spell_check": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1452.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "InfoVideo/Content/Site.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19877,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4216,
+								4216
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
-								"bh_c_define_content"
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
 							],
 							"bs_sintax": "css3",
 							"buffer_scroll_name": "903ad224",
 							"colorcode": true,
+							"spell_check": false,
 							"syntax": "Packages/CSS3/CSS3.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 26293.0,
+						"translation.y": 5528.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
