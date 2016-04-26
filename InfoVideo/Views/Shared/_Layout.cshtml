@@ -25,14 +25,24 @@
 
         <div class="wrapper">
 
-        <div class="sidebar-left">
-            @RenderPage("SidebarLeft.cshtml", false)
-        </div>
 
-        <div class="sidebar-right">
-            @RenderPage("SidebarRight.cshtml", false)
-        </div>
+            @if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString() == "Index")
+            {
+                <div class="sidebar-left">
+                    @RenderPage("SidebarLeft.cshtml", false)
+                </div>
+            }
 
+          
+            @if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString() == "Index")
+            {
+                <div class="sidebar-right">
+                    @RenderPage("SidebarRight.cshtml", false)
+                </div>
+            }
+
+
+       
         <div id="content">
         @RenderBody()
         </div>

@@ -18,9 +18,11 @@ var user_login_hide = function (e) {
 
 };
 
-var OnSuccess = function (data) {
+var OnSuccess = function (data,e) {
+
     var results = $('#results'); // получаем нужный элемент
     results.empty(); //очищаем элемент
+
     for (var i = 0; i < data.length; i++) {
         results.append('<li>' + data + '</li>'); // добавляем данные в список
     }
@@ -30,9 +32,7 @@ $(document).ready(function () {
     $('.test')
          .hover(
              function (e) {
-              
-             
-                
+          
                  $.ajax({
                      url: "/Account/JsonSearch",
                      data: { email: $(this).html() }

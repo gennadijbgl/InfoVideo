@@ -110,7 +110,7 @@ namespace InfoVideo.Controllers
         public JsonResult JsonSearch(string email)
         {
             var user = new InfoVideoContext().Users?.First(y => y.Email == email);
-                            
+
             var jsondata = user?.UserRoles.Select(t=>t.Role.Name);
 
             return Json(jsondata, JsonRequestBehavior.AllowGet);

@@ -22,9 +22,11 @@ var user_login_hide = function user_login_hide(e) {
     });
 };
 
-var OnSuccess = function OnSuccess(data) {
+var OnSuccess = function OnSuccess(data, e) {
+
     var results = $('#results'); // получаем нужный элемент
     results.empty(); //очищаем элемент
+
     for (var i = 0; i < data.length; i++) {
         results.append('<li>' + data + '</li>'); // добавляем данные в список
     }

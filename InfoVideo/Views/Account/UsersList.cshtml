@@ -28,7 +28,10 @@
         <th>
             @Html.DisplayNameFor(model => model.Login)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserRoles)
+        </th>
+        <th>Дзеянні</th>
     </tr>
 
 
@@ -51,6 +54,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Login)
         </td>
+        <td></td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
@@ -61,15 +65,4 @@
 
 </table>
 
-<script>
-
-</script>
-
-
-@using (Ajax.BeginForm("JsonSearch", new AjaxOptions { OnSuccess = "OnSuccess", HttpMethod = "GET"}))
-{
-    <input type="text" name="email" />
-    <input type="submit" value="Поиск" />
-}
-<br />
 <div id="results"></div>

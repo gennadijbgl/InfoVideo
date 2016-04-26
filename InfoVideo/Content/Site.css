@@ -1124,14 +1124,7 @@ header {
     width: 300px;
 }
 
-.test {
-    background-position: top;
-    background-size: cover;
-    height: 100%;
 
-    margin: -41px -156px;
-    width: 100%;
-}
 
 .item {
     background-color: #fff;
@@ -1251,3 +1244,43 @@ header {
 #fc-hover:hover { color: #02d2ff; }
 
 #red-hover:hover { color: #ff0a0a; }
+
+table {
+    margin:0 auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: 1px solid #cbcbcb;
+}
+
+table caption {
+    color:#fff;
+    font: italic 85%/1 arial,sans-serif;
+    padding: 1em 0;
+    text-align: center;
+}
+
+
+table td { border-left: 1px solid #cbcbcb; }
+table td:first-child { border-left: none; }
+
+table td,table th{
+    border-width: 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible;
+    padding: .1em .4em;
+    border-bottom: 1px solid #cbcbcb;
+}
+
+table th{ 
+background-color:#D32F2F; 
+border-right: 0.01rem solid white;
+color:white;
+}
+
+table tr:nth-child(2n-1) td {
+background: rgba(128,128,128,.05);
+}
+
+
