@@ -67,7 +67,17 @@
 
         <div class="form-group">
 
-         <input type="submit" value="Create" class="btn paddind-zero green" />
+            @Html.LabelFor(model => model.Login)
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Login)
+                @Html.ValidationMessageFor(model => model.Login)
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <button type="button" onclick="validate();">Text</button>
+            <input type="submit" value="Create" class="btn paddind-zero green" />
 
         </div>
     </div>

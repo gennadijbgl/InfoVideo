@@ -17,7 +17,7 @@
     @RenderPage("Header.cshtml", false)
 </header>
 
-    @if(HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString() == "Index")
+    @if(HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Index")
     {
 
         @RenderPage("Slider.cshtml", false)
@@ -26,7 +26,7 @@
         <div class="wrapper">
 
 
-            @if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString() == "Index")
+            @if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Home")
             {
                 <div class="sidebar-left">
                     @RenderPage("SidebarLeft.cshtml", false)
@@ -34,7 +34,7 @@
             }
 
           
-            @if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString() == "Index")
+            @if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Home")
             {
                 <div class="sidebar-right">
                     @RenderPage("SidebarRight.cshtml", false)
