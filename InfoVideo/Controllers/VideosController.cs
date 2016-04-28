@@ -53,7 +53,7 @@ namespace InfoVideo.Controllers
                 if (upload != null && upload.ContentLength > 0)
 
                 {
-                    string path = Path.Combine(Server.MapPath("~/Images"),
+                    string path = Path.Combine(Server.MapPath("~/Media/Images"),
                         Path.GetFileName(upload.FileName));
 
                     upload.SaveAs(path);
