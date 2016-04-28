@@ -1,22 +1,20 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Configuration;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace InfoVideo.Models
 {
+ 
     public partial class InfoVideoContext : DbContext
     {
-       
-
-      
-
+           
         public InfoVideoContext()
             : base("name=InfoVideoContext")
         {
             Database.SetInitializer(new MyDbUserInitializer());
 
-            //Configuration.LazyLoadingEnabled = false;
-
-            //Configuration.ProxyCreationEnabled = false;
         }
 
         public virtual DbSet<Edition> Edition { get; set; }
@@ -29,6 +27,8 @@ namespace InfoVideo.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+          
+
             modelBuilder.Entity<Edition>()
                 .Property(e => e.Price)
                 .HasPrecision(19, 4);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
@@ -42,15 +43,27 @@ namespace InfoVideo.Controllers
             return View();
         }
 
-        // POST: Videos/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description,Country,Genre")] Video video)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description,Country,Genre")] Video video, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
+                if (upload != null && upload.ContentLength > 0)
+
+                {
+                    string path = Path.Combine(Server.MapPath("~/Images"),
+                        Path.GetFileName(upload.FileName));
+
+                    upload.SaveAs(path);
+                    ViewBag.Message = "File uploaded successfully";
+
+                    video.Genre = Path.GetFileName(upload.FileName);
+                }
+
+
+
                 _db.Video.Add(video);
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -59,7 +72,14 @@ namespace InfoVideo.Controllers
             return View(video);
         }
 
-        // GET: Videos/Edit/5
+        [HttpPost]
+        public ActionResult Index(HttpPostedFileBase file)
+        {
+           
+            return View();
+        }
+
+ 
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,9 +94,7 @@ namespace InfoVideo.Controllers
             return View(video);
         }
 
-        // POST: Videos/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Description,Country,Genre")] Video video)

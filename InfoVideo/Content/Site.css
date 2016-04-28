@@ -509,7 +509,7 @@ footer {
 }
 
 
-.header-menu ul a { color: inherit; }
+.header-menu ul a { color: inherit; display:blockbox;}
 .header-menu  a { text-decoration:none; }
 .header-menu li {
     cursor: pointer;
@@ -1306,10 +1306,10 @@ background-color:#F0F0F0;
 left:0;
 z-index:9999;
 text-align:center;
+
 }
 
 .header-menu ul li:hover >  ul{
-
 display:block;
 }
 
@@ -1318,6 +1318,7 @@ background-color:#F0F0F0;
 padding:0;
 margin:0;
 width:100%;
+box-shadow:0 3px 17px rgba(137, 137, 137, .5);
 }
 
 .item-footer a i{

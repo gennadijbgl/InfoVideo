@@ -2,46 +2,13 @@
 
 namespace InfoVideo.Models
 {
-    //public enum Cities
-    //{
-    //    Мінск, Гародня, Віцебск, Магілёў, Гомель, Брэст
-    //}
-    //public enum StreetsM
-    //{
-    //    Багдановіча, Кульман, Броўкі, Сурганава
-    //}
-
-    //public enum StreetsH
-    //{
-    //    Шчарбакова, Прохарава
-    //}
-
-    //public enum StreetsV
-    //{
-    //    Мінкевіч, Лекароў, Дыетолагаў
-    //}
-
-    //public enum StreetsMa
-    //{
-    //    Мінкевіч, Лекароў, Дыетолагаў
-    //}
-
-    //public enum StreetsG
-    //{
-    //    Белая, Цягнікоў, Колавая
-    //}
-
-    //public enum StreetsB
-    //{
-    //    Пераможцаў, Танкаў, Самалётаў
-    //}
-
+   
 
     public class Helpers
     {
     }
 
-    public class MyDbUserInitializer : DropCreateDatabaseIfModelChanges<InfoVideoContext>
+    public class MyDbUserInitializer : DropCreateDatabaseAlways<InfoVideoContext>
     {
         protected override void Seed(InfoVideoContext context)
         {
