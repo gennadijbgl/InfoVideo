@@ -1,13 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
 namespace InfoVideo.Models
 {
    
 
-    public class Helpers
+    public partial class User
     {
+        [NotMapped]
+        public List<int> Roles { get; set; } = new List<int>() {1};
+
+        [NotMapped]
+        public List<Role> Roless { get; set; }
+
     }
+
+
 
     public class MyDbUserInitializer : DropCreateDatabaseAlways<InfoVideoContext>
     {

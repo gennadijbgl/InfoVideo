@@ -530,7 +530,7 @@ footer {
  -webkit-text-security: disc; /* Default */ 
 }
 
-.header-menu ul a { color: inherit; display:blockbox;}
+.header-menu ul a { color: inherit; display:block;}
 .header-menu  a { text-decoration:none; }
 .header-menu li {
     cursor: pointer;

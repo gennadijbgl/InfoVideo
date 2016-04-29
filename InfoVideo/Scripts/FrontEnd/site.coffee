@@ -55,6 +55,14 @@ $(document).ready ->
   #load_parts()
   all_scripts()
 
+footer_down =->
+  docHeight = $(window).height()
+  footerHeight = $('#footer').height()
+  footerTop = $('#footer').position().top + footerHeight
+
+  if  footerTop < docHeight  
+    $('#footer').css('margin-top', 20+ (docHeight - footerTop) + 'px');
+
 
 load_parts = ->
   $("#header").load "header.html" 
@@ -83,6 +91,7 @@ all_scripts = ->
   #$(document).click (e)->
     #head_panel_close()  
   $("input[name='rating']").change rating
+  footer_down()
 
 
 rating = ->

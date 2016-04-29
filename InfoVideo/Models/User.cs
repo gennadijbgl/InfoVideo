@@ -17,6 +17,8 @@ namespace InfoVideo.Models
             History = new HashSet<History>();
             UserRoles = new HashSet<UserRoles>();
         }
+          
+        
 
         public int Id { get; set; }
 

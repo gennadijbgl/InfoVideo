@@ -131,24 +131,30 @@ namespace InfoVideo.Controllers
         }
 
 
+ 
+
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User model = await _db.Users.FindAsync(id);
+            User model = await _db.Users.Include(t=>t.UserRoles).SingleAsync(t=>t.Id == id);
             if (model == null)
             {
                 return HttpNotFound();
             }
+             
+            ViewBag.Roles = _db.Roles.ToList();
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Login,Password,Email,FirstName,LastName,Address,Discount")] User user)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Login,Password,Email,FirstName,LastName,Address,Discount,Roles,Roless")] User user)
         {
+            var b = new System.IO.StreamReader(Request.InputStream).ReadToEnd();
+
             if (ModelState.IsValid)
             {
                 _db.Entry(user).State = EntityState.Modified;

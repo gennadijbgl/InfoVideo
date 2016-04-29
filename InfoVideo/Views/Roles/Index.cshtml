@@ -1,0 +1,43 @@
+﻿@model IEnumerable<InfoVideo.Models.Role>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ролі</h2>
+
+<p>
+    <a href="@Url.Action("Create", "Formats")" class="btn btn-logo gray" title="Стварыць фармат">
+        <i class="zmdi zmdi-plus-circle zmdi-hc-fw"></i>
+        Стварыць новую
+    </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Roles", new {id = item.Id})" title="Змяніць">
+                <i class="zmdi zmdi-edit zmdi-hc-fw"></i>
+            </a>
+            <a href="@Url.Action("Details", "Roles", new {id = item.Id})" title="Падрабязнасці">
+                <i class="zmdi zmdi-eye zmdi-hc-fw"></i>
+            </a>
+            <a href="@Url.Action("Delete","Roles", new { id = item.Id })" title="Выдаліць">
+                <i class="zmdi zmdi-delete zmdi-hc-fw"></i>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>
