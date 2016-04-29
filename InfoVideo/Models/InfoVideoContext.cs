@@ -18,7 +18,6 @@ namespace InfoVideo.Models
         public virtual DbSet<History> History { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<UserRoles> UserRoles { get; set; }
         public virtual DbSet<Video> Video { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -39,10 +38,10 @@ namespace InfoVideo.Models
                 .HasForeignKey(e => e.IdFormat);
 
             modelBuilder.Entity<Role>()
-                .HasMany(e => e.UserRoles)
-                .WithRequired(e => e.Role)
-                .HasForeignKey(e => e.IdRole)
-                .WillCascadeOnDelete(false);
+               .HasMany(e => e.User)
+               .WithRequired(e => e.Role)
+               .HasForeignKey(e => e.IdRole)
+               .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Password)
@@ -50,12 +49,6 @@ namespace InfoVideo.Models
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.History)
-                .WithRequired(e => e.User)
-                .HasForeignKey(e => e.IdUser)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<User>()
-                .HasMany(e => e.UserRoles)
                 .WithRequired(e => e.User)
                 .HasForeignKey(e => e.IdUser)
                 .WillCascadeOnDelete(false);

@@ -15,7 +15,7 @@ namespace InfoVideo.Models
         public User()
         {
             History = new HashSet<History>();
-            UserRoles = new HashSet<UserRoles>();
+
         }
           
         
@@ -63,19 +63,9 @@ namespace InfoVideo.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<History> History { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserRoles> UserRoles { get; set; }
-    }
-    public class LoginModel
-    {
-        [Required]
-        [StringLength(20)]
+        public int IdRole { get; set; }
 
-        public string Login { get; set; }
-
-        [Required]
-        [DataType(DataType.Password)]
-        [DisplayName("Пароль")]
-        public string Password { get; set; }
+        public virtual Role Role { get; set; }
     }
+   
 }

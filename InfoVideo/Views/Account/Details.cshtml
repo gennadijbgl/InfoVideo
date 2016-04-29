@@ -89,18 +89,15 @@
 
     </tr>
 
-    @foreach (var c in Model.UserRoles)
-    {
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => c.Role)
-            </th>
-            <th>
-                @Html.DisplayFor(model => c.Role.Name)
-            </th>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Role)
+        </th>
+        <th>
+            @Html.DisplayFor(model => model.Role)
+        </th>
 
-        </tr>
-    }
+    </tr>
 </table>
 
 <h3>Гісторыя</h3>

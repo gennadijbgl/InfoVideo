@@ -76,38 +76,13 @@
         </div>
 
 
-        <div class="form-group">
+        <div class="select-style">
 
-            @{
-                var b = new MultiSelectList(ViewBag.Roles,
-                    "Id", "Name",
-                    Model.UserRoles.Select(t => t.Role).ToList());
-
-                var b1 = new MultiSelectList(ViewBag.Roles,
-             "Id", "Name",
-             Model.UserRoles.Select(t => t.Role.Id).ToList());
-            }
-
-            @Html.DropDownList("Roles", b1,
-                new
-                {
-                    multiple = "multiple",
-                    @class = "multiselect"
-                })
-
-
-
-            @Html.DropDownList("Roles",b
-                ,
-                new
-                {
-                    multiple = "multiple",
-                    @class = "multiselect"
-                })
-
-
-
-
+           @Html.DropDownListFor(m => m.IdRole,
+                new SelectList(ViewBag.Roles,
+                               "Id", "Name",
+                               Model.Role),"Абярыце")
+       
         </div>
 
 

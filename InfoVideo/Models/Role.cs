@@ -8,13 +8,20 @@ namespace InfoVideo.Models
 
     public partial class Role
     {
- 
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Role()
+        {
+            User = new HashSet<User>();
+        }
+
         public int Id { get; set; }
 
         [Required]
         [StringLength(20)]
         public string Name { get; set; }
-                     
-        public virtual ICollection<UserRoles> UserRoles { get; set; } = new HashSet<UserRoles>();
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> User { get; set; }
     }
 }

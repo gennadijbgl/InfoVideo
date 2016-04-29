@@ -20,7 +20,7 @@ var id = -1;
 var OnSuccess = function (data) {
     $('.dest').empty();
     $('#item' + id).empty();
-    for (var i = 0; i < data.length; i++) {
+    {
         $('#item' + id).append(data); // добавляем данные в список
     }
 }

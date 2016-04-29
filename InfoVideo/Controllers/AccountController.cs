@@ -98,7 +98,7 @@ namespace InfoVideo.Controllers
         public async  Task<PartialViewResult> Index()
         {
 
-            var users = _db.Users.Include(e => e.UserRoles).Include(e => e.History);
+            var users = _db.Users.Include(e => e.Role).Include(e => e.History);
             return PartialView(await users.ToListAsync());
            
             
@@ -125,7 +125,7 @@ namespace InfoVideo.Controllers
         {
             var user = _db.Users.First(y => y.Email == email);
 
-            var jsondata = user?.UserRoles.Select(t=>t.Role.Name);
+            var jsondata = user?.Role.Name;
 
             return Json(jsondata, JsonRequestBehavior.AllowGet);
         }
@@ -139,19 +139,19 @@ namespace InfoVideo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User model = await _db.Users.Include(t=>t.UserRoles).SingleAsync(t=>t.Id == id);
+            User model = await _db.Users.FindAsync(id);
             if (model == null)
             {
                 return HttpNotFound();
             }
              
-            ViewBag.Roles = _db.Roles.ToList();
+            ViewBag.Roles = await _db.Roles.ToListAsync();
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Login,Password,Email,FirstName,LastName,Address,Discount,Roles,Roless")] User user)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Login,Password,Email,FirstName,LastName,Address,Discount,IdRole")] User user)
         {
             var b = new System.IO.StreamReader(Request.InputStream).ReadToEnd();
 
