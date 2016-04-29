@@ -1,0 +1,43 @@
+﻿@model InfoVideo.Models.Format
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Format</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Container)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Container)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Codec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

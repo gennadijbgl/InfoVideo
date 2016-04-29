@@ -1,4 +1,4 @@
-﻿namespace InfoVideo.Models
+namespace InfoVideo.Models
 {
     using System;
     using System.Collections.Generic;
@@ -17,9 +17,11 @@
 
         public int Id { get; set; }
 
-        [StringLength(10)]
+        [Required]
+        [StringLength(20)]
         public string Container { get; set; }
 
+        [Required]
         [StringLength(10)]
         public string Codec { get; set; }
 

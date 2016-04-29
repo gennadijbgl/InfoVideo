@@ -17,6 +17,8 @@ namespace InfoVideo.Controllers
     public class AccountController : Controller
     {
         private readonly InfoVideoContext _db = new InfoVideoContext();
+
+       
         public ActionResult Login()
         {
             return View();
@@ -93,11 +95,30 @@ namespace InfoVideo.Controllers
         }
 
 
-        public async  Task<PartialViewResult> UsersList()
+        public async  Task<PartialViewResult> Index()
         {
+
+            var users = _db.Users.Include(e => e.UserRoles).Include(e => e.History);
+            return PartialView(await users.ToListAsync());
+           
             
-                return PartialView(await _db.Users.ToListAsync());
-            
+        }
+
+
+
+
+        public async Task<ActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = await _db.Users.FindAsync(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
         }
 
         public JsonResult JsonSearch(string email)
@@ -107,6 +128,69 @@ namespace InfoVideo.Controllers
             var jsondata = user?.UserRoles.Select(t=>t.Role.Name);
 
             return Json(jsondata, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public async Task<ActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User model = await _db.Users.FindAsync(id);
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Login,Password,Email,FirstName,LastName,Address,Discount")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Entry(user).State = EntityState.Modified;
+                await _db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(user);
+        }
+
+        // GET: Users/Delete/5
+        public async Task<ActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = await _db.Users.FindAsync(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        // POST: Users/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
+        {
+            User user = await _db.Users.FindAsync(id);
+            _db.Users.Remove(user);
+            await _db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

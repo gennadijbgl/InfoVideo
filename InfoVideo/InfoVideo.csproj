@@ -69,6 +69,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -129,6 +131,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EditionsController.cs" />
+    <Compile Include="Controllers\FormatsController.cs" />
+    <Compile Include="Controllers\HistoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VideosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -249,13 +254,32 @@
     <Content Include="Views\Shared\UserPanel.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\UsersList.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Videos\Create.cshtml" />
     <Content Include="Views\Videos\Delete.cshtml" />
     <Content Include="Views\Videos\Details.cshtml" />
     <Content Include="Views\Videos\Edit.cshtml" />
     <Content Include="Views\Videos\Index.cshtml" />
     <Content Include="Views\Shared\Video.cshtml" />
+    <Content Include="Views\Formats\Create.cshtml" />
+    <Content Include="Views\Formats\Delete.cshtml" />
+    <Content Include="Views\Formats\Details.cshtml" />
+    <Content Include="Views\Formats\Edit.cshtml" />
+    <Content Include="Views\Formats\Index.cshtml" />
+    <Content Include="Views\Editions\Create.cshtml" />
+    <Content Include="Views\Editions\Delete.cshtml" />
+    <Content Include="Views\Editions\Details.cshtml" />
+    <Content Include="Views\Editions\Edit.cshtml" />
+    <Content Include="Views\Editions\Index.cshtml" />
+    <Content Include="Views\Account\Delete.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Histories\Create.cshtml" />
+    <Content Include="Views\Histories\Delete.cshtml" />
+    <Content Include="Views\Histories\Details.cshtml" />
+    <Content Include="Views\Histories\Edit.cshtml" />
+    <Content Include="Views\Histories\Index.cshtml" />
+    <Content Include="Views\Shared\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

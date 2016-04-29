@@ -1,7 +1,8 @@
-﻿@model IEnumerable<InfoVideo.Models.User>
+﻿@using InfoVideo.Models
+@model IEnumerable<User>
 
 @{
-    ViewBag.Title = "UsersList";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -31,6 +32,9 @@
         <th>
             @Html.DisplayNameFor(model => model.UserRoles)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.History)
+        </th>
         <th>Дзеянні</th>
     </tr>
 
@@ -39,7 +43,7 @@
     @foreach (var item in Model) {
     <tr>
         <td class="test" id="@(item.Id)">@Html.DisplayFor(modelItem => item.Email)</td>
-        <td>
+        <td class="password">
             @Html.DisplayFor(modelItem => item.Password)
         </td>
         <td>
@@ -54,11 +58,22 @@
         <td>
             @Html.DisplayFor(modelItem => item.Login)
         </td>
-        <td  class="dest" id="item@(item.Id)"></td>
+        <td class="dest" id="item@(item.Id)"></td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+           
+           @Html.DisplayFor(t => item.History.Count)
+           
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Account", new {id = item.Id})" title="Змяніць">
+                <i class="zmdi zmdi-edit zmdi-hc-fw"></i>
+            </a>
+            <a href="@Url.Action("Details", "Account", new {id = item.Id})" title="Падрабязнасці">
+                <i class="zmdi zmdi-eye zmdi-hc-fw"></i>
+            </a>
+            <a href="@Url.Action("Delete","Account", new { id = item.Id })" title="Выдаліць">
+                <i class="zmdi zmdi-delete zmdi-hc-fw"></i>
+            </a>
         </td>
     </tr>
 }

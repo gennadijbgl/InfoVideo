@@ -26,6 +26,8 @@ var OnSuccess = function (data) {
 }
 
 $(document).ready(function () {
+  
+
     $('.test')
          .hover(
              function (e) {
@@ -75,3 +77,21 @@ var validate = function () {
   
 
 }
+
+$("#Logo").change(function () {
+    readURL(this);
+});
+
+var readURL = function (input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#logo-prew').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+

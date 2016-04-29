@@ -1,0 +1,81 @@
+﻿@model IEnumerable<InfoVideo.Models.History>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <a href="@Url.Action("Index", "Videos")" title="Змяніць">
+                @Html.DisplayNameFor(model => model.Edition.Video)
+            </a>
+           
+        </th>
+        <th>
+            <a href="@Url.Action("Index", "Formats")" title="Змяніць">
+                @Html.DisplayNameFor(model => model.Edition.Format)
+            </a>
+        </th>
+        <th>
+            <a href="@Url.Action("Index", "Editions")" title="Змяніць">
+                @Html.DisplayNameFor(model => model.Edition)
+            </a>
+          
+        </th>
+        <th>
+            <a href="@Url.Action("Index", "Account")" title="Змяніць">
+                @Html.DisplayNameFor(model => model.User.Login)
+            </a>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Edition.Price)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a href="@Url.Action("Details", "Videos", new {id = item.Edition.Video.Id})" title="Змяніць">
+                @Html.DisplayFor(modelItem => item.Edition.Video.Title)
+            </a>
+            
+        </td>
+        <td>
+            <a href="@Url.Action("Details", "Formats", new {id = item.Edition.Format.Id})" title="Змяніць">
+                @Html.DisplayFor(modelItem => item.Edition.Format.Codec)
+            </a>
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edition.Box)
+        </td>
+        <td>
+            <a href="@Url.Action("Details", "Account", new {id = item.User.Id})" title="Змяніць">
+                @Html.DisplayFor(modelItem => item.User.Login)
+            </a>
+            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edition.Price)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Histories", new {id = item.Id})" title="Змяніць">
+                <i class="zmdi zmdi-edit zmdi-hc-fw"></i>
+            </a>
+            <a href="@Url.Action("Details", "Histories", new {id = item.Id})" title="Падрабязнасці">
+                <i class="zmdi zmdi-eye zmdi-hc-fw"></i>
+            </a>
+            <a href="@Url.Action("Delete", "Histories", new {id = item.Id})" title="Выдаліць">
+                <i class="zmdi zmdi-delete zmdi-hc-fw"></i>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>

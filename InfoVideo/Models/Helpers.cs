@@ -19,16 +19,17 @@ namespace InfoVideo.Models
             context.Roles.Add(adminR);
             context.Roles.Add(userR);
                     
-            var admin = new User { Email = "asd@mail1.ru", FirstName = "Leon", LastName = "Budkouski", Password = ("asd123"),Login = "Hienadz", Address = "Мінск, Кульман 33", Discount  = 10};
-            var user = new User { Email = "kross@mail.ru", FirstName = "Dylan", LastName = "Kross", Password = ("asd111"), Login = "HienadzA", Address = "Мінск, Багдановіча М 100", Discount = 0};
+            var admin = new User { Email = "asd@mail1.ru", FirstName = "Leon", LastName = "Budkouski", Password = ("Asd123"),Login = "Hienadz", Address = "Мінск, Кульман 33", Discount  = 10};
+            var user = new User { Email = "kross@mail.ru", FirstName = "Dylan", LastName = "Kross", Password = ("Asd111"), Login = "HienadzA", Address = "Мінск, Багдановіча М 100", Discount = 0};
 
             context.Users.Add(admin);
             context.Users.Add(user);
+       
 
             context.UserRoles.Add(new UserRoles { Role = adminR, User = admin });
             context.UserRoles.Add(new UserRoles { Role = userR, User = user });
 
-            
+     
 
             Video v = new Video {Title = "The 100 - Season 3",
                 Description = "Пасля ядзернай вайны прайшло 97 гадоў. " +
@@ -41,7 +42,7 @@ namespace InfoVideo.Models
                               " і іншых вядомых на «Каўчэгу» людзей. " +
                               "Зараз лёс усяго чалавецтва залежыць ад гэтай групы «выгнаннікаў»",
                                 Date = new DateTime(2014,01,01),
-                                Genre = "фантастыка",
+                                Genre = "Фантастыка",
                                 Logo = "the100.png"
 
             };
@@ -61,13 +62,15 @@ namespace InfoVideo.Models
                               "Гледачоў чакае незабыўнае вандраванне па Чатырох Землях, населеным дзіўнымі істотамі, " +
                               "а візуальны складнік пацешыць нават самых прыдзірлівых серыяламанаў.",
                 Date = new DateTime(2015, 05, 07),
-                Genre = "прыгоды, фантастыка",
+                Genre = "Прыгоды, фантастыка",
                 Logo = "shannar.jpg"
 
             };
 
             context.Video.Add(v);
             context.Video.Add(v1);
+
+    
 
             Format f= new Format {Codec = "h.264", Container = "mkv", Size = 1560458835};
             Format f1 = new Format { Codec = "mpeg4", Container = "mp4", Size = 1078684114 };

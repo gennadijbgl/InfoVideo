@@ -1,4 +1,4 @@
-﻿namespace InfoVideo.Models
+namespace InfoVideo.Models
 {
     using System;
     using System.Collections.Generic;
@@ -24,7 +24,7 @@
         [Column(TypeName = "money")]
         public decimal? Price { get; set; }
 
-        [StringLength(20)]
+        [StringLength(30)]
         public string Box { get; set; }
 
         public virtual Format Format { get; set; }

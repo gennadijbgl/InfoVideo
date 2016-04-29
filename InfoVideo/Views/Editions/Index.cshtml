@@ -1,0 +1,61 @@
+﻿@model IEnumerable<InfoVideo.Models.Edition>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Выданні</h2>
+
+<p>
+    <a href="@Url.Action("Create", "Editions")" class="btn btn-logo gray" title="Стварыць выданне">
+        <i class="zmdi zmdi-plus-circle zmdi-hc-fw"></i>
+        Стварыць новае
+    </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Format.Container)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Video.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Box)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Format.Container)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Video.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Box)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Formats", new {id = item.Id})" title="Змяніць">
+                <i class="zmdi zmdi-edit zmdi-hc-fw"></i>
+            </a>
+            <a href="@Url.Action("Details", "Formats", new {id = item.Id})" title="Падрабязнасці">
+                <i class="zmdi zmdi-eye zmdi-hc-fw"></i>
+            </a>
+            <a href="@Url.Action("Delete","Formats", new { id = item.Id })" title="Выдаліць">
+                <i class="zmdi zmdi-delete zmdi-hc-fw"></i>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>

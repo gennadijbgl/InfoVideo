@@ -1,4 +1,4 @@
-﻿namespace InfoVideo.Models
+namespace InfoVideo.Models
 {
     using System;
     using System.Collections.Generic;
@@ -15,8 +15,10 @@
 
         public int IdEdition { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? Date { get; set; }
+        [Column(TypeName = "datetime2")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:dd MMMM yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Date { get; set; }
 
         public virtual Edition Edition { get; set; }
 

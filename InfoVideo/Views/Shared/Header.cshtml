@@ -16,24 +16,74 @@
             </a>
         </li>
 
+        <li>
+            <a href="@Url.Action("Index", "Account")" title="Дамоў">
+                Карыстачы
+                <i class="zmdi zmdi-accounts-list zmdi-hc-lg"></i>
+            </a>
+        </li>
 
         <li>
-            <a href="@Url.Action("Index", "Videos")" title="">
-                Серыялы
-                <i class="zmdi zmdi-view-list-alt zmdi-hc-lg"></i>
+            <a href="@Url.Action("Index", "Home")" title="Дамоў">
+                Выданні
+                <i class="zmdi zmdi-codepen zmdi-hc-lg"></i>
+            </a>
+
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index", "Editions")">
+                        Спіс
+                        <i class="zmdi  zmdi-view-list-alt zmdi-hc-lg"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Create", "Editions")">
+                        Стварыць
+                        <i class="zmdi zmdi-plus-circle zmdi-hc-lg"></i>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="@Url.Action("Index", "Home")" title="Дамоў">
+                Фарматы
+                <i class="zmdi zmdi-file zmdi-hc-lg"></i>
+            </a>
+
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index", "Formats")">
+                        Спіс
+                        <i class="zmdi  zmdi-view-list-alt zmdi-hc-lg"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Create", "Formats")">
+                        Стварыць
+                        <i class="zmdi zmdi-plus-circle zmdi-hc-lg"></i>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="@Url.Action("Index", "Videos")">
+                Відыёзапісы
+                <i class="zmdi zmdi zmdi-videocam zmdi-hc-lg"></i>
             </a>
 
 
             <ul>
                 <li>
-                    <a href="@Url.Action("Index", "Videos")" title="Дамоў">
-                        List
-                        <i class="zmdi zmdi-tv-list zmdi-hc-lg"></i>
+                    <a href="@Url.Action("Index", "Videos")">
+                        Спіс
+                        <i class="zmdi zmdi-view-list-alt  zmdi-hc-lg"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Create", "Videos")" title="Дамоў">
-                        Create
+                    <a href="@Url.Action("Create", "Videos")">
+                        Стварыць
                         <i class="zmdi zmdi-plus-circle zmdi-hc-lg"></i>
                     </a>
                 </li>

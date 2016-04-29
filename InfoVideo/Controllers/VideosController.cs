@@ -19,6 +19,7 @@ namespace InfoVideo.Controllers
         // GET: Videos
         public async Task<ActionResult> Index()
         {
+
             return View(await _db.Video.ToListAsync());
         }
 
@@ -30,6 +31,7 @@ namespace InfoVideo.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Video video = await _db.Video.FindAsync(id);
+            
             if (video == null)
             {
                 return HttpNotFound();
@@ -43,26 +45,30 @@ namespace InfoVideo.Controllers
             return View();
         }
 
+        public void ProcessFile(HttpPostedFileBase file, Video video)
+        {
+            if (file != null && file.ContentLength > 0)
+
+            {
+                string path = Path.Combine(Server.MapPath("~/Media/Images"),
+                    Path.GetFileName(file.FileName));
+
+                file.SaveAs(path);
+
+                video.Logo = Path.GetFileName(file.FileName);
+            }
+
+
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description,Country,Genre")] Video video, HttpPostedFileBase upload)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description,Country,Genre")] Video video, HttpPostedFileBase Logo)
         {
             if (ModelState.IsValid)
             {
-                if (upload != null && upload.ContentLength > 0)
-
-                {
-                    string path = Path.Combine(Server.MapPath("~/Media/Images"),
-                        Path.GetFileName(upload.FileName));
-
-                    upload.SaveAs(path);
-                    ViewBag.Message = "File uploaded successfully";
-
-                    video.Genre = Path.GetFileName(upload.FileName);
-                }
-
-
+                
+                ProcessFile(Logo, video);
 
                 _db.Video.Add(video);
                 await _db.SaveChangesAsync();
@@ -97,11 +103,12 @@ namespace InfoVideo.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Description,Country,Genre")] Video video)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Description,Date,Genre")] Video video, HttpPostedFileBase Logo)
         {
             if (ModelState.IsValid)
             {
                 _db.Entry(video).State = EntityState.Modified;
+                ProcessFile(Logo, video);
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<InfoVideo.Models.History>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<p>
+    <a href="@Url.Action("Create", "Histories")" class="btn btn-logo gray" title="Дадаць">
+        <i class="zmdi zmdi-plus-circle zmdi-hc-fw"></i>
+        Дадаць
+    </a>
+</p>
+ @{
+        Html.RenderPartial("History", Model);
+}

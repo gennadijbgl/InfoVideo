@@ -1,71 +1,18 @@
-﻿
-            <div class="item">
-                <div class="item-header">
+﻿@model IEnumerable<InfoVideo.Models.Video>
 
-                    <img src="/Media/Images/the100.png" class="item-header-img" alt="">
-                    <h2 class="text-background top">The 100 - Season 3</h2>
-
-                    <h3 class="text-background">
-                        Краіна: ЗША
-                        Год выхаду: 2014
-                        Жанр: фантастыка
-                        <br>
-                        Колькасць сезонаў: 3
-                        Статус: здымаецца
-                    </h3>
-                </div>
-                <div class="item-body">
-                    Пасля ядзернай вайны прайшло 97 гадоў. Рэшткі чалавецтва, якія хаваюцца на касмічнай станцыі «Каўчэг», пакутуюць ад недахопу рэсурсаў, неабходных для далейшага выжывання. Урад вычарпаў усе меры, уключаючы цвёрдае абмежаванне нараджальнасці, але сітуацыя працягвае пагаршацца. Застаецца адзінае выйсце — паспрабаваць вярнуцца на Зямлю. Каб пазнаць, ці прыдатная для жыцця пакінутая даўным-даўно планета, урад адпраўляе туды сотню маладых правапарушальнікаў, у ліку дзецей высокапастаўленых службоўцаў і іншых вядомых на «Каўчэгу» людзей. Зараз лёс усяго чалавецтва залежыць ад гэтай групы «выгнаннікаў»...
-                </div>
-                <div class="item-footer">
-                    <a href="">
-                        <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i>Набыць
-                    </a>
-                    <a href="">
-                        <i class="zmdi zmdi-view-list-alt zmdi-hc-fw text-align-left"></i>Падрабязна
-                    </a>
-                    <a href="">
-                        <i class="zmdi zmdi-edit zmdi-hc-fw text-align-left"></i>Змяніць
-                    </a>
-
-                </div>
-                <span class="star-rating star-5">
-                    <input type="radio" name="rating" value="1"><i></i>
-                    <input type="radio" name="rating" value="2"><i></i>
-                    <input type="radio" name="rating" value="3"><i></i>
-                    <input type="radio" name="rating" value="4"><i></i>
-                    <input type="radio" name="rating" value="5"><i></i>
-                </span>
+@{  
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 
-                <h1 id="ratS">0</h1>
-            </div>
+@foreach (var item in Model)
+{
+    Html.RenderPartial("Video", item);
 
-            <div class="item">
-                <div class="item-header">
-                    <img src="/Media/Images/shannar.jpg" class="item-header-img" alt="">
-                    <h2 class="text-background top">The Shannara Chronicles</h2>
-                    <h3 class="text-background">
-                        Краіна: ЗША Год выхаду: 2015 - Жанр: Прыгоды, Фантастыка, Фэнтэзі Колькасць сезонаў: 1 Статус: здымаецца
-                    </h3>
-                </div>
-                <div class="item-body">
-
-                    Канал MTV прадстаўляе фэнтэзі-серыял «Хронікі Шаннары», у аснову якога лёг аднайменны цыкл раманаў фантаста Тэры Брукса. Сам пісьменнік прымаў актыўны ўдзел у адаптацыі сваіх твораў для маленькіх экранаў, а таму знатакі яго творчасці цалкам могуць разлічваць на тое, што тэлевізійная версія «Харонікі Шаннары» будзе максімальна адпавядаць першакрыніцы. З моманту публікацыі кніг Брукса прайшло нямала часу, але менавіта цяпер развіццё тэхналогій і наяўныя ў тэлебачання магчымасці, па меркаванні аўтара і прадзюсараў праекта, дазволяць займальна і ў поўнай меры перанесці фантастычны свет пісьменніка на экраны. Гледачоў чакае незабыўнае вандраванне па Чатырох Землях, населеным дзіўнымі істотамі, а візуальны складнік пацешыць нават самых прыдзірлівых серыяламанаў.
-                </div>
-                <div class="item-footer">
-                    <a href="">
-                        <i style="text-align:left;" class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i>Набыць
-                    </a>
-                    <a href="">
-                        <i style="text-align:left;" class="zmdi zmdi-view-list-alt zmdi-hc-fw"></i>Падрабязна
-                    </a>
-                    <a href="">
-                        <i style="text-align:left;" class="zmdi zmdi-edit zmdi-hc-fw"></i>Змяніць
-                    </a>
-                </div>
-            </div>
+}
 
 
- 
+
+
 
