@@ -47,7 +47,7 @@ namespace InfoVideo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Container,Codec,Size")] Format format)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Container,Languages,Support3D")] Format format)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace InfoVideo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Container,Codec,Size")] Format format)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Container,Languages,Support3D")] Format format)
         {
             if (ModelState.IsValid)
             {

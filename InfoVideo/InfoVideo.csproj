@@ -264,7 +264,6 @@
     <Content Include="Views\Videos\Details.cshtml" />
     <Content Include="Views\Videos\Edit.cshtml" />
     <Content Include="Views\Videos\Index.cshtml" />
-    <Content Include="Views\Shared\Video.cshtml" />
     <Content Include="Views\Formats\Create.cshtml" />
     <Content Include="Views\Formats\Delete.cshtml" />
     <Content Include="Views\Formats\Details.cshtml" />
@@ -289,6 +288,8 @@
     <Content Include="Views\Roles\Details.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Shared\Video.cshtml" />
+    <Content Include="Views\Editions\Model.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

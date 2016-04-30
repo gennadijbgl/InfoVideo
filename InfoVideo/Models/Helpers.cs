@@ -85,8 +85,8 @@ namespace InfoVideo.Models
 
     
 
-            Format f= new Format {Codec = "h.264", Container = "mkv", Size = 1560458835};
-            Format f1 = new Format { Codec = "mpeg4", Container = "mp4", Size = 1078684114 };
+            Format f= new Format {Languages = "Bel, Eng, Deu", Container = "mkv", Support3D = true};
+            Format f1 = new Format { Languages = "Bel, Eng", Container = "mp4", Support3D = true };
 
 
             context.Format.Add(f);

@@ -9,3 +9,13 @@
 @{
     Html.RenderPartial("Video", Model);
 }
+
+<div class="sidebar-right relative display-inline-block">
+    @{
+        foreach (var c in Model.Edition)
+        {
+            Html.RenderPartial("~/Views/Editions/Model.cshtml", c);
+        }
+
+    }
+</div>

@@ -6,11 +6,30 @@
 }
 
 
+
+
+<div class="sidebar-left">
+    @{
+        Html.RenderPartial("SidebarLeft", null);
+    }
+</div>
+
+
+<div class="sidebar-right">
+    @{
+        Html.RenderPartial("SidebarRight", Model);
+    }
+</div>
+
+
+
+
 @foreach (var item in Model)
 {
     Html.RenderPartial("Video", item);
 
 }
+
 
 
 

@@ -20,10 +20,10 @@
             @Html.DisplayNameFor(model => model.Container)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Codec)
+            @Html.DisplayNameFor(model => model.Languages)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Size)
+            @Html.DisplayNameFor(model => model.Support3D)
         </th>
         <th></th>
     </tr>
@@ -34,10 +34,10 @@
             @Html.DisplayFor(modelItem => item.Container)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Codec)
+            @Html.DisplayFor(modelItem => item.Languages)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Size)
+            @Html.DisplayFor(modelItem => item.Support3D)
         </td>
         <td>
             <a href="@Url.Action("Edit", "Formats", new {id = item.Id})" title="Змяніць">

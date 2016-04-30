@@ -22,10 +22,10 @@ namespace InfoVideo.Models
         public string Container { get; set; }
 
         [Required]
-        [StringLength(10)]
-        public string Codec { get; set; }
+        [StringLength(20)]
+        public string Languages { get; set; }
 
-        public long? Size { get; set; }
+        public bool Support3D { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Edition> Edition { get; set; }

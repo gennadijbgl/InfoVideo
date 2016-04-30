@@ -1,0 +1,35 @@
+﻿@model InfoVideo.Models.Edition
+
+<div class="card">
+    <h2>@Model.Box</h2>
+
+    <div>
+        <i class="fa fa-language" aria-hidden="true"></i>
+        @Html.DisplayFor(model => model.Format.Languages)
+    </div>
+
+    <div>
+        <i class="zmdi zmdi-file"></i>
+        @Html.DisplayFor(model => model.Format.Container)
+    </div>
+
+
+    <div>
+        <i class="zmdi zmdi-3d-rotation"></i>
+        @Html.DisplayNameFor(model => model.Format.Support3D)
+        @Html.DisplayFor(model => model.Format.Support3D)
+    </div>
+ 
+
+
+    <div>
+        <i class="fa fa-money" aria-hidden="true"></i>
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <a href="@Url.Action("Edit", "Formats", new {id = Model.Id})" title="Набыць">
+        Набыць
+    </a>
+
+
+</div>

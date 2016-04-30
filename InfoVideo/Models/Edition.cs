@@ -1,3 +1,5 @@
+using System.Drawing;
+
 namespace InfoVideo.Models
 {
     using System;
@@ -22,6 +24,7 @@ namespace InfoVideo.Models
         public int? IdFormat { get; set; }
 
         [Column(TypeName = "money")]
+        [DisplayFormat(DataFormatString= "{0:C0}")]
         public decimal? Price { get; set; }
 
         [StringLength(30)]
