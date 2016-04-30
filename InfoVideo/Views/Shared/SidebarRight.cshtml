@@ -1,12 +1,17 @@
-﻿
-    <div class="news">
+﻿@model IEnumerable<InfoVideo.Models.Video>
+
+<div class="news">
+    
+    @foreach (var item in Model)
+    {
         <div class="news-item">
-            <div class="news-item-header">
-                <span class="news-item-name">The 100</span>
-                <span class="news-item-name right">04.03</span>
+            <span class="news-item-name">@item.Title</span>   
+            <img src="@Url.Content("~/Media/Images/" + item.Logo)" style="width: 45%;" alt="">
+            <div class="right">
+                <h5 class="no-margin-padding">@Html.DisplayFor(t => item.Date)</h5>
+                <h6 class="news-title no-margin-padding">@item.Genre</h6>
             </div>
-            <img src="/Media/Images/cat_the_hundred.jpeg" style="width: 45%;" alt="">
-            <h6 class="display-block news-title">Terms and Conditions</h6>
+           
             <div class="news-footer">
                 <a href="">
                     <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"> </i>
@@ -19,71 +24,9 @@
                 </a>
             </div>
         </div>
-        <div class="news-item">
-            <div class="news-item-header">
-                <span class="news-item-name">The 100</span>
-                <span class="news-item-name right">04.03</span>
-            </div>
-            <img src="/Media/Images/cat_the_hundred.jpeg" style="width: 45%;" alt="">
-            <h6 class="display-block" style="display: block; float: right;margin: 0;padding: 0;
-                   line-height: 20px; width: 45%;">
-                Terms and Conditions
-            </h6>
-            <div class="news-footer">
-                <a href="">
-                    <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"> </i>
-                </a>
-                <a href="">
-                    <i class="zmdi zmdi-view-list-alt zmdi-hc-fw text-align-left"> </i>
-                </a>
-                <a href="">
-                    <i class="zmdi zmdi-edit zmdi-hc-fw text-align-left"> </i>
-                </a>
-            </div>
-        </div>
-        <div class="news-item">
-            <div class="news-item-header">
-                <span class="news-item-name">The 100</span>
-                <span class="news-item-name right">04.03</span>
-            </div>
-            <img src="/Media/Images/cat_the_hundred.jpeg" style="width: 45%;" alt="">
-            <h6 class="display-block" style="display: block; float: right;margin: 0;padding: 0;
-                   line-height: 20px; width: 45%;">
-                Terms and Conditions
-            </h6>
-            <div class="news-footer">
-                <a href="">
-                    <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"> </i>
-                </a>
-                <a href="">
-                    <i class="zmdi zmdi-view-list-alt zmdi-hc-fw text-align-left"> </i>
-                </a>
-                <a href="">
-                    <i class="zmdi zmdi-edit zmdi-hc-fw text-align-left"> </i>
-                </a>
-            </div>
-        </div>
-        <div class="news-item">
-            <div class="news-item-header">
-                <span class="news-item-name">The 100</span>
-                <span class="news-item-name right">04.03</span>
-            </div>
-            <img src="/Media/Images/cat_the_hundred.jpeg" style="width: 45%;" alt="">
-            <h6 class="display-block" style="display: block; float: right;margin: 0;padding: 0;
-                   line-height: 20px; width: 45%;">
-                Terms and Conditions
-            </h6>
-            <div class="news-footer">
-                <a href="">
-                    <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"> </i>
-                </a>
-                <a href="">
-                    <i class="zmdi zmdi-view-list-alt zmdi-hc-fw text-align-left"> </i>
-                </a>
-                <a href="">
-                    <i class="zmdi zmdi-edit zmdi-hc-fw text-align-left"> </i>
-                </a>
-            </div>
-        </div>
-    </div>
+
+    }
+    
+   
+</div>
 

@@ -899,15 +899,11 @@ header {
    text-decoration:underline;
 }
 
-.news-title {
-    display: block;
-
-    float: right;
-    line-height: 20px;
+.no-margin-padding {
 
     margin: 0;
     padding: 0;
-    width: 55%;
+
 }
 
 .news {

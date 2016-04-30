@@ -14,6 +14,8 @@ namespace InfoVideo.Controllers
         private readonly InfoVideoContext _db = new InfoVideoContext();
         public async Task<ActionResult> Index()
         {
+            ViewData["Latest"] = await _db.Edition.ToListAsync();
+
             return View(await _db.Video.ToListAsync());
         }
 
