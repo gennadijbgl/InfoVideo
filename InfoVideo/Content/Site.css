@@ -558,6 +558,22 @@ option{
 }
 
 
+.td_min_width{
+    min-width:100px;
+}
+.no_text_decor_a > a,
+.no_text_decor_a > a:hover{
+text-decoration:none;
+}
+
+.const_color_a:link,
+.const_color_a:visited,
+.const_color_a:active,
+.const_color_a:hover {
+    color: #424242;
+}
+
+
 .header-menu ul a { color: inherit; display:block;}
 .header-menu  a { text-decoration:none; }
 .header-menu li {
@@ -1331,10 +1347,10 @@ table caption {
 table td { border-left: 1px solid #cbcbcb; }
 table td:first-child { border-left: none; }
 
-table td,table th{
+table td,table th,table tr{
     border-width: 1px;
     font-size: inherit;
-    margin: 0;
+    margin: 5px;
     overflow: visible;
     padding: .1em .4em;
     border-bottom: 1px solid #cbcbcb;

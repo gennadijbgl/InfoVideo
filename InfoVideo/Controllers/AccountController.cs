@@ -76,7 +76,7 @@ namespace InfoVideo.Controllers
             if (user == null)
             {
                    
-                _db.Users.Add(new User { Email = model.Email, Address = model.Address,FirstName = model.FirstName, LastName = model.LastName, Password = (model.Password), Login = model.Login});
+                _db.Users.Add(new User { Email = model.Email, Address = model.Address,FirstName = model.FirstName, LastName = model.LastName, Password = (model.Password.Trim()), Login = model.Login});
                 var ans = _db.SaveChanges();
 
                 if (ans != 1) return View(model);
@@ -123,7 +123,8 @@ namespace InfoVideo.Controllers
 
         public JsonResult JsonSearch(string email)
         {
-            var user = _db.Users.First(y => y.Email == email);
+            email = email.Trim();
+            var user = _db.Users.FirstOrDefault(y => y.Email == email);
 
             var jsondata = user?.Role.Name;
 
@@ -146,6 +147,7 @@ namespace InfoVideo.Controllers
             }
              
             ViewBag.Roles = await _db.Roles.ToListAsync();
+
             return View(model);
         }
 
@@ -153,10 +155,10 @@ namespace InfoVideo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Login,Password,Email,FirstName,LastName,Address,Discount,IdRole")] User user)
         {
-            var b = new System.IO.StreamReader(Request.InputStream).ReadToEnd();
-
+          
             if (ModelState.IsValid)
             {
+                user.Password = user.Password.Trim();
                 _db.Entry(user).State = EntityState.Modified;
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");

@@ -20,6 +20,7 @@ namespace InfoVideo.Models
 
         [Required]
         [DataType(DataType.Password)]
+        [StringLength(20)]
         [DisplayName("Пароль")]
         public string Password { get; set; }
     }
@@ -34,8 +35,8 @@ namespace InfoVideo.Models
             context.Roles.Add(adminR);
             context.Roles.Add(userR);
                     
-            var admin = new User { Email = "asd@mail1.ru", FirstName = "Leon", LastName = "Budkouski", Password = ("Asd123"),Login = "Hienadz", Address = "Мінск, Кульман 33", Discount  = 10,Role = adminR};
-            var user = new User { Email = "kross@mail.ru", FirstName = "Dylan", LastName = "Kross", Password = ("Asd111"), Login = "HienadzA", Address = "Мінск, Багдановіча М 100", Discount = 0, Role = userR};
+            var admin = new User { Email = "asd@mail1.ru", FirstName = "Leon", LastName = "Budkouski", Password = "Asd123",Login = "Hienadz", Address = "Мінск, Кульман 33", Discount  = 10,Role = adminR};
+            var user = new User { Email = "kross@mail.ru", FirstName = "Dylan", LastName = "Kross", Password = "Asd111", Login = "HienadzA", Address = "Мінск, Багдановіча М 100", Discount = 0, Role = userR};
 
             context.Users.Add(admin);
             context.Users.Add(user);

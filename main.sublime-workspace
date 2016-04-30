@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"col",
+				"color"
+			],
+			[
 				"in",
 				"inherit"
 			],
@@ -510,10 +514,6 @@
 			[
 				"fonts",
 				"font-size"
-			],
-			[
-				"wi",
-				"width"
 			]
 		]
 	},
@@ -531,7 +531,7 @@
 			"file": "InfoVideo/Content/Site.css",
 			"settings":
 			{
-				"buffer_size": 21808,
+				"buffer_size": 22263,
 				"line_ending": "Windows"
 			}
 		},
@@ -555,7 +555,7 @@
 			"file": "InfoVideo/Scripts/main.js",
 			"settings":
 			{
-				"buffer_size": 2550,
+				"buffer_size": 2512,
 				"line_ending": "Windows"
 			}
 		}
@@ -1192,7 +1192,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1294,15 +1294,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 21808,
+						"buffer_size": 22263,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9506,
-								9506
+								9871,
+								9879
 							]
 						],
 						"settings":
@@ -1310,31 +1310,21 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -1345,11 +1335,16 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -1364,7 +1359,12 @@
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content"
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
 							],
 							"bs_sintax": "css3",
 							"buffer_scroll_name": "903ad224",
@@ -1375,10 +1375,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 17231.0,
+						"translation.y": 17723.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1462,6 +1462,7 @@
 							"bs_sintax": "coffeescript (colorcoded)",
 							"buffer_scroll_name": "c22efee5",
 							"colorcode": true,
+							"spell_check": false,
 							"syntax": "Packages/User/CoffeeScript (Colorcoded).sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
@@ -1470,7 +1471,7 @@
 						"translation.y": 2541.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1493,6 +1494,7 @@
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
+							"auto_complete": false,
 							"bh_regions":
 							[
 								"bh_default",
@@ -1554,15 +1556,16 @@
 							"bs_sintax": "javascript",
 							"buffer_scroll_name": "769a199c",
 							"colorcode": true,
+							"spell_check": false,
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3267.0,
+						"translation.y": 2937.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1571,15 +1574,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2550,
+						"buffer_size": 2512,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2550,
-								2550
+								2512,
+								2512
 							]
 						],
 						"settings":

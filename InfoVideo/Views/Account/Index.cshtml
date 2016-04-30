@@ -29,23 +29,23 @@
         <th>
             @Html.DisplayNameFor(model => model.Login)
         </th>
-        <th>
+        <th class="td_min_width">
             @Html.DisplayNameFor(model => model.Role)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.History)
         </th>
-        <th>Дзеянні</th>
+        <th class="td_min_width">Дзеянні</th>
     </tr>
 
 
 
     @foreach (var item in Model) {
     <tr>
-        <td class="test" id="@(item.Id)">@Html.DisplayFor(modelItem => item.Email)</td>
-        <td class="password">
-            @Html.DisplayFor(modelItem => item.Password)
+        <td class="test" id="@(item.Id)">
+            @Html.DisplayFor(modelItem => item.Email)
         </td>
+        <td class="password">@Html.DisplayFor(modelItem => item.Password)</td>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
@@ -64,14 +64,14 @@
            @Html.DisplayFor(t => item.History.Count)
            
         </td>
-        <td>
-            <a href="@Url.Action("Edit", "Account", new {id = item.Id})" title="Змяніць">
+        <td class="no_text_decor_a">
+            <a href="@Url.Action("Edit", "Account", new {id = item.Id})" title="Змяніць" class="const_color_a">
                 <i class="zmdi zmdi-edit zmdi-hc-fw"></i>
             </a>
-            <a href="@Url.Action("Details", "Account", new {id = item.Id})" title="Падрабязнасці">
+            <a href="@Url.Action("Details", "Account", new {id = item.Id})" title="Падрабязнасці" class="const_color_a">
                 <i class="zmdi zmdi-eye zmdi-hc-fw"></i>
             </a>
-            <a href="@Url.Action("Delete","Account", new { id = item.Id })" title="Выдаліць">
+            <a href="@Url.Action("Delete","Account", new { id = item.Id })" title="Выдаліць" class="const_color_a">
                 <i class="zmdi zmdi-delete zmdi-hc-fw"></i>
             </a>
         </td>

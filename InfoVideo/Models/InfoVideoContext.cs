@@ -43,10 +43,7 @@ namespace InfoVideo.Models
                .HasForeignKey(e => e.IdRole)
                .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<User>()
-                .Property(e => e.Password)
-                .IsFixedLength();
-
+    
             modelBuilder.Entity<User>()
                 .HasMany(e => e.History)
                 .WithRequired(e => e.User)
