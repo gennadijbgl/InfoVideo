@@ -49,7 +49,7 @@ namespace InfoVideo.Controllers
         {
             if (!ModelState.IsValid) return Json(false, JsonRequestBehavior.AllowGet);
 
-            User user  = await _db.Users.FirstAsync(u => u.Login == model.Login && u.Login == model.Login);
+            User user  = await _db.Users.FirstAsync(u => u.Login == model.Login);
 
 
             if (user == null) return Json(false, JsonRequestBehavior.AllowGet);
@@ -64,6 +64,8 @@ namespace InfoVideo.Controllers
         {
             return View();
         }
+
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -132,7 +134,47 @@ namespace InfoVideo.Controllers
         }
 
 
- 
+
+        public async Task<ActionResult> Buy(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Register", "Account");
+            }
+            Edition model = await _db.Edition.FindAsync(id);
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+   
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Buy(int Id)
+        {
+
+            if (ModelState.IsValid)
+            {
+                User user = await _db.Users.FirstAsync(t => t.Login == User.Identity.Name);
+
+                Edition edition = await _db.Edition.FindAsync(Id);
+
+                user.History.Add(new History {Date = DateTime.Now,User = user, Edition = edition});
+
+                _db.Entry(user).State = EntityState.Modified;
+
+
+                await _db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
 
         public async Task<ActionResult> Edit(int? id)
         {

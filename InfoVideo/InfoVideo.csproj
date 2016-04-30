@@ -290,6 +290,7 @@
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Shared\Video.cshtml" />
     <Content Include="Views\Editions\Model.cshtml" />
+    <None Include="Views\Account\Buy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
