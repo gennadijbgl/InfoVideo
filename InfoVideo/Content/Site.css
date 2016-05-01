@@ -428,29 +428,58 @@ body {
 }
 
 
-.card a{
+.card a.main{
     display:block;
     border-top:solid 1px #EEEEEE;
       text-transform: uppercase;
       text-decoration:none;
       padding:10px;
+      text-align:center;
 }
 
 .card {
+    position:relative;
   background: #fff;
   border-radius: 2px;
   display: block;
 
+text-align:left;
+  margin: 10px 10px 30px 10px;
 
-  margin: 10px;
 
+}
 
+.card .menu-switch{
+    position:absolute;
+    right:30px;
+    top:95px;
+    cursor:pointer;
+}
+.card .menu-list{
+   padding-bottom:0!important;
+}
+.card ul{
+   margin: 10px 0!important;
+}
+
+.card ul a{
+    display:block;
+ padding-bottom:12px !important;
 }
 .card div{
-    padding:5px;
+    padding:12px 5px 12px 30px;
+}
+.card div:first-of-type{
+    padding-top: 20px;
+}
+
+.card  div:last-of-type {
+    padding-bottom: 20px;
 }
 .card h2 {
+    display:block;
     padding: 20px;
+    margin-bottom:20px;
     color: white;
     background: #3E4FB2;
     font-weight: 300;

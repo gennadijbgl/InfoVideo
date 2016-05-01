@@ -1,34 +1,52 @@
 ﻿@model InfoVideo.Models.Edition
 
-<div class="card">
+<div class="card" id="@Model.Id">
     <h2>@Model.Box</h2>
 
-    <div>
+    <div class="from-form">
         <i class="fa fa-language" aria-hidden="true"></i>
         @Html.DisplayFor(model => model.Format.Languages)
     </div>
-
-    <div>
+    <i class="zmdi zmdi-menu menu-switch" ></i>
+    <div class="from-form">
         <i class="zmdi zmdi-file"></i>
         @Html.DisplayFor(model => model.Format.Container)
     </div>
 
 
-    <div>
+    <div class="from-form">
         <i class="zmdi zmdi-3d-rotation"></i>
         @Html.DisplayNameFor(model => model.Format.Support3D)
         @Html.DisplayFor(model => model.Format.Support3D)
     </div>
- 
 
 
-    <div>
+
+    <div class="from-form">
         <i class="fa fa-money" aria-hidden="true"></i>
         @Html.DisplayFor(model => model.Price)
     </div>
 
-    <a href="@Url.Action("Buy", "Account", new {id = Model.Id})" title="Набыць">
-        Набыць
+    <div class="menu-list" id="card-menu" style="display:none">
+        <ul>
+            <a href="@Url.Action("Details","Videos", new { id = Model.Id })">
+                <i class="zmdi zmdi-view-list-alt zmdi-hc-fw"></i>Падрабязнасці
+            </a>
+            <a href="@Url.Action("Edit", "Videos", new {id = Model.Id})">
+                <i class="zmdi zmdi-edit zmdi-hc-fw"></i>Змяніць
+            </a>
+            <a href="@Url.Action("Delete", "Videos", new {id = Model.Id})">
+                <i class="zmdi zmdi-delete zmdi-hc-fw"></i>Выдаліць
+            </a>
+        </ul>
+
+    </div>
+
+    <a href="@Url.Action("Buy", "Account", new {id = Model.Id})" class="main" title="Набыць">
+
+        <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i>Набыць
+
+
     </a>
 
 

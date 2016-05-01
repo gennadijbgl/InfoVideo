@@ -7,9 +7,12 @@
 
 <h2>Buy</h2>
 
-@using (Html.BeginForm())
+
+
+@using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "result" }))
 {
     @Html.AntiForgeryToken()
+
 
     {
         Html.RenderPartial("~/Views/Editions/Model.cshtml", Model);
@@ -17,8 +20,13 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+            <input type="submit" value="Buy" class="btn btn-default" />
         </div>
     </div>
+    <i style="display: none" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw margin-bottom" id="anim"></i>
+
+
 
 }
+
+<div id="result"></div>

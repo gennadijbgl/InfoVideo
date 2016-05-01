@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Security.Claims;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -14,6 +15,7 @@ using Newtonsoft.Json;
 
 namespace InfoVideo.Controllers
 {
+
     public class AccountController : Controller
     {
         private readonly InfoVideoContext _db = new InfoVideoContext();
@@ -154,8 +156,11 @@ namespace InfoVideo.Controllers
             return View(model);
         }
 
+  
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public async Task<ActionResult> Buy(int Id)
         {
 
@@ -171,6 +176,14 @@ namespace InfoVideo.Controllers
 
 
                 await _db.SaveChangesAsync();
+
+                if (Request.IsAjaxRequest())
+                {
+                    Thread.Sleep(2000);
+                    return Json(new { success = true, responseText = "Your message successfuly sent!" }, JsonRequestBehavior.AllowGet);
+
+                }
+
                 return RedirectToAction("Index");
             }
             return View();

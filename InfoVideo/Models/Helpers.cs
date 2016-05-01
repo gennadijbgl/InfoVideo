@@ -21,7 +21,10 @@ namespace InfoVideo.Models
         [Required]
         [DataType(DataType.Password)]
         [StringLength(20)]
+
         [DisplayName("Пароль")]
+
+
         public string Password { get; set; }
     }
 
@@ -94,9 +97,11 @@ namespace InfoVideo.Models
 
             Edition e = new Edition {Box = "Діск BluRay", Format = f, Price = 130000, Video = v};
             Edition e1 = new Edition { Box = "Діск DVD", Format = f1, Price = 30000, Video = v1 };
+            Edition e2 = new Edition { Box = "Діск BluRay", Format = f1, Price = 30000, Video = v };
 
             context.Edition.Add(e);
             context.Edition.Add(e1);
+            context.Edition.Add(e2);
 
             History h = new History {Date = DateTime.Now, Edition = e,User = admin};
             History h1 = new History { Date = DateTime.Today, Edition = e1, User = user };

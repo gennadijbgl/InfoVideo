@@ -25,8 +25,10 @@ var OnSuccess = function (data) {
     }
 }
 
+
+
 $(document).ready(function () {
-  
+
 
     $('.test')
          .hover(
@@ -41,6 +43,15 @@ $(document).ready(function () {
              function (e) {
 
              });
+    $('.menu-switch').click(function () {
+
+        $(this).toggleClass("zmdi-menu");
+        $(this).toggleClass("zmdi-close");
+
+        $(this.parentElement).find(".from-form").slideToggle(400);
+        $("#card-menu").slideToggle(400);
+      
+    });
 
     $('#btn-reg-ajax').click(
           function () {
@@ -61,6 +72,36 @@ $(document).ready(function () {
 
                   });
           });
+
+
+  
+
+    $(function () {
+        $('form').submit(function () {
+        
+
+             {
+                $("#anim").show();
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: $(this).serialize(),
+                    success: function(result) {
+                        if (result.success) {
+                            $('#result').append(result.responseText);
+                            $("form").hide();
+                            $("#anim").hide();
+                        }
+                       
+                    }
+                
+                });
+            }
+            return false;
+        });
+    });
+
+ 
 });
 
 
