@@ -428,7 +428,10 @@ body {
 }
 
 
+
+
 .card a.main{
+    cursor:pointer;
     display:block;
     border-top:solid 1px #EEEEEE;
       text-transform: uppercase;
@@ -473,10 +476,19 @@ text-align:left;
     padding-top: 20px;
 }
 
+.card .anim{
+    position: absolute;
+    left: 37%;
+    top: 45%;
+}
 .card  div:last-of-type {
     padding-bottom: 20px;
 }
 .card h2 {
+    -webkit-transition:background .7s;
+-moz-transition:background .7s;
+-o-transition:background .7s;
+transition:background .7s;
     display:block;
     padding: 20px;
     margin-bottom:20px;
@@ -1078,7 +1090,7 @@ header {
 .blue:active,
 .blue:hover { background: #3f4d85; }
 
-.red { background: #ed3b3b; }
+.red { background: #ed3b3b!important; }
 .red:active,
 .red:hover { background: #d33939; }
 
@@ -1091,7 +1103,7 @@ header {
 .gray:active,
 .gray:hover { background: #6a6969; }
 
-.green { background:#43A047; }
+.green { background:#43A047!important; }
 
 .green:active,
 .green:hover { background: #388E3C; }

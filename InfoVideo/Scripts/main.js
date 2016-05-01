@@ -49,7 +49,7 @@ $(document).ready(function () {
         $(this).toggleClass("zmdi-close");
 
         $(this.parentElement).find(".from-form").slideToggle(400);
-        $("#card-menu").slideToggle(400);
+        $(this.parentElement).find(".card-menu").slideToggle(400);
       
     });
 
@@ -78,25 +78,42 @@ $(document).ready(function () {
 
     $(function () {
         $('form').submit(function () {
-        
 
-             {
-                $("#anim").show();
+        var b = $(this).find(".anim").show();
+        var c =$(this).find(".from-form").add($(this).find(".main")).add($(this).find(".card-menu")).css("opacity", "0.5");
+        var d = $(this).find("h2");
+
                 $.ajax({
                     url: this.action,
                     type: this.method,
                     data: $(this).serialize(),
                     success: function(result) {
-                        if (result.success) {
-                            $('#result').append(result.responseText);
-                            $("form").hide();
-                            $("#anim").hide();
+                         {
+                          if(result.success){
+
+                             d.toggleClass('green').delay(700).queue(function (next) { 
+                                 d.toggleClass('green');
+                                  next(); 
+                                }).delay(700);
+                             c.css("opacity", "1");
+                             b.hide();
+                          }
+                          else{
+                           d.toggleClass('red').delay(700).queue(function (next) { 
+                                 d.toggleClass('red');
+                                  next(); 
+                                }).delay(700);
+                             c.css("opacity", "1");
+                             b.hide(); 
                         }
-                       
+                          }
+                    },
+                    error: function(err){
+                      alert(err.responseText);
                     }
                 
                 });
-            }
+            
             return false;
         });
     });
