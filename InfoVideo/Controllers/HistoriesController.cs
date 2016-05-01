@@ -18,8 +18,16 @@ namespace InfoVideo.Controllers
         // GET: Histories
         public async Task<ActionResult> Index()
         {
-            var history = _db.History.Include(h => h.Edition).Include(h => h.User);
-            return View(await history.ToListAsync());
+            if (User.IsInRole("Administrator"))
+            {
+                var history = _db.History.Include(h => h.Edition).Include(h => h.User);
+                return View(await history.ToListAsync());
+            }
+            else
+            {
+                var history = _db.History.Where(t=>t.User.Login == User.Identity.Name).Include(h => h.Edition).Include(h => h.User);
+                return View(await history.ToListAsync());
+            }
         }
 
         // GET: Histories/Details/5

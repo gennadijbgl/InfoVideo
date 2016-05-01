@@ -15,6 +15,7 @@ namespace InfoVideo.Models
     {
         [Required]
         [StringLength(20)]
+     
 
         public string Login { get; set; }
 

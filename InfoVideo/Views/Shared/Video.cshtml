@@ -13,18 +13,19 @@
         <div class="item-body">
             @Model.Description
         </div>
-       
+
         <div class="item-footer">
-            <a href="@Url.Action("Details","Videos", new { id = Model.Id })">
-                <i class="zmdi zmdi-view-list-alt zmdi-hc-fw"></i>Падрабязнасці
-            </a>
-            <a href="@Url.Action("Edit", "Videos", new {id = Model.Id})">
-                <i class="zmdi zmdi-edit zmdi-hc-fw"></i>Змяніць
-            </a>
-            <a href="@Url.Action("Delete", "Videos", new {id = Model.Id})">
-                <i class="zmdi zmdi-delete zmdi-hc-fw"></i>Выдаліць
-            </a>
-           
+          
+                <a href="@Url.Action("Details", "Videos", new {id = Model.Id})">
+                    <i class="zmdi zmdi-view-list-alt zmdi-hc-fw"></i>Падрабязнасці
+                </a>
+                <a href="@Url.Action("Edit", "Videos", new {id = Model.Id})">
+                    <i class="zmdi zmdi-edit zmdi-hc-fw"></i>Змяніць
+                </a>
+                <a href="@Url.Action("Delete", "Videos", new {id = Model.Id})">
+                    <i class="zmdi zmdi-delete zmdi-hc-fw"></i>Выдаліць
+                </a>
+            
         </div>
     </div>
 

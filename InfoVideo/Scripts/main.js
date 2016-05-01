@@ -25,7 +25,13 @@ var OnSuccess = function (data) {
     }
 }
 
+var ajaxT = function(data, status, xhr) {
 
+ if(data.success){
+   location.reload();
+ } 
+ 
+}
 
 $(document).ready(function () {
 
@@ -77,7 +83,7 @@ $(document).ready(function () {
   
 
     $(function () {
-        $('form').submit(function () {
+        $('1form').submit(function () {
 
         var b = $(this).find(".anim").show();
         var c =$(this).find(".from-form").add($(this).find(".main")).add($(this).find(".card-menu")).css("opacity", "0.5");

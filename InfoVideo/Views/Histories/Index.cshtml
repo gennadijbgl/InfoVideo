@@ -5,13 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-<p>
-    <a href="@Url.Action("Create", "Histories")" class="btn btn-logo gray" title="Дадаць">
-        <i class="zmdi zmdi-plus-circle zmdi-hc-fw"></i>
-        Дадаць
-    </a>
-</p>
+<h2>Гісторыя</h2>
+
  @{
         Html.RenderPartial("History", Model);
 }

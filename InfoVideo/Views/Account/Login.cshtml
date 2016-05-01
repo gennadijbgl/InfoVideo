@@ -1,18 +1,15 @@
 ﻿@model InfoVideo.Models.LoginModel
 
-@{
-    ViewBag.Title = "Вход в системы";
 
-    if ((Request.Params["ReturnUrl"]) != null)
-    {
-        <h4>У Вас нет доступа к данному ресурсу </h4>
-        @(Request.Params["ReturnUrl"])
-    }
-}
-
-@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+@using (Ajax.BeginForm("Login", "Account",
+                                new AjaxOptions
+                                {
+                                    HttpMethod = "POST",
+                                    InsertionMode = InsertionMode.Replace,
+                                    UpdateTargetId = "form0",
+                                    OnSuccess = "ajaxT"
+                                }))
 {
-
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
@@ -27,15 +24,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Password, new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
             <div>
                 @Html.EditorFor(model => model.Password)
                 @Html.ValidationMessageFor(model => model.Password)
             </div>
         </div>
 
+
+
         <button type="submit" id="btn-reg" class="gray btn" value="Reg">
             <i class="btn-logo zmdi zmdi-account-add zmdi-hc-fw"></i>Увайсці
         </button>
+
     </div>
 }

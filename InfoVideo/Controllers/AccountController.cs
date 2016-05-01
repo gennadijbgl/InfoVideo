@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Security;
 using InfoVideo.Models;
@@ -28,38 +29,36 @@ namespace InfoVideo.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public async Task<ActionResult> Login(LoginModel model)
         {
-            if (!ModelState.IsValid) return PartialView(model);
+           
+            if (!ModelState.IsValid)
+                return PartialView(model);
+              
 
-            User user  = await _db.Users.FirstAsync(u => u.Login == model.Login && u.Login == model.Login);
+            User user  =  await _db.Users.FirstOrDefaultAsync(u => u.Login == model.Login && u.Password == model.Password);
 
 
             if (user != null)
             {
 
-                FormsAuthentication.SetAuthCookie(model.Login, true);    
-                return RedirectToAction("Index", "Home");
+                FormsAuthentication.SetAuthCookie(model.Login, true);
+                if (Request.IsAjaxRequest())
+                {
+                    return Json(new { success = true });
+                }
+                return RedirectToAction("Index","Home");
             }
 
-            ModelState.AddModelError("", "Пользователя с таким логином и паролем нет");
+           
+            ModelState.AddModelError("", "Карыстач ня знойдзены");
 
             return PartialView(model);
         }
+
+  
      
-        public async Task<JsonResult> LoginAjax(LoginModel model)
-        {
-            if (!ModelState.IsValid) return Json(false, JsonRequestBehavior.AllowGet);
-
-            User user  = await _db.Users.FirstAsync(u => u.Login == model.Login);
-
-
-            if (user == null) return Json(false, JsonRequestBehavior.AllowGet);
-
-            FormsAuthentication.SetAuthCookie(model.Login, true);
-
-            return Json(true, JsonRequestBehavior.AllowGet);
-        }
 
 
         public ActionResult Register()
