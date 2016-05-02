@@ -177,10 +177,10 @@
       <DependentUpon>InfoVideo.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\InfoVideoContext.cs" />
-    <Compile Include="Models\Role.cs">
+    <Compile Include="Models\Roles.cs">
       <DependentUpon>InfoVideo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\User.cs">
+    <Compile Include="Models\Users.cs">
       <DependentUpon>InfoVideo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Video.cs">
@@ -342,6 +342,8 @@
     <Content Include="Views\Shared\Video.cshtml" />
     <Content Include="Views\Editions\Model.cshtml" />
     <None Include="Views\Account\Buy.cshtml" />
+    <Content Include="Views\Home\Proc.cshtml" />
+    <None Include="Views\Home\ProcType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

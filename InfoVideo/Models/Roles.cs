@@ -12,18 +12,18 @@ namespace InfoVideo.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Roles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
+        public Roles()
         {
-            this.User = new HashSet<User>();
+            this.Users = new HashSet<Users>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
+        public virtual ICollection<Users> Users { get; set; }
     }
 }

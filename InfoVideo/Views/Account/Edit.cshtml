@@ -1,6 +1,6 @@
 ﻿@using System.Web.Mvc.Html
-@using InfoVideo.Models
-@model InfoVideo.Models.User
+
+@model InfoVideo.Models.Users
 
 @{
     ViewBag.Title = "Edit";
@@ -81,7 +81,7 @@
            @Html.DropDownListFor(m => m.IdRole,
                 new SelectList(ViewBag.Roles,
                                "Id", "Name",
-                               Model.Role),"Абярыце")
+                               Model.Roles),"Абярыце")
        
         </div>
 

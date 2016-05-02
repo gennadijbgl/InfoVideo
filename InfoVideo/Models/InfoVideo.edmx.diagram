@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="da5370c8ff664850808a37f3e3cf6948" Name="Diagram1" ZoomLevel="94">
+      <Diagram DiagramId="36aed0133bb345159e3c9f2b8792ca22" Name="Diagram1" ZoomLevel="55">
         <EntityTypeShape EntityType="InfoVideoModel.Edition" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="InfoVideoModel.Format" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="InfoVideoModel.History" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="InfoVideoModel.Role" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="InfoVideoModel.User" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfoVideoModel.Roles" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfoVideoModel.Users" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="InfoVideoModel.Video" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="InfoVideoModel.FK_Edition_Format" ManuallyRouted="false" />
         <AssociationConnector Association="InfoVideoModel.FK_Edition_Video" ManuallyRouted="false" />

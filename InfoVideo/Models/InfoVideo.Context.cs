@@ -15,10 +15,10 @@ namespace InfoVideo.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class InfoVideoEntities : DbContext
+    public partial class InfoVideoContext : DbContext
     {
-        public InfoVideoEntities()
-            : base("name=InfoVideoEntities")
+        public InfoVideoContext()
+            : base("name=InfoVideoContext")
         {
         }
     
@@ -30,33 +30,28 @@ namespace InfoVideo.Models
         public virtual DbSet<Edition> Edition { get; set; }
         public virtual DbSet<Format> Format { get; set; }
         public virtual DbSet<History> History { get; set; }
-        public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Video> Video { get; set; }
     
-        [DbFunction("InfoVideoEntities", "GetUsersByDiscount")]
+        [DbFunction("InfoVideoContext", "GetUsersByDiscount")]
         public virtual IQueryable<GetUsersByDiscount_Result> GetUsersByDiscount(Nullable<short> discount)
         {
             var discountParameter = discount.HasValue ?
                 new ObjectParameter("Discount", discount) :
                 new ObjectParameter("Discount", typeof(short));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUsersByDiscount_Result>("[InfoVideoEntities].[GetUsersByDiscount](@Discount)", discountParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUsersByDiscount_Result>("[InfoVideoContext].[GetUsersByDiscount](@Discount)", discountParameter);
         }
     
-        [DbFunction("InfoVideoEntities", "GetVideoByType")]
+        [DbFunction("InfoVideoContext", "GetVideoByType")]
         public virtual IQueryable<GetVideoByType_Result> GetVideoByType(string type)
         {
             var typeParameter = type != null ?
                 new ObjectParameter("Type", type) :
                 new ObjectParameter("Type", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetVideoByType_Result>("[InfoVideoEntities].[GetVideoByType](@Type)", typeParameter);
-        }
-    
-        public virtual int GetStudentsSuccssByGroupId()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetStudentsSuccssByGroupId");
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetVideoByType_Result>("[InfoVideoContext].[GetVideoByType](@Type)", typeParameter);
         }
     
         public virtual int GiveUserDiscount(Nullable<int> buysCount, Nullable<int> sizeDiskount)

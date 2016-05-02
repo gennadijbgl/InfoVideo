@@ -22,7 +22,7 @@
         </th>
         <th>
             <a href="@Url.Action("Index", "Account")" title="Змяніць">
-                @Html.DisplayNameFor(model => model.User.Login)
+                @Html.DisplayNameFor(model => model.Users.Login)
             </a>
         </th>
         <th>
@@ -53,8 +53,8 @@
             @Html.DisplayFor(modelItem => item.Edition.Box)
         </td>
         <td>
-            <a href="@Url.Action("Details", "Account", new {id = item.User.Id})" title="Змяніць">
-                @Html.DisplayFor(modelItem => item.User.Login)
+            <a href="@Url.Action("Details", "Account", new {id = item.Users.Id})" title="Змяніць">
+                @Html.DisplayFor(modelItem => item.Users.Login)
             </a>
             
         </td>

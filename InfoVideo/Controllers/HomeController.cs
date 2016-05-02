@@ -16,10 +16,19 @@ namespace InfoVideo.Controllers
         {
             ViewData["Latest"] = await _db.Edition.ToListAsync();
 
-            InfoVideoEntities t = new InfoVideoEntities();
-            var c = t.GetVideoByType("mp4");
-
             return View(await _db.Video.ToListAsync());
+        }
+
+        public ActionResult Proc()
+        {
+         
+            return View();
+        }
+        public  ActionResult ProcType(string type = "mp4")
+        {
+            var c = _db.GetVideoByType(type);
+
+            return PartialView(c);
         }
 
     }

@@ -1,5 +1,6 @@
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
+using InfoVideo.Controllers;
 
 namespace InfoVideo.Models
 {
@@ -9,9 +10,9 @@ namespace InfoVideo.Models
     using System.Linq;
 
   
-    public partial class InfoVideoContext : DbContext
+    public partial class InfoVideoContextr : DbContext
     {
-        public InfoVideoContext()
+        public InfoVideoContextr()
             : base("name=InfoVideoContext")
         {
             Database.SetInitializer(new MyDbUserInitializer());
@@ -20,8 +21,8 @@ namespace InfoVideo.Models
         public virtual DbSet<Edition> Edition { get; set; }
         public virtual DbSet<Format> Format { get; set; }
         public virtual DbSet<History> History { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Video> Video { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -41,16 +42,16 @@ namespace InfoVideo.Models
                 .WithOptional(e => e.Format)
                 .HasForeignKey(e => e.IdFormat);
 
-            modelBuilder.Entity<Role>()
-               .HasMany(e => e.User)
-               .WithRequired(e => e.Role)
+            modelBuilder.Entity<Roles>()
+               .HasMany(e => e.Users)
+               .WithRequired(e => e.Roles)
                .HasForeignKey(e => e.IdRole)
                .WillCascadeOnDelete(false);
 
     
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<Users>()
                 .HasMany(e => e.History)
-                .WithRequired(e => e.User)
+                .WithRequired(e => e.Users)
                 .HasForeignKey(e => e.IdUser)
                 .WillCascadeOnDelete(false);
 

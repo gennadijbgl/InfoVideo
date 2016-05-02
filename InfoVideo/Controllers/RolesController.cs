@@ -28,12 +28,12 @@ namespace InfoVideo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = await _db.Roles.FindAsync(id);
-            if (role == null)
+            Roles Roles = await _db.Roles.FindAsync(id);
+            if (Roles == null)
             {
                 return HttpNotFound();
             }
-            return View(role);
+            return View(Roles);
         }
 
 
@@ -42,23 +42,23 @@ namespace InfoVideo.Controllers
             return View();
         }
 
-        public ActionResult AddUserRole()
+        public ActionResult AddUserRoles()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name")] Role role)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name")] Roles Roles)
         {
             if (ModelState.IsValid)
             {
-                _db.Roles.Add(role);
+                _db.Roles.Add(Roles);
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(role);
+            return View(Roles);
         }
 
 
@@ -68,26 +68,26 @@ namespace InfoVideo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = await _db.Roles.FindAsync(id);
-            if (role == null)
+            Roles Roles = await _db.Roles.FindAsync(id);
+            if (Roles == null)
             {
                 return HttpNotFound();
             }
-            return View(role);
+            return View(Roles);
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name")] Role role)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name")] Roles Roles)
         {
             if (ModelState.IsValid)
             {
-                _db.Entry(role).State = System.Data.Entity.EntityState.Modified;
+                _db.Entry(Roles).State = System.Data.Entity.EntityState.Modified;
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(role);
+            return View(Roles);
         }
 
 
@@ -97,12 +97,12 @@ namespace InfoVideo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = await _db.Roles.FindAsync(id);
-            if (role == null)
+            Roles Roles = await _db.Roles.FindAsync(id);
+            if (Roles == null)
             {
                 return HttpNotFound();
             }
-            return View(role);
+            return View(Roles);
         }
 
 
@@ -110,8 +110,8 @@ namespace InfoVideo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Role role = await _db.Roles.FindAsync(id);
-            _db.Roles.Remove(role);
+            Roles Roles = await _db.Roles.FindAsync(id);
+            _db.Roles.Remove(Roles);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
