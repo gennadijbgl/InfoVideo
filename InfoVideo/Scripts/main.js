@@ -33,100 +33,107 @@ var ajaxT = function(data, status, xhr) {
  
 }
 
-$(document).ready(function () {
+$(document)
+    .ready(function() {
 
 
-    $('.test')
-         .hover(
-             function (e) {
-                 id = e.toElement.id;
-                 $.ajax({
-                     url: "/Account/JsonSearch",
-                     data: { email: $(this).html() }
-                 })
-                     .done(OnSuccess);
-             },
-             function (e) {
+        $('.test')
+            .hover(
+                function(e) {
+                    id = e.toElement.id;
+                    $.ajax({
+                            url: "/Account/JsonSearch",
+                            data: { email: $(this).html() }
+                        })
+                        .done(OnSuccess);
+                },
+                function(e) {
 
-             });
-    $('.menu-switch').click(function () {
-
-        $(this).toggleClass("zmdi-menu");
-        $(this).toggleClass("zmdi-close");
-
-        $(this.parentElement).find(".from-form").slideToggle(400);
-        $(this.parentElement).find(".card-menu").slideToggle(400);
-      
-    });
-
-    $('#btn-reg-ajax').click(
-          function () {
-              var dataArray = $.makeArray($(".head-user-content input").filter(':visible').serializeArray());
-              $.ajax({
-                  url: "/Account/LoginAjax",
-                  data:  JSON.stringify(dataArray),
-                  type: 'GET',
-                  contentType: "application/json; charset=utf-8",
-                  dataType: "json"
-              })
-                  .done(function(data){
-                    if(data)  location.reload();
-                    else {
-                      $($($(".head-user-content").find("span"))[0]).empty();
-                      $($($(".head-user-content").find("span"))[0]).append("Логіна не існуе");
-                    }
-
-                  });
-          });
-
-
-  
-
-    $(function () {
-        $('1form').submit(function () {
-
-        var b = $(this).find(".anim").show();
-        var c =$(this).find(".from-form").add($(this).find(".main")).add($(this).find(".card-menu")).css("opacity", "0.5");
-        var d = $(this).find("h2");
-
-                $.ajax({
-                    url: this.action,
-                    type: this.method,
-                    data: $(this).serialize(),
-                    success: function(result) {
-                         {
-                          if(result.success){
-
-                             d.toggleClass('green').delay(700).queue(function (next) { 
-                                 d.toggleClass('green');
-                                  next(); 
-                                }).delay(700);
-                             c.css("opacity", "1");
-                             b.hide();
-                          }
-                          else{
-                           d.toggleClass('red').delay(700).queue(function (next) { 
-                                 d.toggleClass('red');
-                                  next(); 
-                                }).delay(700);
-                             c.css("opacity", "1");
-                             b.hide(); 
-                        }
-                          }
-                    },
-                    error: function(err){
-                      alert(err.responseText);
-                    }
-                
                 });
-            
-            return false;
-        });
-    });
+        $('.menu-switch')
+            .click(function() {
+
+
+                $(this).toggleClass("zmdi-menu");
+                $(this).toggleClass("zmdi-close");
+
+                $(this.parentElement).find(".from-form").slideToggle(400);
+                $(this.parentElement).find(".card-menu").slideToggle(400);
+
+            });
+
+        $('#btn-reg-ajax')
+            .click(
+                function() {
+                    var dataArray = $.makeArray($(".head-user-content input").filter(':visible').serializeArray());
+                    $.ajax({
+                            url: "/Account/LoginAjax",
+                            data: JSON.stringify(dataArray),
+                            type: 'GET',
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json"
+                        })
+                        .done(function(data) {
+                            if (data) location.reload();
+                            else {
+                                $($($(".head-user-content").find("span"))[0]).empty();
+                                $($($(".head-user-content").find("span"))[0]).append("Логіна не існуе");
+                            }
+
+                        });
+                });
+
+
+        
+
 
  
-});
+    });
 
+
+var buy = function(e) {
+
+    var b = $(e.closest("form")).find(".anim").show();
+    var c = $(e.closest("form")).find(".from-form").add($(e.closest("form")).find(".main")).add($(e).find(".card-menu")).css("opacity", "0.5");
+    var d = $(e.closest("form")).find("h2");
+
+    $.ajax({
+        url: (e.closest("form")).action,
+        type: (e.closest("form")).method,
+        data: $(e.closest("form")).serialize(),
+        success: function(result) {
+            {
+                if (result.success) {
+
+                    d.toggleClass('greenI')
+                        .delay(700)
+                        .queue(function(next) {
+                            d.toggleClass('greenI');
+                            next();
+                        })
+                        .delay(700);
+                    c.css("opacity", "1");
+                    b.hide();
+                } else {
+                    d.toggleClass('redI')
+                        .delay(700)
+                        .queue(function(next) {
+                            d.toggleClass('redI');
+                            next();
+                        })
+                        .delay(700);
+                    c.css("opacity", "1");
+                    b.hide();
+                }
+
+            }
+        },
+        error: function(err) {
+            alert(err.responseText);
+        }
+
+    });
+};
 
 var validate = function () {
 

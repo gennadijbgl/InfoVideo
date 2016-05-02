@@ -301,7 +301,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\Header.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\SidebarLeft.cshtml" />
     <Content Include="Views\Shared\SidebarRight.cshtml" />
     <Content Include="Views\Shared\Slider.cshtml" />

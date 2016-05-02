@@ -8,16 +8,28 @@
 
 
 @using (Ajax.BeginForm("ProcType", "Home",
-                                                        new AjaxOptions
-                                                        {
-                                                            HttpMethod = "POST",
-                                                            InsertionMode = InsertionMode.Replace,
-                                                            UpdateTargetId = "test"
-                                                        }))
+                                                                    new AjaxOptions
+                                                                    {
+                                                                        HttpMethod = "POST",
+                                                                        InsertionMode = InsertionMode.Replace,
+                                                                        UpdateTargetId = "test"
+                                                                    }))
 {
 
-    <input type="text" name="type"/>
-    <input type="submit" name="button" value="OK"/>
+    <div class="form-group">
+  
+ 
+            <input type="text" name="type" />
+   
+    </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Апрацаваць" class="btn btn-default green" />
+            </div>
+        </div>
+   
+
 
     <div id="test">
        

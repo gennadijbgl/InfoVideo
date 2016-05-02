@@ -1,9 +1,9 @@
 ﻿
     <div id='cssmenu'>
         <ul>
-            <li><a href='#'>На галоўную</a></li>
+            <li><a href='@Url.Action("Index", "Home")'>На галоўную</a></li>
             <li class='active has-sub'>
-                <a href='#'>Серыялы</a>
+                <a href='@Url.Action("Index", "Editions")'>Выданні</a>
                 <ul>
                     <li class='has-sub'>
                         <a href='#'>Фэнтэзі</a>
@@ -27,6 +27,9 @@
                     </li>
                 </ul>
             </li>
-            <li><a href='#'>Кантакты</a></li>
+            <li><a href='@Url.Action("Index", "Account")'>Карыстачы</a></li>
+            <li><a href='@Url.Action("Index", "Videos")'>Відыё</a></li>
+            <li><a href='@Url.Action("Index", "Formats")'>Фарматы</a></li>
+            <li><a href='@Url.Action("Index", "Histories")'>Гісторыя</a></li>
         </ul>
     </div>
