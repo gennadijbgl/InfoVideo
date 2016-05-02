@@ -45,13 +45,13 @@
             @Html.DisplayFor(modelItem => item.Box)
         </td>
         <td>
-            <a href="@Url.Action("Edit", "Formats", new {id = item.Id})" title="Змяніць">
+            <a href="@Url.Action("Edit", "Editions", new {id = item.Id})" title="Змяніць">
                 <i class="zmdi zmdi-edit zmdi-hc-fw"></i>
             </a>
-            <a href="@Url.Action("Details", "Formats", new {id = item.Id})" title="Падрабязнасці">
+            <a href="@Url.Action("Details", "Editions", new {id = item.Id})" title="Падрабязнасці">
                 <i class="zmdi zmdi-eye zmdi-hc-fw"></i>
             </a>
-            <a href="@Url.Action("Delete","Formats", new { id = item.Id })" title="Выдаліць">
+            <a href="@Url.Action("Delete","Editions", new { id = item.Id })" title="Выдаліць">
                 <i class="zmdi zmdi-delete zmdi-hc-fw"></i>
             </a>
         </td>

@@ -5,17 +5,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h3>Стварэнне</h3>
 
 @using (Html.BeginForm("Create", "Videos", null, FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
                 @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
-        <h4>Video</h4>
-        <hr />
+                    <h4>Новае відыё</h4>
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+
+                    <div class="form-group">
+                        <img src="" id="logo-prew" class="item-header-img item-header-img-create" alt="">
+                        <div class="col-md-10">
+                            @Html.LabelFor(model => model.Logo, "Абярыце выяву", htmlAttributes: new { @class = "btn gray no-float" })
+                            <input type="file" id="Logo" name="Logo" class="btn gray" title=" выяву" />
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
@@ -49,17 +59,11 @@
 
 
 
-                    <div class="form-group">
-                        <img src="" id="logo-prew" class="item-header-img" alt="">
-                        <div class="col-md-10">
-                            @Html.LabelFor(model => model.Logo, "Змяніць выяву", htmlAttributes: new { @class = "btn gray" })
-                            <input type="file" id="Logo" name="Logo" class="btn gray" title="Абярыце выяву" />
-                        </div>
-                    </div>
+               
 
                     <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default"/>
+                <input type="submit" value="Стварыць" class="btn btn-default green"/>
             </div>
         </div>
        
@@ -69,6 +73,3 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

@@ -154,7 +154,8 @@
 .input-txt { padding-bottom: 10px; }
 
 .form-group{
-    margin:5px 0;
+        width: 30%;
+    margin: 5px auto;
 }
 td a{
     text-decoration:none;
@@ -164,7 +165,7 @@ td a{
 }
 
 .form-group:last-child{
-    margin:40px 0 20px 0;
+    margin: 20px auto;
 }
 
 .form-group label{
@@ -177,7 +178,9 @@ font-size:16px;
 .registration .form-group label{
 color:black;
 }
-
+.no-float{
+    float:none!important;
+}
 .head-user-panel .form-group label{
 
 margin: 10px 0;
@@ -441,22 +444,25 @@ body {
 }
 
 .card {
-    position:relative;
+max-width:500px;
+  position:relative;
   background: #fff;
   border-radius: 2px;
-  display: block;
+  display: inline-block;
 
 text-align:left;
-  margin: 10px 10px 30px 10px;
+  margin: 10px auto 30px auto;
+  /* margin:0 auto; */
 
 
 }
 
 .card .menu-switch{
-    position:absolute;
-    right:30px;
-    top:95px;
-    cursor:pointer;
+  position: absolute;
+    right: 25px;
+    top: 25px;
+    cursor: pointer;
+    color: white;
 }
 .card .menu-list{
    padding-bottom:0!important;
@@ -470,20 +476,32 @@ text-align:left;
  padding-bottom:12px !important;
 }
 .card div{
-    padding:12px 5px 12px 30px;
+    text-align:left;
+    padding:5px 40px;
 }
+.card div i{
+    padding-top:10px ;
+      padding-bottom: 10px ;
+}
+
 .card div:first-of-type{
     padding-top: 20px;
 }
-
+.card  div:last-of-type {
+    padding-bottom: 20px;
+}
 .card .anim{
     position: absolute;
     left: 37%;
     top: 45%;
 }
-.card  div:last-of-type {
-    padding-bottom: 20px;
+.card label{
+    font-weight:700;
 }
+.padding-last{
+    padding-bottom:20px!important;
+}
+
 .card h2 {
     -webkit-transition:background .7s;
 -moz-transition:background .7s;
@@ -502,6 +520,7 @@ transition:background .7s;
 }
 
 .card {
+    font-size:17px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.2s ease-in-out;
 }
@@ -684,7 +703,7 @@ box-shadow:0 3px 17px rgba(137, 137, 137, .5);
     width: 120px;
     border-radius: 3px;
     overflow: hidden;
-
+margin:0 auto;
     background: #fafafa ;
 }
 
@@ -1036,15 +1055,22 @@ header {
     background-color: #fff;
     margin-right: 10px;
     min-width: 128px;
-    padding-left: 10px;
 
-    padding-right: 10px;
+
+
 }
 
 .display-block { display: block; }
+.news-item{
+    margin-bottom:10px;
+        margin-right: 15px;
+}
+.news-footer a { text-decoration: none;   }
+.news-footer{
+      text-align: left;
+    margin-left: 10px;
 
-.news-footer a { text-decoration: none; }
-
+}
 .input-h38 input {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -1111,6 +1137,12 @@ padding: 0 30px 0 50px;
 }
 
 
+div.img-preview{
+    margin: 0 auto;
+    width: 40%;
+   
+}
+
 .width50{
     width:49.5%;
 }
@@ -1131,7 +1163,8 @@ padding: 0 30px 0 50px;
 .blue:active,
 .blue:hover { background: #3f4d85; }
 
-.red { background: #ed3b3b!important; }
+.redI { background: #ed3b3b!important; }
+.red { background: #ed3b3b; }
 .red:active,
 .red:hover { background: #d33939; }
 
@@ -1144,8 +1177,8 @@ padding: 0 30px 0 50px;
 .gray:active,
 .gray:hover { background: #6a6969; }
 
-.green { background:#43A047!important; }
-
+.green { background:#43A047; }
+.greenI { background:#43A047!important; }
 .green:active,
 .green:hover { background: #388E3C; }
 
@@ -1382,7 +1415,7 @@ padding: 0 30px 0 50px;
 }
 
 .top {
-    height: 10%;
+    height: 30px;
 
     top: 0;
 }
@@ -1417,7 +1450,18 @@ padding: 0 30px 0 50px;
     max-height: inherit;
     min-height: inherit;
     width: 100%;
+
+    min-height: 100px;
 }
+
+.item-header-img-create{
+     min-height: 100px;
+    border: solid 1px #ccc;
+    margin:0 auto 20px auto; 
+    border-radius: 4px;
+
+}
+
 
 .item-body-img {
     float: left;

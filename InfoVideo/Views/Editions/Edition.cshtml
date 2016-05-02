@@ -1,0 +1,62 @@
+﻿@using System.Web.Mvc.Ajax
+@model InfoVideo.Models.Edition
+
+<div class="card">
+
+    @Html.HiddenFor(model => model.Id)
+    @Html.AntiForgeryToken()
+
+    <i style="display: none" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw margin-bottom anim"></i>
+
+    <h2>Выданне</h2>
+
+
+    <div class="from-form">
+        <i class="fa fa-cube" aria-hidden="true"></i>
+        @Html.DisplayFor(model => model.Box)
+    </div>
+
+
+
+
+
+    <i class="zmdi zmdi-menu menu-switch"></i>
+    <div class="from-form">
+        <i class="zmdi zmdi-file"></i>
+        @Html.DisplayFor(model => model.Format.Container)
+    </div>
+
+
+    <div class="from-form">
+        <i class="zmdi zmdi-movie-alt"></i>
+        @Html.DisplayFor(model => model.Video.Title)
+    </div>
+
+
+    <div class="from-form">
+        <i class="fa fa-money" aria-hidden="true"></i>
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="menu-list card-menu" style="display: none">
+        <ul>
+            <a href="@Url.Action("Details", "Videos", new {id = Model.Id})">
+                <i class="zmdi zmdi-view-list-alt zmdi-hc-fw"></i>Падрабязнасці
+            </a>
+            <a href="@Url.Action("Edit", "Videos", new {id = Model.Id})">
+                <i class="zmdi zmdi-edit zmdi-hc-fw"></i>Змяніць
+            </a>
+            <a href="@Url.Action("Delete", "Videos", new {id = Model.Id})">
+                <i class="zmdi zmdi-delete zmdi-hc-fw"></i>Выдаліць
+            </a>
+        </ul>
+
+    </div>
+
+
+    <a onclick="$(this).closest('form').submit()" class="main" title="Набыць">
+        <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i>Набыць
+    </a>
+
+
+</div>

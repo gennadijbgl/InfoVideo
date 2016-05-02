@@ -5,27 +5,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h3>Змяненне</h3>
 
 @using (Html.BeginForm("Edit", "Videos",null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-   
-        <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
 
 
-        <div class="form-group">
-            <img src="@Url.Content("~/Media/Images/" + Model.Logo)" id="logo-prew" class="item-header-img" alt="">
-            <div class="col-md-10">
-                @Html.LabelFor(model => model.Logo,"Змяніць выяву",htmlAttributes: new {@class = "btn gray"})
-                <input type="file" id="Logo" name="Logo" class="btn gray" title="Абярыце выяву"/>
-            </div>
+        <div class="form-group img-preview">
+            <img src="@Url.Content("~/Media/Images/" + Model.Logo)" id="logo-prew" class="item-header-img item-header-img-create" alt="">
         </div>
+
+        @Html.LabelFor(model => model.Logo, "Змяніць выяву", htmlAttributes: new { @class = "btn gray" })
+        <input type="file" id="Logo" name="Logo" class="btn gray" title="Абярыце выяву" />
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -44,7 +43,7 @@
             </div>
         </div>
 
-        <div class="form-group display-inline-block width50">
+        <div class="form-group ">
             @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "datepicker" } })
@@ -52,7 +51,7 @@
             </div>
         </div>
 
-        <div class="form-group display-inline-block width50">
+        <div class="form-group ">
             @Html.LabelFor(model => model.Genre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Genre, new { htmlAttributes = new { @class = "form-control" } })
@@ -62,7 +61,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default blue" />
+                <input type="submit" value="Захаваць" class="btn btn-default green" />
             </div>
         </div>
     </div>

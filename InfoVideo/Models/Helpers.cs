@@ -10,7 +10,7 @@ namespace InfoVideo.Models
 
     public partial class InfoVideoContext : DbContext
     {
-        public void InfosVideoConte2xt()
+        public void InfosVideoContext()
             
         {
             Database.SetInitializer(new MyDbUserInitializer());
@@ -117,9 +117,7 @@ namespace InfoVideo.Models
             context.History.Add(h);
             context.History.Add(h1);
 
-            context.Database.ExecuteSqlCommand(
-            "CREATE FUNCTION [dbo].[GetVideoByType]\r\n(\r\n\t\t@Type nvarchar(10) \r\n)\r\nRETURNS @returntable TABLE\r\n(\r\n\tTitle nvarchar(50), Container nvarchar(10)\r\n)\r\nAS\r\nBEGIN\r\n\tINSERT @returntable\r\n\tSELECT v.Title as [Title], f.Container as [Container] from Video v, Format f, Edition e \r\n\t\twhere e.IdVideo = v.Id and  e.IdFormat = f.Id and f.Container = @Type\r\n\r\n\tRETURN\r\nEND\r\n\r\n\r\n\r\n\r\n\r\n\r\n");
-
+        
             context.SaveChanges();
             base.Seed(context);
         }

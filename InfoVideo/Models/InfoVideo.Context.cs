@@ -20,6 +20,7 @@ namespace InfoVideo.Models
         public InfoVideoContext()
             : base("name=InfoVideoContext")
         {
+            
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

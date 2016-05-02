@@ -5,45 +5,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+
+<h4>Вы ўпэўнены, што хочаце выдаліць?</h4>
 <div>
-    <h4>Format</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Container)
-        </dt>
+    @{
+        Html.RenderPartial("Format");
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.Container)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Languages)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Languages)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Support3D)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Support3D)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Выдаліць" class="btn btn-default red" />
         </div>
     }
+
 </div>

@@ -1,104 +1,14 @@
 ﻿@model InfoVideo.Models.Users
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Падрабязнасці";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Падрабязнасці</h2>
+<h3>Падрабязнасці</h3>
 
 
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Login)
-        </th>
-        <th>
-            @Html.DisplayFor(model => model.Login)
-        </th>
-
-    </tr>
-
-
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayFor(model => model.Email)
-        </th>
-
-    </tr>
-
-
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayFor(model => model.Password)
-        </th>
-
-    </tr>
-
-
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayFor(model => model.FirstName)
-        </th>
-
-    </tr>
-
-
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayFor(model => model.LastName)
-        </th>
-
-    </tr>
-
-
-
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayFor(model => model.Address)
-        </th>
-
-    </tr>
-
-
-
-
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Discount)
-        </th>
-        <th>
-            @Html.DisplayFor(model => model.Discount)
-        </th>
-
-    </tr>
-
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Roles)
-        </th>
-        <th>
-            @Html.DisplayFor(model => model.Roles.Name)
-        </th>
-
-    </tr>
-</table>
+@{Html.RenderPartial("User",Model);}
 
 <h3>Гісторыя</h3>
 

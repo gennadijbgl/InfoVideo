@@ -176,7 +176,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InfoVideo.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\InfoVideoContext.cs" />
     <Compile Include="Models\Roles.cs">
       <DependentUpon>InfoVideo.tt</DependentUpon>
     </Compile>
@@ -328,8 +327,6 @@
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
-    <Content Include="Views\Histories\Create.cshtml" />
-    <Content Include="Views\Histories\Delete.cshtml" />
     <Content Include="Views\Histories\Details.cshtml" />
     <Content Include="Views\Histories\Edit.cshtml" />
     <Content Include="Views\Histories\Index.cshtml" />
@@ -343,7 +340,11 @@
     <Content Include="Views\Editions\Model.cshtml" />
     <None Include="Views\Account\Buy.cshtml" />
     <Content Include="Views\Home\Proc.cshtml" />
+    <Content Include="Views\Editions\Edition.cshtml" />
+    <Content Include="Views\Account\User.cshtml" />
+    <Content Include="Views\Histories\Model.cshtml" />
     <None Include="Views\Home\ProcType.cshtml" />
+    <Content Include="Views\Shared\Format.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

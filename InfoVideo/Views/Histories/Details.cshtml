@@ -1,43 +1,14 @@
 ﻿@model InfoVideo.Models.History
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Падрабязнасці";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h3>Падрабязнасці</h3>
 
-<div>
-    <h4>History</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Edition.Box)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Edition.Box)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Users.Login)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Users.Login)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@{
+    Html.RenderPartial("Model", Model);
+}
