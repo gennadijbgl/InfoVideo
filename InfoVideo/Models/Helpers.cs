@@ -40,14 +40,14 @@ namespace InfoVideo.Models
     {
         protected override void Seed(InfoVideoContext context)
         {
-            var adminR = new Role { Name = "Administrator" };
-            var userR = new Role { Name = "User" };
+            var adminR = new Roles { Name = "Administrator" };
+            var userR = new Roles { Name = "User" };
 
             context.Roles.Add(adminR);
             context.Roles.Add(userR);
                     
-            var admin = new User { Email = "asd@mail1.ru", FirstName = "Leon", LastName = "Budkouski", Password = "Asd123",Login = "Hienadz", Address = "Мінск, Кульман 33", Discount  = 10,Role = adminR};
-            var user = new User { Email = "kross@mail.ru", FirstName = "Dylan", LastName = "Kross", Password = "Asd111", Login = "HienadzA", Address = "Мінск, Багдановіча М 100", Discount = 0, Role = userR};
+            var admin = new Users { Email = "asd@mail1.ru", FirstName = "Leon", LastName = "Budkouski", Password = "Asd123",Login = "Hienadz", Address = "Мінск, Кульман 33", Discount  = 10,Roles = adminR};
+            var user = new Users { Email = "kross@mail.ru", FirstName = "Dylan", LastName = "Kross", Password = "Asd111", Login = "HienadzA", Address = "Мінск, Багдановіча М 100", Discount = 0, Roles = userR};
 
             context.Users.Add(admin);
             context.Users.Add(user);
@@ -111,8 +111,8 @@ namespace InfoVideo.Models
             context.Edition.Add(e1);
             context.Edition.Add(e2);
 
-            History h = new History {Date = DateTime.Now, Edition = e,User = admin};
-            History h1 = new History { Date = DateTime.Today, Edition = e1, User = user };
+            History h = new History {Date = DateTime.Now, Edition = e,Users = admin};
+            History h1 = new History { Date = DateTime.Today, Edition = e1, Users = user };
 
             context.History.Add(h);
             context.History.Add(h1);

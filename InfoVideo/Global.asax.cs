@@ -49,7 +49,7 @@ namespace InfoVideo
 
 
                 claimsIdentity.AddClaim(
-                    new Claim(ClaimTypes.Role, (user.Role.Name)));
+                    new Claim(ClaimTypes.Role, (user.Roles.Name)));
 
                 }
 

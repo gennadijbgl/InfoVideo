@@ -1,0 +1,21 @@
+﻿@model System.Linq.IQueryable<InfoVideo.Models.GetVideoByType_Result>
+
+
+<table class="table">
+   
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Container)
+            </td>
+           
+        </tr>
+    }
+
+</table>
+

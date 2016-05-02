@@ -50,9 +50,10 @@
 
 
                     <div class="form-group">
-                        @Html.LabelFor(model=>model.Logo, new {@class = "control-label col-md-2"})
+                        <img src="" id="logo-prew" class="item-header-img" alt="">
                         <div class="col-md-10">
-                            <input type="file" id="Logo" name="Logo"/>
+                            @Html.LabelFor(model => model.Logo, "Змяніць выяву", htmlAttributes: new { @class = "btn gray" })
+                            <input type="file" id="Logo" name="Logo" class="btn gray" title="Абярыце выяву" />
                         </div>
                     </div>
 

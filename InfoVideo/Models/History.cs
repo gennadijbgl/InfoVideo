@@ -21,6 +21,6 @@ namespace InfoVideo.Models
         public decimal Price { get; set; }
     
         public virtual Edition Edition { get; set; }
-        public virtual User User { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

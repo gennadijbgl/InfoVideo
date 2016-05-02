@@ -20,12 +20,12 @@ namespace InfoVideo.Controllers
         {
             if (User.IsInRole("Administrator"))
             {
-                var history = _db.History.Include(h => h.Edition).Include(h => h.User);
+                var history = _db.History.Include(h => h.Edition).Include(h => h.Users);
                 return View(await history.ToListAsync());
             }
             else
             {
-                var history = _db.History.Where(t=>t.User.Login == User.Identity.Name).Include(h => h.Edition).Include(h => h.User);
+                var history = _db.History.Where(t=>t.Users.Login == User.Identity.Name).Include(h => h.Edition).Include(h => h.Users);
                 return View(await history.ToListAsync());
             }
         }

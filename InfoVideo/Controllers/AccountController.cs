@@ -16,7 +16,7 @@ using Newtonsoft.Json;
 
 namespace InfoVideo.Controllers
 {
-
+ 
     public class AccountController : Controller
     {
         private readonly InfoVideoContext _db = new InfoVideoContext();
@@ -35,9 +35,9 @@ namespace InfoVideo.Controllers
            
             if (!ModelState.IsValid)
                 return PartialView(model);
-              
 
-            User user  =  await _db.Users.FirstOrDefaultAsync(u => u.Login == model.Login && u.Password == model.Password);
+
+            Users user  =  await _db.Users.FirstOrDefaultAsync(u => u.Login == model.Login && u.Password == model.Password);
 
 
             if (user != null)
@@ -70,21 +70,21 @@ namespace InfoVideo.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(User model)
+        public async Task<ActionResult> Register(Users model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            User user  = await _db.Users.FirstAsync(u => u.Login == model.Login);
+            Users user  = await _db.Users.FirstAsync(u => u.Login == model.Login);
               
             if (user == null)
             {
                    
-                _db.Users.Add(new User { Email = model.Email, Address = model.Address,FirstName = model.FirstName, LastName = model.LastName, Password = (model.Password.Trim()), Login = model.Login});
+                _db.Users.Add(new Users { Email = model.Email, Address = model.Address,FirstName = model.FirstName, LastName = model.LastName, Password = (model.Password.Trim()), Login = model.Login});
                 var ans = _db.SaveChanges();
 
                 if (ans != 1) return View(model);
 
-                FormsAuthentication.SetAuthCookie(model.Email, true);
+                FormsAuthentication.SetAuthCookie(model.Login, true);
                 return RedirectToAction("Index", "Home");
             }
             ModelState.AddModelError("", "Пользователь с таким логином уже существует");
@@ -101,7 +101,7 @@ namespace InfoVideo.Controllers
         public async  Task<PartialViewResult> Index()
         {
 
-            var users = _db.Users.Include(e => e.Role).Include(e => e.History);
+            var users = _db.Users.Include(e => e.Roles).Include(e => e.History);
             return PartialView(await users.ToListAsync());
            
             
@@ -116,7 +116,7 @@ namespace InfoVideo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = await _db.Users.FindAsync(id);
+            Users user = await _db.Users.FindAsync(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -129,7 +129,7 @@ namespace InfoVideo.Controllers
             email = email.Trim();
             var user = _db.Users.FirstOrDefault(y => y.Email == email);
 
-            var jsondata = user?.Role.Name;
+            var jsondata = user?.Roles.Name;
 
             return Json(jsondata, JsonRequestBehavior.AllowGet);
         }
@@ -165,11 +165,11 @@ namespace InfoVideo.Controllers
 
             if (ModelState.IsValid)
             {
-                User user = await _db.Users.FirstAsync(t => t.Login == User.Identity.Name);
+                Users user = await _db.Users.FirstAsync(t => t.Login == User.Identity.Name);
 
                 Edition edition = await _db.Edition.FindAsync(Id);
 
-                user.History.Add(new History {Date = DateTime.Now,User = user, Edition = edition});
+                user.History.Add(new History {Date = DateTime.Now, Users = user, Edition = edition});
 
                 _db.Entry(user).State = EntityState.Modified;
 
@@ -194,7 +194,7 @@ namespace InfoVideo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User model = await _db.Users.FindAsync(id);
+            Users model = await _db.Users.FindAsync(id);
             if (model == null)
             {
                 return HttpNotFound();
@@ -207,7 +207,7 @@ namespace InfoVideo.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Login,Password,Email,FirstName,LastName,Address,Discount,IdRole")] User user)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Login,Password,Email,FirstName,LastName,Address,Discount,IdRole")] Users user)
         {
           
             if (ModelState.IsValid)
@@ -227,7 +227,7 @@ namespace InfoVideo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = await _db.Users.FindAsync(id);
+            Users user = await _db.Users.FindAsync(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -240,7 +240,7 @@ namespace InfoVideo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            User user = await _db.Users.FindAsync(id);
+            Users user = await _db.Users.FindAsync(id);
             _db.Users.Remove(user);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");

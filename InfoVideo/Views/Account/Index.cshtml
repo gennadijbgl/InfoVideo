@@ -1,5 +1,5 @@
-﻿@using InfoVideo.Models
-@model IEnumerable<User>
+﻿
+@model IEnumerable<InfoVideo.Models.Users>
 
 @{
     ViewBag.Title = "Index";
@@ -30,7 +30,7 @@
             @Html.DisplayNameFor(model => model.Login)
         </th>
         <th class="td_min_width">
-            @Html.DisplayNameFor(model => model.Role)
+            @Html.DisplayNameFor(model => model.Roles)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.History)

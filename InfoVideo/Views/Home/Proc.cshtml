@@ -1,0 +1,28 @@
+﻿
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Ajax.BeginForm("ProcType", "Home",
+                                                        new AjaxOptions
+                                                        {
+                                                            HttpMethod = "POST",
+                                                            InsertionMode = InsertionMode.Replace,
+                                                            UpdateTargetId = "test"
+                                                        }))
+{
+
+    <input type="text" name="type"/>
+    <input type="submit" name="button" value="OK"/>
+
+    <div id="test">
+       
+    </div>
+
+
+
+            }

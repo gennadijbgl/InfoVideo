@@ -12,10 +12,10 @@ namespace InfoVideo.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Users()
         {
             this.History = new HashSet<History>();
         }
@@ -32,6 +32,6 @@ namespace InfoVideo.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<History> History { get; set; }
-        public virtual Role Role { get; set; }
+        public virtual Roles Roles { get; set; }
     }
 }
