@@ -10,17 +10,10 @@
 namespace InfoVideo.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class History
+    public partial class GetVideoByType_Result
     {
-        public int Id { get; set; }
-        public int IdUser { get; set; }
-        public int IdEdition { get; set; }
-        public System.DateTime Date { get; set; }
-        public decimal Price { get; set; }
-    
-        public virtual Edition Edition { get; set; }
-        public virtual User User { get; set; }
+        public string Title { get; set; }
+        public string Container { get; set; }
     }
 }

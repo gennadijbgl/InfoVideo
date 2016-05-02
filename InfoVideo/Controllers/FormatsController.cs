@@ -83,7 +83,7 @@ namespace InfoVideo.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(format).State = EntityState.Modified;
+                db.Entry(format).State = System.Data.Entity.EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

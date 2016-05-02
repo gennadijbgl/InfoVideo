@@ -107,7 +107,7 @@ namespace InfoVideo.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Entry(video).State = EntityState.Modified;
+                _db.Entry(video).State = System.Data.Entity.EntityState.Modified;
                 ProcessFile(Logo, video);
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");

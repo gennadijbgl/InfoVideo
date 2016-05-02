@@ -1,0 +1,484 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="InfoVideoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Edition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdVideo" Type="int" />
+          <Property Name="IdFormat" Type="int" />
+          <Property Name="Price" Type="money" />
+          <Property Name="Box" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Format">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Container" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Languages" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Support3D" Type="bit" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdEdition" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Discount" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2500" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="200" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Genre" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <Association Name="FK_Edition_Format">
+          <End Role="Format" Type="Self.Format" Multiplicity="0..1" />
+          <End Role="Edition" Type="Self.Edition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Format">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Edition">
+              <PropertyRef Name="IdFormat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Edition_Video">
+          <End Role="Video" Type="Self.Video" Multiplicity="0..1" />
+          <End Role="Edition" Type="Self.Edition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Video">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Edition">
+              <PropertyRef Name="IdVideo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Edition">
+          <End Role="Edition" Type="Self.Edition" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="IdEdition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Roles">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetStudentsSuccssByGroupId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetUsersByDiscount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Discount" Type="smallint" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" />
+                <Property Name="UserLogin" Type="nvarchar" MaxLength="50" />
+                <Property Name="UserDiscount" Type="smallint" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GetVideoByType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Type" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Title" Type="nvarchar" MaxLength="50" />
+                <Property Name="Container" Type="nvarchar" MaxLength="10" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GiveUserDiscount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BuysCount" Type="int" Mode="In" />
+          <Parameter Name="SizeDiskount" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="InfoVideoModelStoreContainer">
+          <EntitySet Name="Edition" EntityType="Self.Edition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Format" EntityType="Self.Format" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Edition_Format" Association="Self.FK_Edition_Format">
+            <End Role="Format" EntitySet="Format" />
+            <End Role="Edition" EntitySet="Edition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Edition_Video" Association="Self.FK_Edition_Video">
+            <End Role="Video" EntitySet="Video" />
+            <End Role="Edition" EntitySet="Edition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Edition" Association="Self.FK_History_Edition">
+            <End Role="Edition" EntitySet="Edition" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_User" Association="Self.FK_History_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Roles" Association="Self.FK_User_Roles">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InfoVideoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="GetUsersByDiscount_Result">
+          <Property Name="Id" Type="Int32" />
+          <Property Name="UserLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserDiscount" Type="Int16" />
+        </ComplexType>
+        <ComplexType Name="GetVideoByType_Result">
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Container" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <EntityType Name="Edition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdVideo" Type="Int32" />
+          <Property Name="IdFormat" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Box" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Format" Relationship="Self.FK_Edition_Format" FromRole="Edition" ToRole="Format" />
+          <NavigationProperty Name="Video" Relationship="Self.FK_Edition_Video" FromRole="Edition" ToRole="Video" />
+          <NavigationProperty Name="History" Relationship="Self.FK_History_Edition" FromRole="Edition" ToRole="History" />
+        </EntityType>
+        <EntityType Name="Format">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Container" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Languages" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Support3D" Type="Boolean" />
+          <NavigationProperty Name="Edition" Relationship="Self.FK_Edition_Format" FromRole="Format" ToRole="Edition" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdEdition" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Edition" Relationship="Self.FK_History_Edition" FromRole="History" ToRole="Edition" />
+          <NavigationProperty Name="User" Relationship="Self.FK_History_User" FromRole="History" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Roles" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Discount" Type="Int16" />
+          <NavigationProperty Name="History" Relationship="Self.FK_History_User" FromRole="User" ToRole="History" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Roles" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="2500" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Genre" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Edition" Relationship="Self.FK_Edition_Video" FromRole="Video" ToRole="Edition" />
+        </EntityType>
+        <Association Name="FK_Edition_Format">
+          <End Role="Format" Type="Self.Format" Multiplicity="0..1" />
+          <End Role="Edition" Type="Self.Edition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Format">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Edition">
+              <PropertyRef Name="IdFormat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Edition_Video">
+          <End Role="Video" Type="Self.Video" Multiplicity="0..1" />
+          <End Role="Edition" Type="Self.Edition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Video">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Edition">
+              <PropertyRef Name="IdVideo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Edition">
+          <End Role="Edition" Type="Self.Edition" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="IdEdition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Roles">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InfoVideoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Edition" EntityType="Self.Edition" />
+          <EntitySet Name="Format" EntityType="Self.Format" />
+          <EntitySet Name="History" EntityType="Self.History" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="Video" EntityType="Self.Video" />
+          <AssociationSet Name="FK_Edition_Format" Association="Self.FK_Edition_Format">
+            <End Role="Format" EntitySet="Format" />
+            <End Role="Edition" EntitySet="Edition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Edition_Video" Association="Self.FK_Edition_Video">
+            <End Role="Video" EntitySet="Video" />
+            <End Role="Edition" EntitySet="Edition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Edition" Association="Self.FK_History_Edition">
+            <End Role="Edition" EntitySet="Edition" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_User" Association="Self.FK_History_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Roles" Association="Self.FK_User_Roles">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <FunctionImport Name="GetUsersByDiscount" IsComposable="true" ReturnType="Collection(InfoVideoModel.GetUsersByDiscount_Result)">
+            <Parameter Name="Discount" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <FunctionImport Name="GetVideoByType" IsComposable="true" ReturnType="Collection(InfoVideoModel.GetVideoByType_Result)">
+            <Parameter Name="Type" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetStudentsSuccssByGroupId" />
+          <FunctionImport Name="GiveUserDiscount">
+            <Parameter Name="BuysCount" Mode="In" Type="Int32" />
+            <Parameter Name="SizeDiskount" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InfoVideoModelStoreContainer" CdmEntityContainer="InfoVideoEntities">
+          <EntitySetMapping Name="Edition">
+            <EntityTypeMapping TypeName="InfoVideoModel.Edition">
+              <MappingFragment StoreEntitySet="Edition">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdVideo" ColumnName="IdVideo" />
+                <ScalarProperty Name="IdFormat" ColumnName="IdFormat" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Box" ColumnName="Box" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Format">
+            <EntityTypeMapping TypeName="InfoVideoModel.Format">
+              <MappingFragment StoreEntitySet="Format">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Container" ColumnName="Container" />
+                <ScalarProperty Name="Languages" ColumnName="Languages" />
+                <ScalarProperty Name="Support3D" ColumnName="Support3D" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="History">
+            <EntityTypeMapping TypeName="InfoVideoModel.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdEdition" ColumnName="IdEdition" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="InfoVideoModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="InfoVideoModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Video">
+            <EntityTypeMapping TypeName="InfoVideoModel.Video">
+              <MappingFragment StoreEntitySet="Video">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="InfoVideoModel.Store.GetUsersByDiscount" FunctionImportName="GetUsersByDiscount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InfoVideoModel.GetUsersByDiscount_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
+                <ScalarProperty Name="UserDiscount" ColumnName="UserDiscount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="InfoVideoModel.Store.GetVideoByType" FunctionImportName="GetVideoByType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InfoVideoModel.GetVideoByType_Result">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Container" ColumnName="Container" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetStudentsSuccssByGroupId" FunctionName="InfoVideoModel.Store.GetStudentsSuccssByGroupId" />
+          <FunctionImportMapping FunctionImportName="GiveUserDiscount" FunctionName="InfoVideoModel.Store.GiveUserDiscount" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

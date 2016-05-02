@@ -1,3 +1,6 @@
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
+
 namespace InfoVideo.Models
 {
     using System;
@@ -5,6 +8,7 @@ namespace InfoVideo.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
+  
     public partial class InfoVideoContext : DbContext
     {
         public InfoVideoContext()
@@ -55,5 +59,7 @@ namespace InfoVideo.Models
                 .WithOptional(e => e.Video)
                 .HasForeignKey(e => e.IdVideo);
         }
+
+     
     }
 }
