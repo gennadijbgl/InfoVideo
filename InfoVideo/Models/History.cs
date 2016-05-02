@@ -19,7 +19,7 @@ namespace InfoVideo.Models
         public int IdEdition { get; set; }
         public System.DateTime Date { get; set; }
         public decimal Price { get; set; }
-    
+                                                
         public virtual Edition Edition { get; set; }
         public virtual Users Users { get; set; }
     }
