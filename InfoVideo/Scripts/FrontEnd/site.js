@@ -38,6 +38,10 @@ var ajaxT = function ajaxT(data, status, xhr) {
 
 $(document).ready(function () {
 
+    $('#type').keyup(function (event) {
+        $('#searchForm').submit();
+    });
+
     $('.test').hover(function (e) {
         id = e.toElement.id;
         $.ajax({
@@ -45,13 +49,17 @@ $(document).ready(function () {
             data: { email: $(this).html() }
         }).done(OnSuccess);
     }, function (e) {});
-    $('.menu-switch').click(function () {
+
+    $('.menu-switch').unbind('click').click(function () {
 
         $(this).toggleClass("zmdi-menu");
         $(this).toggleClass("zmdi-close");
 
-        $(this.parentElement).find(".from-form").slideToggle(400);
-        $(this.parentElement).find(".card-menu").slideToggle(400);
+        var p = $(this.parentElement);
+
+        if (p.closest(".news")) p.children("*:not(.card-menu, .menu-switch, img)").slideToggle();else p.find(".from-form").slideToggle();
+
+        $(this.parentElement).find(".card-menu").slideToggle();
     });
 
     $('#btn-reg-ajax').click(function () {
@@ -73,14 +81,14 @@ $(document).ready(function () {
 
 var buy = function buy(e) {
 
-    var b = $(e).find(".anim").show();
-    var c = $(e).find(".from-form").add($(e).find(".main")).add($(e).find(".card-menu")).css("opacity", "0.5");
-    var d = $(e).find("h2");
+    var b = $(e.closest("form")).find(".anim").show();
+    var c = $(e.closest("form")).find(".from-form").add($(e.closest("form")).find(".main")).add($(e).find(".card-menu")).css("opacity", "0.5");
+    var d = $(e.closest("form")).find("h2");
 
     $.ajax({
-        url: this.action,
-        type: this.method,
-        data: $(e).serialize(),
+        url: e.closest("form").action,
+        type: e.closest("form").method,
+        data: $(e.closest("form")).serialize(),
         success: function success(result) {
             {
                 if (result.success) {

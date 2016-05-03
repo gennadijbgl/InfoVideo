@@ -1,44 +1,55 @@
 ﻿@model IEnumerable<InfoVideo.Models.Video>
 
 
-    <div class="search">
-        @using (Ajax.BeginForm("ProcType", "Home", new AjaxOptions
-        {
-            HttpMethod = "POST",
-            InsertionMode = InsertionMode.Replace,
-            UpdateTargetId = "news"
-        }, new { id = "searchForm" }))
-        {
+<div class="search card">
+    @using (Ajax.BeginForm("ProcType", "Home", new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "typeV"
+    }, new {id = "searchForm"}))
+    {
 
-            @Html.TextBox("type")
-            <label class="btn red" for="search">
-                <i class="zmdi zmdi-search zmdi-hc-fw"></i>
-            </label>
-            <input type="submit" class="display-none" id="search" value="Search"/>
+        @Html.TextBox("type", null, new {@placeholder = "Увядзіце фармат"})
+        <label class="btn red" for="search">
+            <i class="zmdi zmdi-search zmdi-hc-fw"></i>
+        </label>
+        <input type="submit" class="display-none" id="search" value="Search"/>
 
-        }
-    </div>
+    }
+</div>
+
+<div class="card" id ="typeV"></div>
 <div class="news" id="news">
     @foreach (var item in Model)
     {
-        <div class="news-item">
-            <span class="news-item-name">@item.Title</span>
-            <img src="@Url.Content("~/Media/Images/" + item.Logo)" style="width: 45%;" alt="">
-            <div class="right">
-                <h5 class="no-margin-padding">@Html.DisplayFor(t => item.Date)</h5>
-                <h6 class="news-title no-margin-padding">@item.Genre</h6>
+        <div class="card">
+            <i class="zmdi zmdi-menu menu-switch"></i>
+
+          
+                <img src="@Url.Content("~/Media/Images/" + item.Logo)" style="" alt="">
+                <span class="title">@item.Title</span>
+
+                <p>@Html.DisplayFor(t => item.Date)</p>
+                <p>@item.Genre</p>
+
+
+            <div class="menu-list card-menu" style="display: none">
+                <ul>
+                    <a href="@Url.Action("Details", "Videos", new {id = item.Id})">
+                        <i class="zmdi zmdi-view-list-alt zmdi-hc-fw"></i>Падрабязнасці
+                    </a>
+                    <a href="@Url.Action("Edit", "Videos", new {id = item.Id})">
+                        <i class="zmdi zmdi-edit zmdi-hc-fw"></i>Змяніць
+                    </a>
+                    <a href="@Url.Action("Delete", "Videos", new {id = item.Id})">
+                        <i class="zmdi zmdi-delete zmdi-hc-fw"></i>Выдаліць
+                    </a>
+                </ul>
+
             </div>
 
-            <div class="news-footer">
-                <a href="@Url.Action("Details", "Videos", new {id = item.Id})">
-                    <i class="zmdi zmdi-view-list-alt zmdi-hc-fw"></i>
-                </a>
-                <a href="@Url.Action("Edit", "Videos", new {id = item.Id})">
-                    <i class="zmdi zmdi-edit zmdi-hc-fw"></i>
-                </a>
-
-
-            </div>
+         
         </div>
 
     }

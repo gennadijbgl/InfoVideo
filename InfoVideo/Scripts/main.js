@@ -53,17 +53,22 @@ $(document)
                 function(e) {
 
                 });
-
+       
         $('.menu-switch')
-            .click(function() {
-
-
+            .unbind('click').click(function() {
+              
                 $(this).toggleClass("zmdi-menu");
                 $(this).toggleClass("zmdi-close");
 
-  $(this.parentElement).find(".card-menu").slideToggle(400);
-                $(this.parentElement).find(".from-form").slideToggle(400);
-              
+                var p = $(this.parentElement);
+
+                
+
+                if (p.closest(".news"))
+                    p.children("*:not(.card-menu, .menu-switch, img)").slideToggle();
+                else p.find(".from-form").slideToggle();
+
+                $(this.parentElement).find(".card-menu").slideToggle();
 
             });
 
