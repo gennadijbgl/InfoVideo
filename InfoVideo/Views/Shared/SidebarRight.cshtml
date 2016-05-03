@@ -1,32 +1,47 @@
 ﻿@model IEnumerable<InfoVideo.Models.Video>
 
-<div class="news">
-    
+
+    <div class="search">
+        @using (Ajax.BeginForm("ProcType", "Home", new AjaxOptions
+        {
+            HttpMethod = "POST",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "news"
+        }, new { id = "searchForm" }))
+        {
+
+            @Html.TextBox("type")
+            <label class="btn red" for="search">
+                <i class="zmdi zmdi-search zmdi-hc-fw"></i>
+            </label>
+            <input type="submit" class="display-none" id="search" value="Search"/>
+
+        }
+    </div>
+<div class="news" id="news">
     @foreach (var item in Model)
     {
         <div class="news-item">
-            <span class="news-item-name">@item.Title</span>   
+            <span class="news-item-name">@item.Title</span>
             <img src="@Url.Content("~/Media/Images/" + item.Logo)" style="width: 45%;" alt="">
             <div class="right">
                 <h5 class="no-margin-padding">@Html.DisplayFor(t => item.Date)</h5>
                 <h6 class="news-title no-margin-padding">@item.Genre</h6>
             </div>
-           
+
             <div class="news-footer">
-                <a href="">
-                    <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"> </i>
+                <a href="@Url.Action("Details", "Videos", new {id = item.Id})">
+                    <i class="zmdi zmdi-view-list-alt zmdi-hc-fw"></i>
                 </a>
-                <a href="">
-                    <i class="zmdi zmdi-view-list-alt zmdi-hc-fw text-align-left"> </i>
+                <a href="@Url.Action("Edit", "Videos", new {id = item.Id})">
+                    <i class="zmdi zmdi-edit zmdi-hc-fw"></i>
                 </a>
-                <a href="">
-                    <i class="zmdi zmdi-edit zmdi-hc-fw text-align-left"> </i>
-                </a>
+
+
             </div>
         </div>
 
     }
-    
-   
-</div>
 
+
+</div>

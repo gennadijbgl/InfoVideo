@@ -36,6 +36,9 @@ var ajaxT = function(data, status, xhr) {
 $(document)
     .ready(function() {
 
+      $('#type').keyup(function(event) {
+        $('#searchForm').submit();
+      });
 
         $('.test')
             .hover(
@@ -50,6 +53,7 @@ $(document)
                 function(e) {
 
                 });
+
         $('.menu-switch')
             .click(function() {
 
@@ -57,8 +61,9 @@ $(document)
                 $(this).toggleClass("zmdi-menu");
                 $(this).toggleClass("zmdi-close");
 
+  $(this.parentElement).find(".card-menu").slideToggle(400);
                 $(this.parentElement).find(".from-form").slideToggle(400);
-                $(this.parentElement).find(".card-menu").slideToggle(400);
+              
 
             });
 

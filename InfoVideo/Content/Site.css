@@ -422,6 +422,8 @@ h6 { font-size: 10px; }
    /*  margin-bottom: 15px;
     margin-top: 15px; */
 }
+
+
 .relative{
     position:relative!important;
 }
@@ -838,14 +840,36 @@ td a:hover{
     margin: 10px auto;
     width: 100%;
 }
+.search {
+    position:relative;
+    padding: 15px 50px 15px 15px;
+}
+
+.search input[type='submit']{
+    position:absolute;
+    top:20px;
+    right:5px;
+}
+.search label i{
+        font-size: 20px;
+}
+
+.search label{
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    height: 30px;
+    width: 30px;
+    min-width: 10px;
+}
 
 .sidebar-left {
 top:0;
 left:0;
     position:absolute;
-    margin-left: 1%;
+    margin-left: 1.5%;
     max-width: 30%;
-    width: 20%;
+    width: 18.5%;
 }
 
 .sidebar-right {
@@ -1053,7 +1077,7 @@ header {
 
 .news {
     background-color: #fff;
-    margin-right: 10px;
+    margin-left:  10px;
     min-width: 128px;
 
 
@@ -1377,7 +1401,7 @@ div.img-preview{
     vertical-align: top;
     border-radius: 5px;
     box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, .2);
-    margin: 10px auto;
+    margin: 0 auto;
     margin-bottom: 20px;
     max-width: 720px;
 
