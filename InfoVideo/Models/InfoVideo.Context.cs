@@ -20,9 +20,10 @@ namespace InfoVideo.Models
         public InfoVideoContext()
             : base("name=InfoVideoContext")
         {
+            Database.SetInitializer<InfoVideoContext>(new MyDbInitializer());
             
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

@@ -18,13 +18,22 @@ namespace InfoVideo.Controllers
 
         public async Task<ActionResult> Index()
         {
-            return View(await _db.Roles.ToListAsync());
+            if (User.IsInRole("Administrator"))
+            {
+
+                return View(await _db.Roles.ToListAsync());
+            }
+            return PartialView("AuthAdminError");
+
         }
 
 
         public async Task<ActionResult> Details(int? id)
         {
-            if (id == null)
+            if (User.IsInRole("Administrator"))
+            {
+
+                if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -34,24 +43,29 @@ namespace InfoVideo.Controllers
                 return HttpNotFound();
             }
             return View(Roles);
+            }
+            return PartialView("AuthAdminError");
         }
 
 
         public ActionResult Create()
         {
-            return View();
+            if (User.IsInRole("Administrator"))
+            {
+                return View();
+            }
+            return PartialView("AuthAdminError");
         }
 
-        public ActionResult AddUserRoles()
-        {
-            return View();
-        }
+       
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Name")] Roles Roles)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("Administrator"))
+            {
+                if (ModelState.IsValid)
             {
                 _db.Roles.Add(Roles);
                 await _db.SaveChangesAsync();
@@ -59,21 +73,27 @@ namespace InfoVideo.Controllers
             }
 
             return View(Roles);
+            }
+            return PartialView("AuthAdminError");
         }
 
 
         public async Task<ActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (User.IsInRole("Administrator"))
+            {
+                if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Roles Roles = await _db.Roles.FindAsync(id);
-            if (Roles == null)
+            Roles roles = await _db.Roles.FindAsync(id);
+            if (roles == null)
             {
                 return HttpNotFound();
             }
-            return View(Roles);
+            return View(roles);
+            }
+            return PartialView("AuthAdminError");
         }
 
 
@@ -81,19 +101,25 @@ namespace InfoVideo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name")] Roles Roles)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("Administrator"))
+            {
+                if (ModelState.IsValid)
             {
                 _db.Entry(Roles).State = System.Data.Entity.EntityState.Modified;
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(Roles);
+            }
+            return PartialView("AuthAdminError");
         }
 
 
         public async Task<ActionResult> Delete(int? id)
         {
-            if (id == null)
+            if (User.IsInRole("Administrator"))
+            {
+                if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -103,6 +129,8 @@ namespace InfoVideo.Controllers
                 return HttpNotFound();
             }
             return View(Roles);
+            }
+            return PartialView("AuthAdminError");
         }
 
 
@@ -110,10 +138,14 @@ namespace InfoVideo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Roles Roles = await _db.Roles.FindAsync(id);
+            if (User.IsInRole("Administrator"))
+            {
+                Roles Roles = await _db.Roles.FindAsync(id);
             _db.Roles.Remove(Roles);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
+            }
+            return PartialView("AuthAdminError");
         }
 
         protected override void Dispose(bool disposing)

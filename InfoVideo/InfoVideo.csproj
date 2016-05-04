@@ -296,7 +296,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
@@ -344,6 +343,8 @@
     <Content Include="Views\Histories\Model.cshtml" />
     <None Include="Views\Home\ProcType.cshtml" />
     <Content Include="Views\Shared\Format.cshtml" />
+    <Content Include="Views\Shared\AuthAdminError.cshtml" />
+    <Content Include="Views\Shared\AuthError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

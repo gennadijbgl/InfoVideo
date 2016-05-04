@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
 using System.Web;
@@ -22,8 +23,10 @@ namespace InfoVideo
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            
          
+
+           
+
         }
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
         {

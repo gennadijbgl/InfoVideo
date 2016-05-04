@@ -16,14 +16,13 @@ namespace InfoVideo.Controllers
     {
         private readonly InfoVideoContext _db = new InfoVideoContext();
 
-        // GET: Videos
         public async Task<ActionResult> Index()
         {
 
             return View(await _db.Video.ToListAsync());
         }
 
-        // GET: Videos/Details/5
+        
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,10 +38,14 @@ namespace InfoVideo.Controllers
             return View(video);
         }
 
-        // GET: Videos/Create
+     
         public ActionResult Create()
         {
-            return View();
+            if (User.IsInRole("Administrator"))
+            {
+                return View();
+            }
+            return PartialView("AuthAdminError");
         }
 
         public void ProcessFile(HttpPostedFileBase file, Video video)
@@ -65,7 +68,9 @@ namespace InfoVideo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description,Country,Genre")] Video video, HttpPostedFileBase Logo)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("Administrator"))
+            {
+                if (ModelState.IsValid)
             {
                 
                 ProcessFile(Logo, video);
@@ -76,6 +81,8 @@ namespace InfoVideo.Controllers
             }
 
             return View(video);
+            }
+            return PartialView("AuthAdminError");
         }
 
         [HttpPost]
@@ -88,7 +95,9 @@ namespace InfoVideo.Controllers
  
         public async Task<ActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (User.IsInRole("Administrator"))
+            {
+                if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -98,6 +107,8 @@ namespace InfoVideo.Controllers
                 return HttpNotFound();
             }
             return View(video);
+            }
+            return PartialView("AuthAdminError");
         }
 
 
@@ -105,7 +116,9 @@ namespace InfoVideo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Description,Date,Genre")] Video video, HttpPostedFileBase Logo)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("Administrator"))
+            {
+                if (ModelState.IsValid)
             {
                 _db.Entry(video).State = System.Data.Entity.EntityState.Modified;
                 ProcessFile(Logo, video);
@@ -113,12 +126,16 @@ namespace InfoVideo.Controllers
                 return RedirectToAction("Index");
             }
             return View(video);
+            }
+            return PartialView("AuthAdminError");
         }
 
-        // GET: Videos/Delete/5
+      
         public async Task<ActionResult> Delete(int? id)
         {
-            if (id == null)
+            if (User.IsInRole("Administrator"))
+            {
+                if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -128,17 +145,23 @@ namespace InfoVideo.Controllers
                 return HttpNotFound();
             }
             return View(video);
+            }
+            return PartialView("AuthAdminError");
         }
 
-        // POST: Videos/Delete/5
+ 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Video video = await _db.Video.FindAsync(id);
+            if (User.IsInRole("Administrator"))
+            {
+                Video video = await _db.Video.FindAsync(id);
             _db.Video.Remove(video);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
+            }
+            return PartialView("AuthAdminError");
         }
 
         protected override void Dispose(bool disposing)

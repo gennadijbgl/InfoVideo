@@ -13,114 +13,135 @@ namespace InfoVideo.Controllers
 {
     public class FormatsController : Controller
     {
-        private InfoVideoContext db = new InfoVideoContext();
+        private readonly InfoVideoContext _db = new InfoVideoContext();
 
-        // GET: Formats
+      
         public async Task<ActionResult> Index()
         {
-            return View(await db.Format.ToListAsync());
+            return View(await _db.Format.ToListAsync());
         }
 
-        // GET: Formats/Details/5
+        
         public async Task<ActionResult> Details(int? id)
         {
-            if (id == null)
+            if (User.IsInRole("Administrator"))
+            {
+                if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Format format = await db.Format.FindAsync(id);
+            Format format = await _db.Format.FindAsync(id);
             if (format == null)
             {
                 return HttpNotFound();
             }
             return View(format);
+            }
+            return PartialView("AuthAdminError");
         }
 
-        // GET: Formats/Create
+      
         public ActionResult Create()
         {
-            return View();
+            if (User.IsInRole("Administrator"))
+            {
+                return View();
+            }
+            return PartialView("AuthAdminError");
         }
 
-        // POST: Formats/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult> Create([Bind(Include = "Id,Container,Languages,Support3D")] Format format)
         {
             if (ModelState.IsValid)
             {
-                db.Format.Add(format);
-                await db.SaveChangesAsync();
+                _db.Format.Add(format);
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
             return View(format);
         }
 
-        // GET: Formats/Edit/5
+     
         public async Task<ActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (User.IsInRole("Administrator"))
+            {
+                if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Format format = await db.Format.FindAsync(id);
+            Format format = await _db.Format.FindAsync(id);
             if (format == null)
             {
                 return HttpNotFound();
             }
             return View(format);
+            }
+            return PartialView("AuthAdminError");
         }
 
-        // POST: Formats/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+    
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Container,Languages,Support3D")] Format format)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("Administrator"))
             {
-                db.Entry(format).State = System.Data.Entity.EntityState.Modified;
-                await db.SaveChangesAsync();
+                if (ModelState.IsValid)
+            {
+                _db.Entry(format).State = System.Data.Entity.EntityState.Modified;
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(format);
+            }
+            return PartialView("AuthAdminError");
         }
 
-        // GET: Formats/Delete/5
+      
         public async Task<ActionResult> Delete(int? id)
         {
-            if (id == null)
+            if (User.IsInRole("Administrator"))
+            {
+                if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Format format = await db.Format.FindAsync(id);
+            Format format = await _db.Format.FindAsync(id);
             if (format == null)
             {
                 return HttpNotFound();
             }
             return View(format);
+            }
+            return PartialView("AuthAdminError");
         }
 
-        // POST: Formats/Delete/5
+       
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Format format = await db.Format.FindAsync(id);
-            db.Format.Remove(format);
-            await db.SaveChangesAsync();
+            if (User.IsInRole("Administrator"))
+            {
+                Format format = await _db.Format.FindAsync(id);
+            _db.Format.Remove(format);
+            await _db.SaveChangesAsync();
             return RedirectToAction("Index");
+            }
+            return PartialView("AuthAdminError");
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

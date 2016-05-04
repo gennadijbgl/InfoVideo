@@ -8,15 +8,7 @@ using System.Data.Entity;
 namespace InfoVideo.Models
 {
 
-    public partial class InfoVideoContext : DbContext
-    {
-        public void InfosVideoContext()
-            
-        {
-            Database.SetInitializer(new MyDbUserInitializer());
-        }
-    }
-
+ 
 
     public class LoginModel
     {
@@ -36,8 +28,13 @@ namespace InfoVideo.Models
         public string Password { get; set; }
     }
 
-    public class MyDbUserInitializer : DropCreateDatabaseAlways<InfoVideoContext>
+
+    public sealed class MyDbInitializer : DropCreateDatabaseAlways<InfoVideoContext>
     {
+       
+    
+       
+
         protected override void Seed(InfoVideoContext context)
         {
             var adminR = new Roles { Name = "Administrator" };

@@ -87,7 +87,7 @@ namespace InfoVideo.Controllers
                 FormsAuthentication.SetAuthCookie(model.Login, true);
                 return RedirectToAction("Index", "Home");
             }
-            ModelState.AddModelError("", "Пользователь с таким логином уже существует");
+            ModelState.AddModelError("", "Такі логін ужо існуе");
 
             return View(model);
         }
@@ -98,16 +98,17 @@ namespace InfoVideo.Controllers
         }
 
 
+
         public async  Task<PartialViewResult> Index()
         {
+            if (User.IsInRole("Administrator"))
+            {
+                var users = _db.Users.Include(e => e.Roles).Include(e => e.History);
+                return PartialView(await users.ToListAsync());
 
-            var users = _db.Users.Include(e => e.Roles).Include(e => e.History);
-            return PartialView(await users.ToListAsync());
-           
-            
+            }
+            return PartialView("AuthAdminError");
         }
-
-
 
 
         public async Task<ActionResult> Details(int? id)
@@ -126,124 +127,154 @@ namespace InfoVideo.Controllers
 
         public JsonResult JsonSearch(string email)
         {
-            email = email.Trim();
-            var user = _db.Users.FirstOrDefault(y => y.Email == email);
+            if (User.IsInRole("Administrator"))
+            {
+                email = email.Trim();
+                var user = _db.Users.FirstOrDefault(y => y.Email == email);
 
-            var jsondata = user?.Roles.Name;
+                var jsondata = user?.Roles.Name;
 
-            return Json(jsondata, JsonRequestBehavior.AllowGet);
+                return Json(jsondata, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
 
 
 
         public async Task<ActionResult> Buy(int? id)
         {
-            if (id == null)
+            if (User.Identity.IsAuthenticated)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                if (!User.Identity.IsAuthenticated)
+                {
+                    return RedirectToAction("Register", "Account");
+                }
+                Edition model = await _db.Edition.FindAsync(id);
+                if (model == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(model);
             }
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Register", "Account");
-            }
-            Edition model = await _db.Edition.FindAsync(id);
-            if (model == null)
-            {
-                return HttpNotFound();
-            }
-   
-            return View(model);
+           
+                return PartialView("AuthError");
+            
         }
 
-  
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
+
         public async Task<ActionResult> Buy(int Id)
         {
-
-            if (ModelState.IsValid)
+            if (User.Identity.IsAuthenticated)
             {
-                Users user = await _db.Users.FirstAsync(t => t.Login == User.Identity.Name);
 
-                Edition edition = await _db.Edition.FindAsync(Id);
-
-                user.History.Add(new History {Date = DateTime.Now, Users = user, Edition = edition});
-
-                _db.Entry(user).State = EntityState.Modified;
-
-
-                await _db.SaveChangesAsync();
-
-                if (Request.IsAjaxRequest())
+                if (ModelState.IsValid)
                 {
-                    Thread.Sleep(2000);
-                    return Json(new { success = true, responseText = "Your message successfuly sent!" }, JsonRequestBehavior.AllowGet);
+                    Users user = await _db.Users.FirstAsync(t => t.Login == User.Identity.Name);
 
+                    Edition edition = await _db.Edition.FindAsync(Id);
+
+                    user.History.Add(new History {Date = DateTime.Now, Users = user, Edition = edition});
+
+                    _db.Entry(user).State = EntityState.Modified;
+
+
+                    await _db.SaveChangesAsync();
+
+                    if (Request.IsAjaxRequest())
+                    {
+                        Thread.Sleep(2000);
+                        return Json(new {success = true, responseText = "Your message successfuly sent!"},
+                            JsonRequestBehavior.AllowGet);
+
+                    }
+
+                    return RedirectToAction("Index");
                 }
-
-                return RedirectToAction("Index");
+                return View();
             }
-            return View();
+            return PartialView("AuthError");
         }
 
         public async Task<ActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (User.IsInRole("Administrator"))
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Users model = await _db.Users.FindAsync(id);
-            if (model == null)
-            {
-                return HttpNotFound();
-            }
-             
-            ViewBag.Roles = await _db.Roles.ToListAsync();
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Users model = await _db.Users.FindAsync(id);
+                if (model == null)
+                {
+                    return HttpNotFound();
+                }
 
-            return View(model);
+                ViewBag.Roles = await _db.Roles.ToListAsync();
+
+                return View(model);
+            }
+            return PartialView("AuthError");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Login,Password,Email,FirstName,LastName,Address,Discount,IdRole")] Users user)
         {
-          
-            if (ModelState.IsValid)
+            if (User.IsInRole("Administrator"))
             {
-                user.Password = user.Password.Trim();
-                _db.Entry(user).State = EntityState.Modified;
-                await _db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    user.Password = user.Password.Trim();
+                    _db.Entry(user).State = EntityState.Modified;
+                    await _db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+                return View(user);
             }
-            return View(user);
+            return PartialView("AuthError");
         }
 
-        // GET: Users/Delete/5
+    
         public async Task<ActionResult> Delete(int? id)
         {
-            if (id == null)
+            if (User.IsInRole("Administrator"))
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Users user = await _db.Users.FindAsync(id);
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(user);
             }
-            Users user = await _db.Users.FindAsync(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
+            return PartialView("AuthError");
         }
 
-        // POST: Users/Delete/5
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Users user = await _db.Users.FindAsync(id);
-            _db.Users.Remove(user);
-            await _db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            if (User.IsInRole("Administrator"))
+            {
+                Users user = await _db.Users.FindAsync(id);
+                _db.Users.Remove(user);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return PartialView("AuthError");
         }
 
         protected override void Dispose(bool disposing)

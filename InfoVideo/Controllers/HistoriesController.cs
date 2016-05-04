@@ -38,11 +38,19 @@ namespace InfoVideo.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             History history = await _db.History.FindAsync(id);
+
             if (history == null)
             {
                 return HttpNotFound();
             }
-            return View(history);
+
+            var u = _db.Users.FirstOrDefault(t => t.Login == User.Identity.Name);
+
+            if (u != null || User.IsInRole("Administrator"))
+
+                return View(history);
+
+            return PartialView("AuthAdminError");
         }
 
 
@@ -52,22 +60,29 @@ namespace InfoVideo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,IdUser,IdEdition,Date")] History history)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("Administrator"))
             {
-                _db.History.Add(history);
-                await _db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    _db.History.Add(history);
+                    await _db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
 
-            ViewBag.IdEdition = new SelectList(_db.Edition, "Id", "Box", history.IdEdition);
-            ViewBag.IdUser = new SelectList(_db.Users, "Id", "Login", history.IdUser);
-            return View(history);
+                ViewBag.IdEdition = new SelectList(_db.Edition, "Id", "Box", history.IdEdition);
+                ViewBag.IdUser = new SelectList(_db.Users, "Id", "Login", history.IdUser);
+                return View(history);
+            }
+            return PartialView("AuthAdminError");
         }
 
  
         public async Task<ActionResult> Edit(int? id)
         {
-            if (id == null)
+
+            if (User.IsInRole("Administrator"))
+            {
+                if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -79,6 +94,8 @@ namespace InfoVideo.Controllers
             ViewBag.IdEdition = new SelectList(_db.Edition, "Id", "Box", history.IdEdition);
             ViewBag.IdUser = new SelectList(_db.Users, "Id", "Login", history.IdUser);
             return View(history);
+            }
+            return PartialView("AuthAdminError");
         }
 
 
@@ -86,7 +103,9 @@ namespace InfoVideo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,IdUser,IdEdition,Date")] History history)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("Administrator"))
+            {
+                if (ModelState.IsValid)
             {
                 _db.Entry(history).State = System.Data.Entity.EntityState.Modified;
                 await _db.SaveChangesAsync();
@@ -95,6 +114,8 @@ namespace InfoVideo.Controllers
             ViewBag.IdEdition = new SelectList(_db.Edition, "Id", "Box", history.IdEdition);
             ViewBag.IdUser = new SelectList(_db.Users, "Id", "Login", history.IdUser);
             return View(history);
+            }
+            return PartialView("AuthAdminError");
         }
 
 
