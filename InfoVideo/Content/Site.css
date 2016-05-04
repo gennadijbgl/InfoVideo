@@ -842,6 +842,7 @@ td a:hover{
 }
 .search {
     margin-top:0;
+    margin-bottom:10px;
     position:relative;
     padding: 15px 50px 15px 15px;
 }
@@ -1078,7 +1079,8 @@ header {
 
 .news {
 
-    padding: 0 5px;
+    margin-right:   5px;
+margin-left:    1px;
     min-width: 128px;
 }
 .news .card{
