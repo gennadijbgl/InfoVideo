@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -74,6 +75,12 @@ namespace InfoVideo.Controllers
             {
                 
                 ProcessFile(Logo, video);
+      
+
+               var d = new ObjectParameter("ErrorMessage","");
+
+                var y =   _db.VideoInsert(video.Title, video.Description, video.Logo, video.Date, video.Genre, d);
+
 
                 _db.Video.Add(video);
                 await _db.SaveChangesAsync();

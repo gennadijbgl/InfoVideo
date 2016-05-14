@@ -185,6 +185,9 @@
     <Compile Include="Models\Video.cs">
       <DependentUpon>InfoVideo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\VideoAll_Result.cs">
+      <DependentUpon>InfoVideo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -260,6 +263,7 @@
       <DependentUpon>InfoVideo.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\Libs\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\Libs\Chart.bundle.js" />
     <Content Include="Scripts\Libs\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\Libs\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\Libs\jquery.validate.js" />
@@ -341,6 +345,7 @@
     <Content Include="Views\Editions\Edition.cshtml" />
     <Content Include="Views\Account\User.cshtml" />
     <Content Include="Views\Histories\Model.cshtml" />
+    <None Include="Views\Histories\Statistics.cshtml" />
     <None Include="Views\Home\ProcType.cshtml" />
     <Content Include="Views\Shared\Format.cshtml" />
     <Content Include="Views\Shared\AuthAdminError.cshtml" />

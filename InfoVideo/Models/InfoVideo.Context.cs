@@ -20,10 +20,8 @@ namespace InfoVideo.Models
         public InfoVideoContext()
             : base("name=InfoVideoContext")
         {
-            Database.SetInitializer<InfoVideoContext>(new MyDbInitializer());
-            
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -67,6 +65,99 @@ namespace InfoVideo.Models
                 new ObjectParameter("SizeDiskount", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GiveUserDiscount", buysCountParameter, sizeDiskountParameter);
+        }
+    
+        public virtual int Insert(string title, string description, string logo, Nullable<System.DateTime> date, string genre, ObjectParameter errorMessage)
+        {
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var logoParameter = logo != null ?
+                new ObjectParameter("Logo", logo) :
+                new ObjectParameter("Logo", typeof(string));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            var genreParameter = genre != null ?
+                new ObjectParameter("Genre", genre) :
+                new ObjectParameter("Genre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert", titleParameter, descriptionParameter, logoParameter, dateParameter, genreParameter, errorMessage);
+        }
+    
+        public virtual ObjectResult<Video> VideoAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Video>("VideoAll");
+        }
+    
+        public virtual int VideoDelete(Nullable<int> id, ObjectParameter errorMessage)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VideoDelete", idParameter, errorMessage);
+        }
+    
+        public virtual int VideoInsert(string title, string description, string logo, Nullable<System.DateTime> date, string genre, ObjectParameter errorMessage)
+        {
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var logoParameter = logo != null ?
+                new ObjectParameter("Logo", logo) :
+                new ObjectParameter("Logo", typeof(string));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            var genreParameter = genre != null ?
+                new ObjectParameter("Genre", genre) :
+                new ObjectParameter("Genre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VideoInsert", titleParameter, descriptionParameter, logoParameter, dateParameter, genreParameter, errorMessage);
+        }
+    
+        public virtual int VideoUpdate(Nullable<int> id, string title, string description, string logo, Nullable<System.DateTime> date, string genre, ObjectParameter errorMessage)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var logoParameter = logo != null ?
+                new ObjectParameter("Logo", logo) :
+                new ObjectParameter("Logo", typeof(string));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            var genreParameter = genre != null ?
+                new ObjectParameter("Genre", genre) :
+                new ObjectParameter("Genre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VideoUpdate", idParameter, titleParameter, descriptionParameter, logoParameter, dateParameter, genreParameter, errorMessage);
         }
     }
 }

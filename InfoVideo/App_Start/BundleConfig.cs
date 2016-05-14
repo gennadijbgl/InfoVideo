@@ -16,9 +16,12 @@ namespace InfoVideo
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/Libs/jquery.validate*"));
 
+            
+
 
             bundles.Add(new ScriptBundle("~/bundles/Scripts")
                    .Include(
+                 "~/Scripts/Libs/Chart.bundle.js",
                      "~/Scripts/Libs/jquery.unobtrusive-ajax.js",
                 "~/Scripts/FrontEnd/ninjaVideoPlugin.js",
                 "~/Scripts/FrontEnd/ninja-slider.js",

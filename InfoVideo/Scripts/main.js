@@ -23,7 +23,7 @@ var OnSuccess = function (data) {
     {
         $('#item' + id).append(data); // добавляем данные в список
     }
-}
+};
 
 var ajaxT = function(data, status, xhr) {
 
@@ -31,7 +31,7 @@ var ajaxT = function(data, status, xhr) {
    location.reload();
  } 
  
-}
+};
 
 $(document)
     .ready(function() {
@@ -93,9 +93,99 @@ $(document)
                         });
                 });
 
+ $('#stat-ajax-btn')
+            .unbind('click').click(
+                function() {
+                    $.ajax({
+                        url: "/Histories/GetByDate",
+                        type: 'GET',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        data: {
+                            yearDisplay: $("input[name='yearDisplay']").val()
+                              }
+                        })
+                        .done(function (data) {
+                            $("#stat-ajax").empty();
+                            var l = $.map(data, function (obj, i) { return obj.Month; });
+                            var d = $.map(data, function (obj, i) { return obj.Count; });
+                            var dataS= {
+                                labels: l,
+                                datasets: [
+                                            {
+                                                label: "",
+                                             
+                                               
+                                                data: d
+                                            }
+                                ]
+                            }
+                            var myBarChart = new Chart($("#myChart"), {
+                                type: 'line',
+                                data:dataS
+                                
+                            });
 
+                        //  $("#stat-ajax").append(data); 
+
+                        })
+                        .error(function (data, t, b) {
+                            $("#stat-ajax").empty();
+                            $("#stat-ajax").append(data.responseText);
+                            alert(data.responseText);
+
+                        });
+                });
         
+ $('#stat-ajax-btn-pop')
+    .unbind('click').click(
+        function () {
+            $.ajax({
+                url: "/Histories/GetByVideo",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                
+            })
+                .done(function (data) {
+                    $("#stat-ajax").empty();
+                    var l = $.map(data, function (obj, i) { return obj.Title; });
+                    var d = $.map(data, function (obj, i) { return obj.Count; });
+                    var dataS = {
+                        labels: l,
+                        datasets: [
+                                    {
+                                        data: d,
+                                        backgroundColor: [
+                                            "#FF6384",
+            "#4BC0C0",
+            "#FFCE56",
+            "#E7E9ED",
+            "#36A2EB"
+                                        ],
+                                        hoverBackgroundColor: [
+                                            "#FF6384",
+                                            "#36A2EB",
+                                            "#FFCE56"
+                                        ]
+                                    }
+                        ]
+                    }
+                    var myBarChart = new Chart($("#myChart"), {
+                        type: 'pie',
+                        data: dataS
+                    });
 
+                    //  $("#stat-ajax").append(data); 
+
+                })
+                .error(function (data, t, b) {
+                    $("#stat-ajax").empty();
+                    $("#stat-ajax").append(data.responseText);
+                    alert(data.responseText);
+
+                });
+        });
 
  
     });

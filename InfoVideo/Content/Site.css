@@ -154,7 +154,7 @@
 .input-txt { padding-bottom: 10px; }
 
 .form-group{
-        width: 30%;
+    width: 30%;
     margin: 5px auto;
 }
 td a{
@@ -577,6 +577,10 @@ footer {
     width: 100%;
 }
 
+.stat{
+    width: 70%;
+    margin:0 auto;
+}
 .footer-copy {
     display: inline-block;
 
@@ -1076,7 +1080,15 @@ header {
     padding: 0;
 
 }
+.head-user-content .form-group{
+    width: auto;
+    
 
+}
+.menu-breit{
+ text-align: center;
+ width: 100px;
+}
 .news {
 
     margin-right:   5px;

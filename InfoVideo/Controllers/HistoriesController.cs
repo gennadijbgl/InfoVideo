@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using InfoVideo.Models;
+using Newtonsoft.Json;
 
 namespace InfoVideo.Controllers
 {
@@ -30,6 +33,85 @@ namespace InfoVideo.Controllers
             }
         }
 
+        public async Task<ActionResult> Statistics()
+        {
+           return View();
+        }
+
+
+        public string GetByDate(int yearDisplay = 2016)
+        {
+            DateTimeFormatInfo mfi = new DateTimeFormatInfo();
+            var b = _db.History.Include(t => t.Edition).GroupBy(t=>t.Date).ToList();
+
+            var y = _db.History.Min(t => t.Date.Year);
+
+            var changesPerYearAndMonth =
+          
+            from month in Enumerable.Range(1, 12)
+            let key = new { Year = yearDisplay, Month = month }
+            join revision in b on key
+                      equals new
+                      {
+                          revision.Key.Year,
+                          revision.Key.Month
+                      } into g
+            select new {  key.Year, Month= mfi.GetMonthName(key.Month), Count = g.Count() };
+
+
+            var c =  JsonConvert.SerializeObject(changesPerYearAndMonth, Formatting.Indented,
+                        new JsonSerializerSettings
+                        {
+                            PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                        });
+
+            return c;
+
+        }
+
+
+        public string GetByVideo(int yearDisplay = 2016)
+        {
+
+            var b = _db.History.GroupBy(t => t.Edition.Video.Title).Select(
+                group => new {
+                Title = group.Key,
+                Count = group.Count()
+            }).ToList();
+                                           
+
+
+            var c = JsonConvert.SerializeObject(b, Formatting.Indented,
+                        new JsonSerializerSettings
+                        {
+                            PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                        });
+
+            return c;
+
+        }
+
+
+        public string GetByUser(int yearDisplay = 2016)
+        {
+
+            var b = _db.History.GroupBy(t => t.Users.Login).Select(
+                group => new {
+                    Login = group.Key,
+                    Count = group.Count()
+                }).ToList();
+
+
+
+            var c = JsonConvert.SerializeObject(b, Formatting.Indented,
+                        new JsonSerializerSettings
+                        {
+                            PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                        });
+
+            return c;
+
+        }
 
         public async Task<ActionResult> Details(int? id)
         {
