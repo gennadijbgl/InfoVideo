@@ -10,16 +10,9 @@
 namespace InfoVideo.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Users
+    public partial class UsersAll_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
-        {
-            this.History = new HashSet<History>();
-        }
-    
         public int Id { get; set; }
         public Nullable<int> IdRole { get; set; }
         public string Login { get; set; }
@@ -29,9 +22,5 @@ namespace InfoVideo.Models
         public string LastName { get; set; }
         public string Address { get; set; }
         public Nullable<short> Discount { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<History> History { get; set; }
-        public virtual Roles Roles { get; set; }
     }
 }

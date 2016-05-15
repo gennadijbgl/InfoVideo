@@ -554,6 +554,16 @@ body {
 
     position: relative;
 }
+.stat-form{
+width: 30%;
+margin:0 auto; 
+ margin-bottom:10px;
+}
+
+.stat-form .btn{
+margin:0 auto; 
+display:block;
+}
 
 footer {
     background-color: #303033;
@@ -578,8 +588,13 @@ footer {
 }
 
 .stat{
-    width: 70%;
+
+    width: 60%;
     margin:0 auto;
+
+}
+#myChart{
+
 }
 .footer-copy {
     display: inline-block;
@@ -1083,6 +1098,14 @@ header {
 .head-user-content .form-group{
     width: auto;
     
+
+}
+.validation-summary-errors ul{
+padding:0;
+margin:20px 0;
+  list-style: none;
+  color:red;
+
 
 }
 .menu-breit{

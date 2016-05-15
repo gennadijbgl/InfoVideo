@@ -32,7 +32,7 @@ var ajaxT = function(data, status, xhr) {
  } 
  
 };
-
+var chart = null;
 $(document)
     .ready(function() {
 
@@ -93,6 +93,10 @@ $(document)
                         });
                 });
 
+
+
+      
+
  $('#stat-ajax-btn')
             .unbind('click').click(
                 function() {
@@ -107,8 +111,13 @@ $(document)
                         })
                         .done(function (data) {
                             $("#stat-ajax").empty();
+
+                        
+                     
+
                             var l = $.map(data, function (obj, i) { return obj.Month; });
                             var d = $.map(data, function (obj, i) { return obj.Count; });
+
                             var dataS= {
                                 labels: l,
                                 datasets: [
@@ -120,11 +129,27 @@ $(document)
                                             }
                                 ]
                             }
-                            var myBarChart = new Chart($("#myChart"), {
-                                type: 'line',
-                                data:dataS
+                            if (chart !== null) {
+                                chart.destroy();
+                            } else {
+                             //   $("#myChart").slideDown();
+                            }
+
+                        
                                 
-                            });
+
+                                chart = new Chart($("#myChart"),
+                                {
+                                    data: dataS,
+                                    type: 'line',
+                                    options: {
+                                        labels:{
+                                       fontColor: "#FFFFFF"
+                                    }
+                                }
+                                 });
+                          
+                           
 
                         //  $("#stat-ajax").append(data); 
 
@@ -144,11 +169,15 @@ $(document)
                 url: "/Histories/GetByVideo",
                 type: 'GET',
                 contentType: "application/json; charset=utf-8",
-                dataType: "json",
+                dataType: "json"
                 
             })
                 .done(function (data) {
                     $("#stat-ajax").empty();
+
+              
+              
+
                     var l = $.map(data, function (obj, i) { return obj.Title; });
                     var d = $.map(data, function (obj, i) { return obj.Count; });
                     var dataS = {
@@ -171,10 +200,26 @@ $(document)
                                     }
                         ]
                     }
-                    var myBarChart = new Chart($("#myChart"), {
-                        type: 'pie',
-                        data: dataS
-                    });
+
+                    if (chart !== null) {
+                        chart.destroy();
+                    }
+                    else {
+                    //    $("#myChart").slideDown();
+                    }
+
+                 
+
+                 
+
+                    chart = new Chart($("#myChart"),
+                 {
+                     data: dataS,
+                     type: 'pie'
+                 });
+
+                  
+                
 
                     //  $("#stat-ajax").append(data); 
 

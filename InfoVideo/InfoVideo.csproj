@@ -148,7 +148,13 @@
     <Compile Include="Models\Edition.cs">
       <DependentUpon>InfoVideo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EditionAll_Result.cs">
+      <DependentUpon>InfoVideo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Format.cs">
+      <DependentUpon>InfoVideo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FormatAll_Result.cs">
       <DependentUpon>InfoVideo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetUsersByDiscount_Result.cs">
@@ -159,6 +165,9 @@
     </Compile>
     <Compile Include="Models\Helpers.cs" />
     <Compile Include="Models\History.cs">
+      <DependentUpon>InfoVideo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HistoryAll_Result.cs">
       <DependentUpon>InfoVideo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\InfoVideo.Context.cs">
@@ -176,10 +185,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InfoVideo.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\LogTable.cs">
+      <DependentUpon>InfoVideo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Roles.cs">
       <DependentUpon>InfoVideo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RolesAll_Result.cs">
+      <DependentUpon>InfoVideo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Users.cs">
+      <DependentUpon>InfoVideo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsersAll_Result.cs">
       <DependentUpon>InfoVideo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Video.cs">

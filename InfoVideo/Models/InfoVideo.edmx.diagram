@@ -4,18 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="36aed0133bb345159e3c9f2b8792ca22" Name="Diagram1" ZoomLevel="55">
-        <EntityTypeShape EntityType="InfoVideoModel.Edition" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="InfoVideoModel.Format" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="InfoVideoModel.History" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="InfoVideoModel.Roles" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="InfoVideoModel.Users" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="InfoVideoModel.Video" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <AssociationConnector Association="InfoVideoModel.FK_Edition_Format" ManuallyRouted="false" />
-        <AssociationConnector Association="InfoVideoModel.FK_Edition_Video" ManuallyRouted="false" />
-        <AssociationConnector Association="InfoVideoModel.FK_History_Edition" ManuallyRouted="false" />
-        <AssociationConnector Association="InfoVideoModel.FK_History_User" ManuallyRouted="false" />
-        <AssociationConnector Association="InfoVideoModel.FK_User_Roles" ManuallyRouted="false" />
+      <Diagram DiagramId="232e6c8f420d4a19b2be17a86f2f26a7" Name="Diagram1">
+        <EntityTypeShape EntityType="InfoVideoContext.Edition" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfoVideoContext.Format" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfoVideoContext.History" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfoVideoContext.LogTable" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfoVideoContext.Roles" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfoVideoContext.Users" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfoVideoContext.Video" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="InfoVideoContext.FK_Edition_Format" ManuallyRouted="false" />
+        <AssociationConnector Association="InfoVideoContext.FK_Edition_Video" ManuallyRouted="false" />
+        <AssociationConnector Association="InfoVideoContext.FK_History_Edition" ManuallyRouted="false" />
+        <AssociationConnector Association="InfoVideoContext.FK_History_User" ManuallyRouted="false" />
+        <AssociationConnector Association="InfoVideoContext.FK_User_Roles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

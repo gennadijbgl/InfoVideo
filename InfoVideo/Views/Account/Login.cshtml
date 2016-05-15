@@ -1,19 +1,19 @@
 ﻿@model InfoVideo.Models.LoginModel
 
 
-@using (Ajax.BeginForm("Login", "Account",
+@using (Ajax.BeginForm("Login", "Account",null,
                                 new AjaxOptions
                                 {
                                     HttpMethod = "POST",
                                     InsertionMode = InsertionMode.Replace,
-                                    UpdateTargetId = "form0",
+                                    UpdateTargetId = "login-form-a",
                                     OnSuccess = "ajaxT"
-                                }))
+                                }, new { @id = "login-form-a" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        @Html.ValidationSummary(true)
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
             @Html.LabelFor(model => model.Login, new { @class = "control-label col-md-2" })

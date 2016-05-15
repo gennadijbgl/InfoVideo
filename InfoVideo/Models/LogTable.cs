@@ -12,15 +12,12 @@ namespace InfoVideo.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class History
+    public partial class LogTable
     {
-        public int Id { get; set; }
-        public Nullable<int> IdUser { get; set; }
-        public Nullable<int> IdEdition { get; set; }
-        public System.DateTime Date { get; set; }
-        public decimal Price { get; set; }
-    
-        public virtual Edition Edition { get; set; }
-        public virtual Users Users { get; set; }
+        public int ID { get; set; }
+        public string ActionType { get; set; }
+        public string TableName { get; set; }
+        public string BodyAction { get; set; }
+        public Nullable<System.DateTime> TimeAction { get; set; }
     }
 }

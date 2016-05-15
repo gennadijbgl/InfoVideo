@@ -17,27 +17,29 @@
     @RenderPage("Header.cshtml", false)
 </header>
 
-    @if(HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Home")
-    {
+  
 
-        @RenderPage("Slider.cshtml", false)
-    }
-
-        <div class="wrapper">
-
-        <div id="content">
-        @RenderBody()
-        </div>
-       
-
-
-
+    <div class="header-slider">
+        @RenderSection("Slider", false)
     </div>
 
 
-<footer id="footer">
-    @RenderPage("Footer.cshtml", false)
-</footer>
-    @Scripts.Render("~/bundles/Scripts")
+
+        <div class="wrapper">
+
+            <div id="content">
+                @RenderBody()
+            </div>
+
+
+
+
+        </div>
+
+
+        <footer id="footer">
+            @RenderPage("Footer.cshtml", false)
+        </footer>
+        @Scripts.Render("~/bundles/Scripts")
 </body>
 </html>

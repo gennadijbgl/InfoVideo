@@ -8,7 +8,6 @@ using System.Data.Entity;
 namespace InfoVideo.Models
 {
 
-       
 
     public class LoginModel
     {

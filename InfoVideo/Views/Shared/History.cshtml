@@ -34,16 +34,19 @@
 
         <th></th>
     </tr>
+  
+@foreach (var item in Model)
+{
 
-@foreach (var item in Model) {
+  {
     <tr>
         <td>
-            <a href="@Url.Action("Details", "Videos", new {id = item.Edition.Video.Id})" title="Змяніць">
+            <a href="@Url.Action("Details", "Videos", new {id = item.Edition?.Video?.Id})" title="Змяніць">
                 @Html.DisplayFor(modelItem => item.Edition.Video.Title)
             </a>
-            
+
         </td>
-        <td>
+        @*<td>
             <a href="@Url.Action("Details", "Formats", new {id = item.Edition.Format.Id})" title="Змяніць">
                 @Html.DisplayFor(modelItem => item.Edition.Format.Languages)
             </a>
@@ -56,7 +59,7 @@
             <a href="@Url.Action("Details", "Account", new {id = item.Users.Id})" title="Змяніць">
                 @Html.DisplayFor(modelItem => item.Users.Login)
             </a>
-            
+
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Date)
@@ -71,11 +74,12 @@
             <a href="@Url.Action("Details", "Histories", new {id = item.Id})" title="Падрабязнасці">
                 <i class="zmdi zmdi-eye zmdi-hc-fw"></i>
             </a>
-            <a href="@Url.Action("Delete", "Histories", new {id = item.Id})" title="Выдаліць">
-                <i class="zmdi zmdi-delete zmdi-hc-fw"></i>
-            </a>
-        </td>
+
+        </td>*@
     </tr>
 }
+      }
 
 </table>
+
+

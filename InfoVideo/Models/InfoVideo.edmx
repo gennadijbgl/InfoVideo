@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="InfoVideoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="InfoVideoContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Edition">
           <Key>
             <PropertyRef Name="Id" />
@@ -29,10 +29,20 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdUser" Type="int" Nullable="false" />
-          <Property Name="IdEdition" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="IdEdition" Type="int" />
           <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActionType" Type="char" MaxLength="20" />
+          <Property Name="TableName" Type="char" MaxLength="20" />
+          <Property Name="BodyAction" Type="xml" />
+          <Property Name="TimeAction" Type="datetime" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -46,7 +56,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="IdRole" Type="int" />
           <Property Name="Login" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
@@ -91,7 +101,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_History_Edition">
-          <End Role="Edition" Type="Self.Edition" Multiplicity="1" />
+          <End Role="Edition" Type="Self.Edition" Multiplicity="0..1" />
           <End Role="History" Type="Self.History" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Edition">
@@ -103,7 +113,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_History_User">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="History" Type="Self.History" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -115,7 +127,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_Roles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
@@ -126,6 +138,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="EditionAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="EditionDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="EditionInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdVideo" Type="int" Mode="In" />
+          <Parameter Name="IdFormat" Type="int" Mode="In" />
+          <Parameter Name="Price" Type="money" Mode="In" />
+          <Parameter Name="Box" Type="nvarchar" Mode="In" />
+          <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="EditionUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="IdVideo" Type="int" Mode="In" />
+          <Parameter Name="IdFormat" Type="int" Mode="In" />
+          <Parameter Name="Price" Type="money" Mode="In" />
+          <Parameter Name="Box" Type="nvarchar" Mode="In" />
+          <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="FormatAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="FormatDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="FormatInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Container" Type="nvarchar" Mode="In" />
+          <Parameter Name="Languages" Type="nvarchar" Mode="In" />
+          <Parameter Name="Support3D" Type="bit" Mode="In" />
+          <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="FormatUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Container" Type="nvarchar" Mode="In" />
+          <Parameter Name="Languages" Type="nvarchar" Mode="In" />
+          <Parameter Name="Support3D" Type="bit" Mode="In" />
+          <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
         <Function Name="GetUsersByDiscount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Discount" Type="smallint" Mode="In" />
           <ReturnType>
@@ -153,6 +203,68 @@
           <Parameter Name="BuysCount" Type="int" Mode="In" />
           <Parameter Name="SizeDiskount" Type="int" Mode="In" />
         </Function>
+        <Function Name="HistoryAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="HistoryDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="HistoryInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUser" Type="int" Mode="In" />
+          <Parameter Name="IdEdition" Type="int" Mode="In" />
+          <Parameter Name="Date" Type="datetime2" Mode="In" />
+          <Parameter Name="Price" Type="money" Mode="In" />
+          <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="HistoryUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="IdUser" Type="int" Mode="In" />
+          <Parameter Name="IdEdition" Type="int" Mode="In" />
+          <Parameter Name="Date" Type="datetime2" Mode="In" />
+          <Parameter Name="Price" Type="money" Mode="In" />
+          <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="RolesAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RolesDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="RolesInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="RolesUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="UsersAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UsersDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="UsersInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdRole" Type="int" Mode="In" />
+          <Parameter Name="Login" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Discount" Type="smallint" Mode="In" />
+          <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="UsersUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="IdRole" Type="int" Mode="In" />
+          <Parameter Name="Login" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Discount" Type="smallint" Mode="In" />
+          <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
         <Function Name="VideoAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="VideoDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="int" Mode="In" />
@@ -175,10 +287,11 @@
           <Parameter Name="Genre" Type="nvarchar" Mode="In" />
           <Parameter Name="ErrorMessage" Type="nvarchar" Mode="InOut" />
         </Function>
-        <EntityContainer Name="InfoVideoModelStoreContainer">
+        <EntityContainer Name="InfoVideoContextStoreContainer">
           <EntitySet Name="Edition" EntityType="Self.Edition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Format" EntityType="Self.Format" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogTable" EntityType="Self.LogTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
@@ -203,10 +316,11 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="InfoVideoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="InfoVideoContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <ComplexType Name="GetUsersByDiscount_Result">
           <Property Name="Id" Type="Int32" />
           <Property Name="UserLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -244,12 +358,22 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdUser" Type="Int32" Nullable="false" />
-          <Property Name="IdEdition" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="IdEdition" Type="Int32" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="Edition" Relationship="Self.FK_History_Edition" FromRole="History" ToRole="Edition" />
           <NavigationProperty Name="Users" Relationship="Self.FK_History_User" FromRole="History" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="LogTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActionType" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="TableName" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="BodyAction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TimeAction" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -264,7 +388,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="IdRole" Type="Int32" />
           <Property Name="Login" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
@@ -312,7 +436,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_History_Edition">
-          <End Role="Edition" Type="Self.Edition" Multiplicity="1" />
+          <End Role="Edition" Type="Self.Edition" Multiplicity="0..1" />
           <End Role="History" Type="Self.History" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Edition">
@@ -324,7 +448,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_History_User">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="History" Type="Self.History" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -336,7 +462,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_Roles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
@@ -347,10 +473,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="InfoVideoContext" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Edition" EntityType="Self.Edition" />
           <EntitySet Name="Format" EntityType="Self.Format" />
           <EntitySet Name="History" EntityType="Self.History" />
+          <EntitySet Name="LogTable" EntityType="Self.LogTable" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="Video" EntityType="Self.Video" />
@@ -374,25 +501,117 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <FunctionImport Name="GetUsersByDiscount" IsComposable="true" ReturnType="Collection(InfoVideoModel.GetUsersByDiscount_Result)">
-          <Parameter Name="Discount" Mode="In" Type="Int16" />
+          <FunctionImport Name="GetUsersByDiscount" IsComposable="true" ReturnType="Collection(InfoVideoContext.GetUsersByDiscount_Result)">
+            <Parameter Name="Discount" Mode="In" Type="Int16" />
           </FunctionImport>
-          <FunctionImport Name="GetVideoByType" IsComposable="true" ReturnType="Collection(InfoVideoModel.GetVideoByType_Result)">
-          <Parameter Name="Type" Mode="In" Type="String" />
+          <FunctionImport Name="GetVideoByType" IsComposable="true" ReturnType="Collection(InfoVideoContext.GetVideoByType_Result)">
+            <Parameter Name="Type" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EditionAll" ReturnType="Collection(InfoVideoContext.EditionAll_Result)" />
+          <FunctionImport Name="EditionDelete">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EditionInsert">
+            <Parameter Name="IdVideo" Mode="In" Type="Int32" />
+            <Parameter Name="IdFormat" Mode="In" Type="Int32" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Box" Mode="In" Type="String" />
+            <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EditionUpdate">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="IdVideo" Mode="In" Type="Int32" />
+            <Parameter Name="IdFormat" Mode="In" Type="Int32" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Box" Mode="In" Type="String" />
+            <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FormatAll" ReturnType="Collection(InfoVideoContext.FormatAll_Result)" />
+          <FunctionImport Name="FormatDelete">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FormatInsert">
+            <Parameter Name="Container" Mode="In" Type="String" />
+            <Parameter Name="Languages" Mode="In" Type="String" />
+            <Parameter Name="Support3D" Mode="In" Type="Boolean" />
+            <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FormatUpdate">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Container" Mode="In" Type="String" />
+            <Parameter Name="Languages" Mode="In" Type="String" />
+            <Parameter Name="Support3D" Mode="In" Type="Boolean" />
+            <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GiveUserDiscount">
             <Parameter Name="BuysCount" Mode="In" Type="Int32" />
             <Parameter Name="SizeDiskount" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Insert">
-            <Parameter Name="Title" Mode="In" Type="String" />
-            <Parameter Name="Description" Mode="In" Type="String" />
-            <Parameter Name="Logo" Mode="In" Type="String" />
-            <Parameter Name="Date" Mode="In" Type="DateTime" />
-            <Parameter Name="Genre" Mode="In" Type="String" />
+          <FunctionImport Name="HistoryAll" ReturnType="Collection(InfoVideoContext.HistoryAll_Result)" />
+          <FunctionImport Name="HistoryDelete">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
             <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="VideoAll" ReturnType="Collection(InfoVideoModel.VideoAll_Result)" />
+          <FunctionImport Name="HistoryInsert">
+            <Parameter Name="IdUser" Mode="In" Type="Int32" />
+            <Parameter Name="IdEdition" Mode="In" Type="Int32" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HistoryUpdate">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="IdUser" Mode="In" Type="Int32" />
+            <Parameter Name="IdEdition" Mode="In" Type="Int32" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RolesAll" ReturnType="Collection(InfoVideoContext.RolesAll_Result)" />
+          <FunctionImport Name="RolesDelete">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RolesInsert">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RolesUpdate">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UsersAll" ReturnType="Collection(InfoVideoContext.UsersAll_Result)" />
+          <FunctionImport Name="UsersDelete">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UsersInsert">
+            <Parameter Name="IdRole" Mode="In" Type="Int32" />
+            <Parameter Name="Login" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Discount" Mode="In" Type="Int16" />
+            <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UsersUpdate">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="IdRole" Mode="In" Type="Int32" />
+            <Parameter Name="Login" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Discount" Mode="In" Type="Int16" />
+            <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="VideoAll" ReturnType="Collection(InfoVideoContext.VideoAll_Result)" />
           <FunctionImport Name="VideoDelete">
             <Parameter Name="Id" Mode="In" Type="Int32" />
             <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
@@ -415,6 +634,48 @@
             <Parameter Name="ErrorMessage" Mode="InOut" Type="String" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="EditionAll_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="IdVideo" Nullable="true" />
+          <Property Type="Int32" Name="IdFormat" Nullable="true" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Box" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="FormatAll_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Container" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Languages" Nullable="false" MaxLength="20" />
+          <Property Type="Boolean" Name="Support3D" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="HistoryAll_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="IdUser" Nullable="true" />
+          <Property Type="Int32" Name="IdEdition" Nullable="true" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="RolesAll_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="IdRole" Nullable="true" />
+          <Property Type="String" Name="Login" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="50" />
+          <Property Type="Int16" Name="Discount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UsersAll_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="IdRole" Nullable="true" />
+          <Property Type="String" Name="Login" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="50" />
+          <Property Type="Int16" Name="Discount" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="VideoAll_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Title" Nullable="true" MaxLength="50" />
@@ -428,9 +689,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="InfoVideoModelStoreContainer" CdmEntityContainer="InfoVideoContext">
+        <EntityContainerMapping StorageEntityContainer="InfoVideoContextStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Edition">
-            <EntityTypeMapping TypeName="InfoVideoModel.Edition">
+            <EntityTypeMapping TypeName="InfoVideoContext.Edition">
               <MappingFragment StoreEntitySet="Edition">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdVideo" ColumnName="IdVideo" />
@@ -441,7 +702,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Format">
-            <EntityTypeMapping TypeName="InfoVideoModel.Format">
+            <EntityTypeMapping TypeName="InfoVideoContext.Format">
               <MappingFragment StoreEntitySet="Format">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Container" ColumnName="Container" />
@@ -451,7 +712,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="History">
-            <EntityTypeMapping TypeName="InfoVideoModel.History">
+            <EntityTypeMapping TypeName="InfoVideoContext.History">
               <MappingFragment StoreEntitySet="History">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
@@ -461,8 +722,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="LogTable">
+            <EntityTypeMapping TypeName="InfoVideoContext.LogTable">
+              <MappingFragment StoreEntitySet="LogTable">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="BodyAction" ColumnName="BodyAction" />
+                <ScalarProperty Name="TimeAction" ColumnName="TimeAction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="InfoVideoModel.Roles">
+            <EntityTypeMapping TypeName="InfoVideoContext.Roles">
               <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -470,7 +742,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="InfoVideoModel.Users">
+            <EntityTypeMapping TypeName="InfoVideoContext.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdRole" ColumnName="IdRole" />
@@ -485,7 +757,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Video">
-            <EntityTypeMapping TypeName="InfoVideoModel.Video">
+            <EntityTypeMapping TypeName="InfoVideoContext.Video">
               <MappingFragment StoreEntitySet="Video">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -496,27 +768,104 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionName="InfoVideoModel.Store.GetUsersByDiscount" FunctionImportName="GetUsersByDiscount">
+          <FunctionImportMapping FunctionName="InfoVideoContext.Store.GetUsersByDiscount" FunctionImportName="GetUsersByDiscount">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="InfoVideoModel.GetUsersByDiscount_Result">
+              <ComplexTypeMapping TypeName="InfoVideoContext.GetUsersByDiscount_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
                 <ScalarProperty Name="UserDiscount" ColumnName="UserDiscount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="InfoVideoModel.Store.GetVideoByType" FunctionImportName="GetVideoByType">
+          <FunctionImportMapping FunctionName="InfoVideoContext.Store.GetVideoByType" FunctionImportName="GetVideoByType">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="InfoVideoModel.GetVideoByType_Result">
+              <ComplexTypeMapping TypeName="InfoVideoContext.GetVideoByType_Result">
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Container" ColumnName="Container" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GiveUserDiscount" FunctionName="InfoVideoModel.Store.GiveUserDiscount" />
-          <FunctionImportMapping FunctionImportName="VideoAll" FunctionName="InfoVideoModel.Store.VideoAll">
+          <FunctionImportMapping FunctionImportName="EditionAll" FunctionName="InfoVideoContext.Store.EditionAll">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="InfoVideoModel.VideoAll_Result">
+              <ComplexTypeMapping TypeName="InfoVideoContext.EditionAll_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdVideo" ColumnName="IdVideo" />
+                <ScalarProperty Name="IdFormat" ColumnName="IdFormat" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Box" ColumnName="Box" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EditionDelete" FunctionName="InfoVideoContext.Store.EditionDelete" />
+          <FunctionImportMapping FunctionImportName="EditionInsert" FunctionName="InfoVideoContext.Store.EditionInsert" />
+          <FunctionImportMapping FunctionImportName="EditionUpdate" FunctionName="InfoVideoContext.Store.EditionUpdate" />
+          <FunctionImportMapping FunctionImportName="FormatAll" FunctionName="InfoVideoContext.Store.FormatAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InfoVideoContext.FormatAll_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Container" ColumnName="Container" />
+                <ScalarProperty Name="Languages" ColumnName="Languages" />
+                <ScalarProperty Name="Support3D" ColumnName="Support3D" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FormatDelete" FunctionName="InfoVideoContext.Store.FormatDelete" />
+          <FunctionImportMapping FunctionImportName="FormatInsert" FunctionName="InfoVideoContext.Store.FormatInsert" />
+          <FunctionImportMapping FunctionImportName="FormatUpdate" FunctionName="InfoVideoContext.Store.FormatUpdate" />
+          <FunctionImportMapping FunctionImportName="GiveUserDiscount" FunctionName="InfoVideoContext.Store.GiveUserDiscount" />
+          <FunctionImportMapping FunctionImportName="HistoryAll" FunctionName="InfoVideoContext.Store.HistoryAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InfoVideoContext.HistoryAll_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdEdition" ColumnName="IdEdition" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HistoryDelete" FunctionName="InfoVideoContext.Store.HistoryDelete" />
+          <FunctionImportMapping FunctionImportName="HistoryInsert" FunctionName="InfoVideoContext.Store.HistoryInsert" />
+          <FunctionImportMapping FunctionImportName="HistoryUpdate" FunctionName="InfoVideoContext.Store.HistoryUpdate" />
+          <FunctionImportMapping FunctionImportName="RolesAll" FunctionName="InfoVideoContext.Store.RolesAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InfoVideoContext.RolesAll_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RolesDelete" FunctionName="InfoVideoContext.Store.RolesDelete" />
+          <FunctionImportMapping FunctionImportName="RolesInsert" FunctionName="InfoVideoContext.Store.RolesInsert" />
+          <FunctionImportMapping FunctionImportName="RolesUpdate" FunctionName="InfoVideoContext.Store.RolesUpdate" />
+          <FunctionImportMapping FunctionImportName="UsersAll" FunctionName="InfoVideoContext.Store.UsersAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InfoVideoContext.UsersAll_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UsersDelete" FunctionName="InfoVideoContext.Store.UsersDelete" />
+          <FunctionImportMapping FunctionImportName="UsersInsert" FunctionName="InfoVideoContext.Store.UsersInsert" />
+          <FunctionImportMapping FunctionImportName="UsersUpdate" FunctionName="InfoVideoContext.Store.UsersUpdate" />
+          <FunctionImportMapping FunctionImportName="VideoAll" FunctionName="InfoVideoContext.Store.VideoAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InfoVideoContext.VideoAll_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -526,9 +875,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="VideoDelete" FunctionName="InfoVideoModel.Store.VideoDelete" />
-          <FunctionImportMapping FunctionImportName="VideoInsert" FunctionName="InfoVideoModel.Store.VideoInsert" />
-          <FunctionImportMapping FunctionImportName="VideoUpdate" FunctionName="InfoVideoModel.Store.VideoUpdate" />
+          <FunctionImportMapping FunctionImportName="VideoDelete" FunctionName="InfoVideoContext.Store.VideoDelete" />
+          <FunctionImportMapping FunctionImportName="VideoInsert" FunctionName="InfoVideoContext.Store.VideoInsert" />
+          <FunctionImportMapping FunctionImportName="VideoUpdate" FunctionName="InfoVideoContext.Store.VideoUpdate" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

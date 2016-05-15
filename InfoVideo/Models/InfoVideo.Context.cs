@@ -30,6 +30,7 @@ namespace InfoVideo.Models
         public virtual DbSet<Edition> Edition { get; set; }
         public virtual DbSet<Format> Format { get; set; }
         public virtual DbSet<History> History { get; set; }
+        public virtual DbSet<LogTable> LogTable { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Video> Video { get; set; }
@@ -54,6 +55,118 @@ namespace InfoVideo.Models
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetVideoByType_Result>("[InfoVideoContext].[GetVideoByType](@Type)", typeParameter);
         }
     
+        public virtual ObjectResult<EditionAll_Result> EditionAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EditionAll_Result>("EditionAll");
+        }
+    
+        public virtual int EditionDelete(Nullable<int> id, ObjectParameter errorMessage)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditionDelete", idParameter, errorMessage);
+        }
+    
+        public virtual int EditionInsert(Nullable<int> idVideo, Nullable<int> idFormat, Nullable<decimal> price, string box, ObjectParameter errorMessage)
+        {
+            var idVideoParameter = idVideo.HasValue ?
+                new ObjectParameter("IdVideo", idVideo) :
+                new ObjectParameter("IdVideo", typeof(int));
+    
+            var idFormatParameter = idFormat.HasValue ?
+                new ObjectParameter("IdFormat", idFormat) :
+                new ObjectParameter("IdFormat", typeof(int));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("Price", price) :
+                new ObjectParameter("Price", typeof(decimal));
+    
+            var boxParameter = box != null ?
+                new ObjectParameter("Box", box) :
+                new ObjectParameter("Box", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditionInsert", idVideoParameter, idFormatParameter, priceParameter, boxParameter, errorMessage);
+        }
+    
+        public virtual int EditionUpdate(Nullable<int> id, Nullable<int> idVideo, Nullable<int> idFormat, Nullable<decimal> price, string box, ObjectParameter errorMessage)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var idVideoParameter = idVideo.HasValue ?
+                new ObjectParameter("IdVideo", idVideo) :
+                new ObjectParameter("IdVideo", typeof(int));
+    
+            var idFormatParameter = idFormat.HasValue ?
+                new ObjectParameter("IdFormat", idFormat) :
+                new ObjectParameter("IdFormat", typeof(int));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("Price", price) :
+                new ObjectParameter("Price", typeof(decimal));
+    
+            var boxParameter = box != null ?
+                new ObjectParameter("Box", box) :
+                new ObjectParameter("Box", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditionUpdate", idParameter, idVideoParameter, idFormatParameter, priceParameter, boxParameter, errorMessage);
+        }
+    
+        public virtual ObjectResult<FormatAll_Result> FormatAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FormatAll_Result>("FormatAll");
+        }
+    
+        public virtual int FormatDelete(Nullable<int> id, ObjectParameter errorMessage)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FormatDelete", idParameter, errorMessage);
+        }
+    
+        public virtual int FormatInsert(string container, string languages, Nullable<bool> support3D, ObjectParameter errorMessage)
+        {
+            var containerParameter = container != null ?
+                new ObjectParameter("Container", container) :
+                new ObjectParameter("Container", typeof(string));
+    
+            var languagesParameter = languages != null ?
+                new ObjectParameter("Languages", languages) :
+                new ObjectParameter("Languages", typeof(string));
+    
+            var support3DParameter = support3D.HasValue ?
+                new ObjectParameter("Support3D", support3D) :
+                new ObjectParameter("Support3D", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FormatInsert", containerParameter, languagesParameter, support3DParameter, errorMessage);
+        }
+    
+        public virtual int FormatUpdate(Nullable<int> id, string container, string languages, Nullable<bool> support3D, ObjectParameter errorMessage)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var containerParameter = container != null ?
+                new ObjectParameter("Container", container) :
+                new ObjectParameter("Container", typeof(string));
+    
+            var languagesParameter = languages != null ?
+                new ObjectParameter("Languages", languages) :
+                new ObjectParameter("Languages", typeof(string));
+    
+            var support3DParameter = support3D.HasValue ?
+                new ObjectParameter("Support3D", support3D) :
+                new ObjectParameter("Support3D", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FormatUpdate", idParameter, containerParameter, languagesParameter, support3DParameter, errorMessage);
+        }
+    
         public virtual int GiveUserDiscount(Nullable<int> buysCount, Nullable<int> sizeDiskount)
         {
             var buysCountParameter = buysCount.HasValue ?
@@ -67,34 +180,197 @@ namespace InfoVideo.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GiveUserDiscount", buysCountParameter, sizeDiskountParameter);
         }
     
-        public virtual int Insert(string title, string description, string logo, Nullable<System.DateTime> date, string genre, ObjectParameter errorMessage)
+        public virtual ObjectResult<HistoryAll_Result> HistoryAll()
         {
-            var titleParameter = title != null ?
-                new ObjectParameter("Title", title) :
-                new ObjectParameter("Title", typeof(string));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HistoryAll_Result>("HistoryAll");
+        }
     
-            var descriptionParameter = description != null ?
-                new ObjectParameter("Description", description) :
-                new ObjectParameter("Description", typeof(string));
+        public virtual int HistoryDelete(Nullable<int> id, ObjectParameter errorMessage)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
     
-            var logoParameter = logo != null ?
-                new ObjectParameter("Logo", logo) :
-                new ObjectParameter("Logo", typeof(string));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("HistoryDelete", idParameter, errorMessage);
+        }
+    
+        public virtual int HistoryInsert(Nullable<int> idUser, Nullable<int> idEdition, Nullable<System.DateTime> date, Nullable<decimal> price, ObjectParameter errorMessage)
+        {
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("IdUser", idUser) :
+                new ObjectParameter("IdUser", typeof(int));
+    
+            var idEditionParameter = idEdition.HasValue ?
+                new ObjectParameter("IdEdition", idEdition) :
+                new ObjectParameter("IdEdition", typeof(int));
     
             var dateParameter = date.HasValue ?
                 new ObjectParameter("Date", date) :
                 new ObjectParameter("Date", typeof(System.DateTime));
     
-            var genreParameter = genre != null ?
-                new ObjectParameter("Genre", genre) :
-                new ObjectParameter("Genre", typeof(string));
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("Price", price) :
+                new ObjectParameter("Price", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert", titleParameter, descriptionParameter, logoParameter, dateParameter, genreParameter, errorMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("HistoryInsert", idUserParameter, idEditionParameter, dateParameter, priceParameter, errorMessage);
         }
     
-        public virtual ObjectResult<Video> VideoAll()
+        public virtual int HistoryUpdate(Nullable<int> id, Nullable<int> idUser, Nullable<int> idEdition, Nullable<System.DateTime> date, Nullable<decimal> price, ObjectParameter errorMessage)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Video>("VideoAll");
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("IdUser", idUser) :
+                new ObjectParameter("IdUser", typeof(int));
+    
+            var idEditionParameter = idEdition.HasValue ?
+                new ObjectParameter("IdEdition", idEdition) :
+                new ObjectParameter("IdEdition", typeof(int));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("Price", price) :
+                new ObjectParameter("Price", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("HistoryUpdate", idParameter, idUserParameter, idEditionParameter, dateParameter, priceParameter, errorMessage);
+        }
+    
+        public virtual ObjectResult<RolesAll_Result> RolesAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RolesAll_Result>("RolesAll");
+        }
+    
+        public virtual int RolesDelete(Nullable<int> id, ObjectParameter errorMessage)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RolesDelete", idParameter, errorMessage);
+        }
+    
+        public virtual int RolesInsert(string name, ObjectParameter errorMessage)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RolesInsert", nameParameter, errorMessage);
+        }
+    
+        public virtual int RolesUpdate(Nullable<int> id, string name, ObjectParameter errorMessage)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RolesUpdate", idParameter, nameParameter, errorMessage);
+        }
+    
+        public virtual ObjectResult<UsersAll_Result> UsersAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UsersAll_Result>("UsersAll");
+        }
+    
+        public virtual int UsersDelete(Nullable<int> id, ObjectParameter errorMessage)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UsersDelete", idParameter, errorMessage);
+        }
+    
+        public virtual int UsersInsert(Nullable<int> idRole, string login, string password, string email, string firstName, string lastName, string address, Nullable<short> discount, ObjectParameter errorMessage)
+        {
+            var idRoleParameter = idRole.HasValue ?
+                new ObjectParameter("IdRole", idRole) :
+                new ObjectParameter("IdRole", typeof(int));
+    
+            var loginParameter = login != null ?
+                new ObjectParameter("Login", login) :
+                new ObjectParameter("Login", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var discountParameter = discount.HasValue ?
+                new ObjectParameter("Discount", discount) :
+                new ObjectParameter("Discount", typeof(short));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UsersInsert", idRoleParameter, loginParameter, passwordParameter, emailParameter, firstNameParameter, lastNameParameter, addressParameter, discountParameter, errorMessage);
+        }
+    
+        public virtual int UsersUpdate(Nullable<int> id, Nullable<int> idRole, string login, string password, string email, string firstName, string lastName, string address, Nullable<short> discount, ObjectParameter errorMessage)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var idRoleParameter = idRole.HasValue ?
+                new ObjectParameter("IdRole", idRole) :
+                new ObjectParameter("IdRole", typeof(int));
+    
+            var loginParameter = login != null ?
+                new ObjectParameter("Login", login) :
+                new ObjectParameter("Login", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var discountParameter = discount.HasValue ?
+                new ObjectParameter("Discount", discount) :
+                new ObjectParameter("Discount", typeof(short));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UsersUpdate", idParameter, idRoleParameter, loginParameter, passwordParameter, emailParameter, firstNameParameter, lastNameParameter, addressParameter, discountParameter, errorMessage);
+        }
+    
+        public virtual ObjectResult<VideoAll_Result> VideoAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VideoAll_Result>("VideoAll");
         }
     
         public virtual int VideoDelete(Nullable<int> id, ObjectParameter errorMessage)
