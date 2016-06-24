@@ -23,10 +23,6 @@ namespace InfoVideo
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-         
-
-           
-
         }
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
         {
@@ -42,7 +38,7 @@ namespace InfoVideo
 
               
 
-                using (InfoVideoContext db = new InfoVideoContext())
+                using (InfoVideoEntities db = new InfoVideoEntities())
                 {
                     var user = db.Users.FirstOrDefault(u => u.Login == ticket.Name);
 
@@ -52,7 +48,7 @@ namespace InfoVideo
 
 
                 claimsIdentity.AddClaim(
-                    new Claim(ClaimTypes.Role, (user.Roles.Name)));
+                    new Claim(ClaimTypes.Role, (user.Roles?.Name??"User")));
 
                 }
 

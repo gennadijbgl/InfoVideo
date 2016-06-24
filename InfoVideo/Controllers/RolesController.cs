@@ -13,15 +13,15 @@ namespace InfoVideo.Controllers
 {
     public class RolesController : Controller
     {
-        private readonly InfoVideoContext _db = new InfoVideoContext();
+        private readonly InfoVideoEntities _db = new InfoVideoEntities();
 
 
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             if (User.IsInRole("Administrator"))
             {
 
-                return View(await _db.Roles.ToListAsync());
+                return View(_db.Roles.ToList());
             }
             return PartialView("AuthAdminError");
 
@@ -30,21 +30,20 @@ namespace InfoVideo.Controllers
 
         public async Task<ActionResult> Details(int? id)
         {
-            if (User.IsInRole("Administrator"))
-            {
+            if (!User.IsInRole("Administrator")) return PartialView("AuthAdminError");
 
-                if (id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Roles Roles = await _db.Roles.FindAsync(id);
-            if (Roles == null)
+
+            Roles roles = await _db.Roles.FindAsync(id);
+
+            if (roles == null)
             {
                 return HttpNotFound();
             }
-            return View(Roles);
-            }
-            return PartialView("AuthAdminError");
+            return View(roles);
         }
 
 
@@ -65,14 +64,15 @@ namespace InfoVideo.Controllers
         {
             if (User.IsInRole("Administrator"))
             {
-                if (ModelState.IsValid)
-            {
+                if (!ModelState.IsValid) return View(Roles);
+                if (_db.Roles.FirstOrDefault(t => t.Name.Equals(Roles.Name)) != null)
+                {
+                    ModelState.AddModelError("", "Такая роля існуе");
+                    return  View(Roles);
+                }
                 _db.Roles.Add(Roles);
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
-            }
-
-            return View(Roles);
             }
             return PartialView("AuthAdminError");
         }
@@ -99,17 +99,17 @@ namespace InfoVideo.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name")] Roles Roles)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name")] Roles roles)
         {
             if (User.IsInRole("Administrator"))
             {
                 if (ModelState.IsValid)
             {
-                _db.Entry(Roles).State = System.Data.Entity.EntityState.Modified;
+                _db.Entry(roles).State = System.Data.Entity.EntityState.Modified;
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(Roles);
+            return View(roles);
             }
             return PartialView("AuthAdminError");
         }
@@ -123,12 +123,12 @@ namespace InfoVideo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Roles Roles = await _db.Roles.FindAsync(id);
-            if (Roles == null)
+            Roles roles = await _db.Roles.FindAsync(id);
+            if (roles == null)
             {
                 return HttpNotFound();
             }
-            return View(Roles);
+            return View(roles);
             }
             return PartialView("AuthAdminError");
         }
@@ -140,8 +140,13 @@ namespace InfoVideo.Controllers
         {
             if (User.IsInRole("Administrator"))
             {
-                Roles Roles = await _db.Roles.FindAsync(id);
-            _db.Roles.Remove(Roles);
+                Roles roles = await _db.Roles.FindAsync(id);
+                if (roles.Users.Count > 0)
+                {
+                    ModelState.AddModelError("", "Выдаліце залежнасці ад гэтага відыё");
+                    return View(roles);
+                }
+                _db.Roles.Remove(roles);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
             }

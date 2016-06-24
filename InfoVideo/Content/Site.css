@@ -561,8 +561,9 @@ margin:0 auto;
 }
 
 .stat-form .btn{
-margin:0 auto; 
+margin:10px auto; 
 display:block;
+
 }
 
 footer {
@@ -1111,6 +1112,14 @@ margin:20px 0;
 .menu-breit{
  text-align: center;
  width: 100px;
+}
+.field-validation-error{
+    color:red;
+}
+input[type='number']{
+        font-size: 14px;
+    border: solid 1px lightgray;
+    padding: 2px;
 }
 .news {
 

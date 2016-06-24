@@ -9,26 +9,27 @@
 <div class="header-menu right">
     <ul>
 
-        @if (User.IsInRole("Administrators"))
-        {<li>
-            <a href="@Url.Action("Index", "Home")" title="Дамоў">
-                Працэдуры
-                <i class="zmdi zmdi-settings zmdi-hc-lg"></i>
-            </a>
-            <ul>
-                <li>
-                    <a href="@Url.Action("Proc", "Home")">
-                        ProcType
-                        <i class="zmdi  zmdi-view-list-alt zmdi-hc-lg"></i>
-                    </a>
-                </li>
+        @if (User.IsInRole("Administrator"))
+        {
+            <li>
+                <a href="@Url.Action("Index", "Home")" title="Дамоў">
+                    Працэдуры
+                    <i class="zmdi zmdi-settings zmdi-hc-lg"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="@Url.Action("Proc", "Home")">
+                            ProcType
+                            <i class="zmdi  zmdi-view-list-alt zmdi-hc-lg"></i>
+                        </a>
+                    </li>
 
-            </ul>
-        </li>
-}
+                </ul>
+            </li>
+        }
         @if (User.Identity.IsAuthenticated)
         {
-            if (User.IsInRole("Administrators"))
+            if (User.IsInRole("Administrator"))
             {
 
                 <li>
@@ -54,7 +55,7 @@
                     <i class="fa fa-history" aria-hidden="true"></i>
                 </a>
 
-                @if (User.IsInRole("Administrators"))
+                @if (User.IsInRole("Administrator"))
                 {
                     <ul>
                         <li>
@@ -82,7 +83,7 @@
                         <i class="zmdi  zmdi-view-list-alt zmdi-hc-lg"></i>
                     </a>
                 </li>
-                @if (User.Identity.IsAuthenticated && User.IsInRole("Administrators"))
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
                 {
                     <li>
                         <a href="@Url.Action("Create", "Editions")">
@@ -108,15 +109,15 @@
                             <i class="zmdi  zmdi-view-list-alt zmdi-hc-lg"></i>
                         </a>
                     </li>
-@if (User.Identity.IsAuthenticated && User.IsInRole("Administrators"))
-{
-    <li>
-        <a href="@Url.Action("Create", "Formats")">
-            Стварыць
-            <i class="zmdi zmdi-plus-circle zmdi-hc-lg"></i>
-        </a>
-    </li>
-}
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+                    {
+                        <li>
+                            <a href="@Url.Action("Create", "Formats")">
+                                Стварыць
+                                <i class="zmdi zmdi-plus-circle zmdi-hc-lg"></i>
+                            </a>
+                        </li>
+                    }
                 </ul>
             </li>
 
@@ -134,15 +135,15 @@
                             <i class="zmdi zmdi-view-list-alt  zmdi-hc-lg"></i>
                         </a>
                     </li>
-                   @if (User.Identity.IsAuthenticated && User.IsInRole("Administrators"))
-                   {
-                       <li>
-                           <a href="@Url.Action("Create", "Videos")">
-                               Стварыць
-                               <i class="zmdi zmdi-plus-circle zmdi-hc-lg"></i>
-                           </a>
-                       </li>
-                   }
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+                    {
+                        <li>
+                            <a href="@Url.Action("Create", "Videos")">
+                                Стварыць
+                                <i class="zmdi zmdi-plus-circle zmdi-hc-lg"></i>
+                            </a>
+                        </li>
+                    }
 
                 </ul>
 

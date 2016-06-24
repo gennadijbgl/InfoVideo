@@ -6,13 +6,15 @@
 }
 
 <h2>Выданні</h2>
-
-<p>
-    <a href="@Url.Action("Create", "Editions")" class="btn btn-logo gray" title="Стварыць выданне">
-        <i class="zmdi zmdi-plus-circle zmdi-hc-fw"></i>
-        Стварыць новае
-    </a>
-</p>
+@if (User.IsInRole("Administrator"))
+{
+    <p>
+        <a href="@Url.Action("Create", "Editions")" class="btn btn-logo gray" title="Стварыць выданне">
+            <i class="zmdi zmdi-plus-circle zmdi-hc-fw"></i>
+            Стварыць новае
+        </a>
+    </p>
+}
 <table class="table">
     <tr>
         <th>

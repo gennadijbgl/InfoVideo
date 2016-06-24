@@ -8,7 +8,12 @@
 
             if (User.Identity.IsAuthenticated)
             {
-                <p class="head-title">Мой профіль</p>
+                <p class="head-title">Панель карыстача</p>
+
+                <button class="btn green" onclick="location.href = '@Url.Action("Details", "Account")';">
+                    <i class="btn-logo zmdi zmdi-account zmdi-hc-fw"></i>Мой профіль
+                </button>
+                
 
                 <button class="btn gray" onclick="location.href = '@Url.Action("Logoff", "Account")';">
                     <i class="btn-logo zmdi zmdi-sign-in zmdi-hc-fw"></i>Выйсці

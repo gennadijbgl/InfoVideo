@@ -64,7 +64,7 @@ $(document)
 
                 
 
-                if (p.closest(".news"))
+                if (p.closest(".news").length>0)
                     p.children("*:not(.card-menu, .menu-switch, img)").slideToggle();
                 else p.find(".from-form").slideToggle();
 
@@ -113,10 +113,13 @@ $(document)
                             $("#stat-ajax").empty();
 
                         
-                     
-
+         
                             var l = $.map(data, function (obj, i) { return obj.Month; });
                             var d = $.map(data, function (obj, i) { return obj.Count; });
+                        var cl = [];
+                   d.forEach(function(item, i, arr) {
+  cl.push(colorg());
+});
 
                             var dataS= {
                                 labels: l,
@@ -161,7 +164,78 @@ $(document)
 
                         });
                 });
+   
+
+$('#stat-ajax-btn-user')
+    .unbind('click').click(
+        function () {
+            $.ajax({
+                url: "/Histories/GetByUser",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json", 
+                data: {
+                            yearDisplay: $("input[name='yearDisplay']").val()
+                              }
+                
+            })
+                .done(function (data) {
+                    $("#stat-ajax").empty();
+
+              
         
+
+                    var l = $.map(data, function (obj, i) { return obj.Login; });
+                    var d = $.map(data, function (obj, i) { return obj.Count; });
+
+                           var cl = [];
+                   d.forEach(function(item, i, arr) {
+  cl.push(colorg());
+});
+                    var dataS = {
+                        labels: l,
+                        datasets: [
+                                    {
+                                        data: d,
+                                        backgroundColor: cl
+                                    }
+                        ]
+                    }
+
+                    if (chart !== null) {
+                        chart.destroy();
+                    }
+                    else {
+                    //    $("#myChart").slideDown();
+                    }
+
+                 
+
+                 
+
+                    chart = new Chart($("#myChart"),
+                 {
+                     data: dataS,
+                     type: 'pie'
+                 });
+
+                  
+                
+
+                    //  $("#stat-ajax").append(data); 
+
+                })
+                .error(function (data, t, b) {
+                    $("#stat-ajax").empty();
+                    $("#stat-ajax").append(data.responseText);
+                    alert(data.responseText);
+
+                });
+        });
+
+ 
+
+
  $('#stat-ajax-btn-pop')
     .unbind('click').click(
         function () {
@@ -169,7 +243,10 @@ $(document)
                 url: "/Histories/GetByVideo",
                 type: 'GET',
                 contentType: "application/json; charset=utf-8",
-                dataType: "json"
+                dataType: "json",
+                 data: {
+                            yearDisplay: $("input[name='yearDisplay']").val()
+                              }
                 
             })
                 .done(function (data) {
@@ -180,23 +257,17 @@ $(document)
 
                     var l = $.map(data, function (obj, i) { return obj.Title; });
                     var d = $.map(data, function (obj, i) { return obj.Count; });
+                    var cl = [];
+                   d.forEach(function(item, i, arr) {
+  cl.push(colorg());
+});
                     var dataS = {
                         labels: l,
                         datasets: [
                                     {
                                         data: d,
-                                        backgroundColor: [
-                                            "#FF6384",
-            "#4BC0C0",
-            "#FFCE56",
-            "#E7E9ED",
-            "#36A2EB"
-                                        ],
-                                        hoverBackgroundColor: [
-                                            "#FF6384",
-                                            "#36A2EB",
-                                            "#FFCE56"
-                                        ]
+                                        backgroundColor: cl
+                                       
                                     }
                         ]
                     }
@@ -235,7 +306,10 @@ $(document)
  
     });
 
+var colorg = function(){
 
+return '#'+Math.floor(Math.random()*16777215).toString(16);
+}
 var buy = function(e) {
 
     var b = $(e.closest("form")).find(".anim").show();

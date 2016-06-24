@@ -9,9 +9,10 @@ using InfoVideo.Models;
 
 namespace InfoVideo.Controllers
 {
+   
     public class HomeController : Controller
     {
-        private readonly InfoVideoContext _db = new InfoVideoContext();
+        private readonly InfoVideoEntities _db = new InfoVideoEntities();
         public async Task<ActionResult> Index()
         {
             ViewData["Latest"] = await _db.Edition.ToListAsync();
@@ -26,7 +27,8 @@ namespace InfoVideo.Controllers
         }
         public  ActionResult ProcType(string type = "mp4")
         {
-            var c = _db.GetVideoByType(type);
+
+            var c = _db.Video.Where(t => t.Edition.Any(y => y.Format.Container == type)).ToList();
 
             return PartialView(c);
         }

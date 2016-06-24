@@ -1,4 +1,5 @@
-﻿
+﻿@using InfoVideo.Controllers
+
 
 @{
     ViewBag.Title = "Edit";
@@ -7,9 +8,7 @@
 
 
 
-@using (Ajax.BeginForm("ProcType", "Home",
-                                                                    new AjaxOptions
-                                                                    {
+@using (Ajax.BeginForm("ProcType", "Home",new AjaxOptions{
                                                                         HttpMethod = "POST",
                                                                         InsertionMode = InsertionMode.Replace,
                                                                         UpdateTargetId = "test"
@@ -37,4 +36,5 @@
 
 
 
-            }
+}
+

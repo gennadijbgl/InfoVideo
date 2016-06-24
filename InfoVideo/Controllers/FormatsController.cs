@@ -13,7 +13,7 @@ namespace InfoVideo.Controllers
 {
     public class FormatsController : Controller
     {
-        private readonly InfoVideoContext _db = new InfoVideoContext();
+        private readonly InfoVideoEntities _db = new InfoVideoEntities();
 
       
         public async Task<ActionResult> Index()
@@ -58,6 +58,15 @@ namespace InfoVideo.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (
+                    _db.Format.FirstOrDefault(
+                        t =>
+                            t.Container == format.Container && t.Languages == format.Languages &&
+                            t.Support3D == format.Support3D) != null)
+                {
+                    ModelState.AddModelError("","Ужо існуе");
+                    return View(format);
+                }
                 _db.Format.Add(format);
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -130,6 +139,11 @@ namespace InfoVideo.Controllers
             if (User.IsInRole("Administrator"))
             {
                 Format format = await _db.Format.FindAsync(id);
+                if (format.Edition.Count > 0)
+                {
+                    ModelState.AddModelError("","Выдаліце залежнасці ад гэтага фармату");
+                    return View(format);
+                }
             _db.Format.Remove(format);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");

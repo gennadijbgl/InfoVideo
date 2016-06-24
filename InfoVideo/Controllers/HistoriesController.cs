@@ -16,7 +16,7 @@ namespace InfoVideo.Controllers
 {
     public class HistoriesController : Controller
     {
-        private readonly InfoVideoContext _db = new InfoVideoContext();
+        private readonly InfoVideoEntities _db = new InfoVideoEntities();
 
 
         public async Task<ActionResult> Index()
@@ -28,26 +28,28 @@ namespace InfoVideo.Controllers
             }
             else
             {
-                var history = _db.History.Where(t=>t.Users.Login == User.Identity.Name).Include(h => h.Edition).Include(h => h.Users);
+                var history = _db.History.Where(t => t.Users.Login == User.Identity.Name)
+                            .Include(h => h.Edition)
+                            .Include(h => h.Users); 
+
                 return View(await history.ToListAsync());
             }
         }
 
-        public async Task<ActionResult> Statistics()
-        {
-           return View();
-        }
+       
+
+       
 
 
         public string GetByDate(int yearDisplay = 2016)
         {
             DateTimeFormatInfo mfi = new DateTimeFormatInfo();
-            var b = _db.History.Include(t => t.Edition).GroupBy(t=>t.Date).ToList();
+            var b = _db.History.Include(t => t.Edition).GroupBy(t => t.Date).ToList();
 
             var y = _db.History.Min(t => t.Date.Year);
 
             var changesPerYearAndMonth =
-          
+
             from month in Enumerable.Range(1, 12)
             let key = new { Year = yearDisplay, Month = month }
             join revision in b on key
@@ -56,10 +58,10 @@ namespace InfoVideo.Controllers
                           revision.Key.Year,
                           revision.Key.Month
                       } into g
-            select new {  key.Year, Month= mfi.GetMonthName(key.Month), Count = g.Count() };
+            select new { key.Year, Month = mfi.GetMonthName(key.Month), Count = g.Count() };
 
 
-            var c =  JsonConvert.SerializeObject(changesPerYearAndMonth, Formatting.Indented,
+            var c = JsonConvert.SerializeObject(changesPerYearAndMonth, Formatting.Indented,
                         new JsonSerializerSettings
                         {
                             PreserveReferencesHandling = PreserveReferencesHandling.Objects
@@ -75,10 +77,10 @@ namespace InfoVideo.Controllers
 
             var b = _db.History.GroupBy(t => t.Edition.Video.Title).Select(
                 group => new {
-                Title = group.Key,
-                Count = group.Count()
-            }).ToList();
-                                           
+                    Title = group.Key,
+                    Count = group.Count()
+                }).ToList();
+
 
 
             var c = JsonConvert.SerializeObject(b, Formatting.Indented,
@@ -112,6 +114,7 @@ namespace InfoVideo.Controllers
             return c;
 
         }
+     
 
         public async Task<ActionResult> Details(int? id)
         {
@@ -138,25 +141,7 @@ namespace InfoVideo.Controllers
 
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,IdUser,IdEdition,Date")] History history)
-        {
-            if (User.IsInRole("Administrator"))
-            {
-                if (ModelState.IsValid)
-                {
-                    _db.History.Add(history);
-                    await _db.SaveChangesAsync();
-                    return RedirectToAction("Index");
-                }
-
-                ViewBag.IdEdition = new SelectList(_db.Edition, "Id", "Box", history.IdEdition);
-                ViewBag.IdUser = new SelectList(_db.Users, "Id", "Login", history.IdUser);
-                return View(history);
-            }
-            return PartialView("AuthAdminError");
-        }
+      
 
       
         public async Task<ActionResult> Edit(int? id)

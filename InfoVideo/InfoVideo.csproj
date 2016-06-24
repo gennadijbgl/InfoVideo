@@ -145,67 +145,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Edition.cs">
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EditionAll_Result.cs">
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Format.cs">
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FormatAll_Result.cs">
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\GetUsersByDiscount_Result.cs">
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\GetVideoByType_Result.cs">
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Edition.cs" />
+    <Compile Include="Models\Format.cs" />
     <Compile Include="Models\Helpers.cs" />
-    <Compile Include="Models\History.cs">
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HistoryAll_Result.cs">
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\InfoVideo.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InfoVideo.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\InfoVideo.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\InfoVideo.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InfoVideo.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LogTable.cs">
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Roles.cs">
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RolesAll_Result.cs">
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Users.cs">
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UsersAll_Result.cs">
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Video.cs">
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VideoAll_Result.cs">
-      <DependentUpon>InfoVideo.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\History.cs" />
+    <Compile Include="Models\InfoVideoEntities.cs" />
+    <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\Video.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -230,16 +177,6 @@
     <Content Include="fonts\Material-Design-Iconic-Font.ttf" />
     <Content Include="fonts\Material-Design-Iconic-Font.woff" />
     <Content Include="fonts\Material-Design-Iconic-Font.woff2" />
-    <Content Include="Models\InfoVideo.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>InfoVideo.edmx</DependentUpon>
-      <LastGenOutput>InfoVideo.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\InfoVideo.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>InfoVideo.edmx</DependentUpon>
-      <LastGenOutput>InfoVideo.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\FrontEnd\ion.sound.es5.js">
       <DependentUpon>ion.sound.js</DependentUpon>
     </Content>
@@ -273,13 +210,7 @@
     <Content Include="Scripts\FrontEnd\site.min.js">
       <DependentUpon>site.js</DependentUpon>
     </Content>
-    <EntityDeploy Include="Models\InfoVideo.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>InfoVideo.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\InfoVideo.edmx.diagram">
-      <DependentUpon>InfoVideo.edmx</DependentUpon>
-    </Content>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\Libs\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\Libs\Chart.bundle.js" />
     <Content Include="Scripts\Libs\jquery.unobtrusive-ajax.js" />
@@ -363,6 +294,7 @@
     <Content Include="Views\Editions\Edition.cshtml" />
     <Content Include="Views\Account\User.cshtml" />
     <Content Include="Views\Histories\Model.cshtml" />
+    <Content Include="Views\Account\List.cshtml" />
     <None Include="Views\Histories\Statistics.cshtml" />
     <None Include="Views\Home\ProcType.cshtml" />
     <Content Include="Views\Shared\Format.cshtml" />

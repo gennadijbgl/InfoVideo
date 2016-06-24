@@ -9,6 +9,9 @@
 
 <h4>Вы ўпэўнены, што хочаце выдаліць?</h4>
 <div>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
     @{
         Html.RenderPartial("Format");
     }
@@ -18,7 +21,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Выдаліць" class="btn btn-default red" />
+            <input type="submit" value="Выдаліць" class="btn btn-default red"/>
         </div>
     }
 

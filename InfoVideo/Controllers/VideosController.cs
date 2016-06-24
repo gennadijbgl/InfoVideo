@@ -15,7 +15,7 @@ namespace InfoVideo.Controllers
 {
     public class VideosController : Controller
     {
-        private readonly InfoVideoContext _db = new InfoVideoContext();
+        private readonly InfoVideoEntities _db = new InfoVideoEntities();
 
         public async Task<ActionResult> Index()
         {
@@ -75,15 +75,11 @@ namespace InfoVideo.Controllers
             {
                 
                 ProcessFile(Logo, video);
-      
-
-               var d = new ObjectParameter("ErrorMessage","");
-
-                var y =   _db.VideoInsert(video.Title, video.Description, video.Logo, video.Date, video.Genre, d);
-
 
                 _db.Video.Add(video);
-                await _db.SaveChangesAsync();
+              await _db.SaveChangesAsync();
+
+              
                 return RedirectToAction("Index");
             }
 
@@ -164,7 +160,12 @@ namespace InfoVideo.Controllers
             if (User.IsInRole("Administrator"))
             {
                 Video video = await _db.Video.FindAsync(id);
-            _db.Video.Remove(video);
+                if (video.Edition.Count > 0)
+                {
+                    ModelState.AddModelError("", "Выдаліце залежнасці ад гэтага відыё");
+                    return View(video);
+                }
+                _db.Video.Remove(video);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
             }
