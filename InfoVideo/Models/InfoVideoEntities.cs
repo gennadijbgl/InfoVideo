@@ -10,6 +10,8 @@ namespace InfoVideo.Models
         public InfoVideoEntities()
             : base("name=InfoVideo")
         {
+            Database.SetInitializer<InfoVideoEntities>(new MyDbInitializer());
+      
         }
 
         public virtual DbSet<Edition> Edition { get; set; }

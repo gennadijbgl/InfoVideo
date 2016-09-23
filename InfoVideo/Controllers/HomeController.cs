@@ -25,12 +25,14 @@ namespace InfoVideo.Controllers
          
             return View();
         }
+
+       
         public  ActionResult ProcType(string type = "mp4")
         {
 
-            var c = _db.Video.Where(t => t.Edition.Any(y => y.Format.Container == type)).ToList();
 
-            return PartialView(c);
+            var c = _db.Video.Where(t => t.Edition.Any(y => y.Format.Container == type)).ToList();
+            return (PartialView(c));
         }
 
     }

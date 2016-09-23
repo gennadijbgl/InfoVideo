@@ -210,7 +210,6 @@
     <Content Include="Scripts\FrontEnd\site.min.js">
       <DependentUpon>site.js</DependentUpon>
     </Content>
-    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\Libs\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\Libs\Chart.bundle.js" />
     <Content Include="Scripts\Libs\jquery.unobtrusive-ajax.js" />

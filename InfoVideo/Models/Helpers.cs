@@ -31,7 +31,7 @@ namespace InfoVideo.Models
     }
 
 
-    public sealed class MyDbInitializer : DropCreateDatabaseAlways<InfoVideoEntities>
+    public sealed class MyDbInitializer : DropCreateDatabaseIfModelChanges<InfoVideoEntities>
     {
         private string[] addr_s = {"Багдановіча", "Кульман", "Вітаўта", "Альгерда"};
         private string[] city = { "Мінск, ", "Віцебск, ", "Гародня, ", "Магілёў, " };

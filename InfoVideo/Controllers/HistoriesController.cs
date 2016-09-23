@@ -30,15 +30,27 @@ namespace InfoVideo.Controllers
             {
                 var history = _db.History.Where(t => t.Users.Login == User.Identity.Name)
                             .Include(h => h.Edition)
-                            .Include(h => h.Users); 
+                            .Include(h => h.Users);
 
                 return View(await history.ToListAsync());
             }
         }
 
-       
 
-       
+        public async Task<ActionResult> Statistics()
+        {
+            if (User.IsInRole("Administrator"))
+            {
+               
+                return View();
+            }
+            else
+            {
+
+                return PartialView("AuthAdminError");
+            }
+        }
+
 
 
         public string GetByDate(int yearDisplay = 2016)
@@ -114,7 +126,7 @@ namespace InfoVideo.Controllers
             return c;
 
         }
-     
+
 
         public async Task<ActionResult> Details(int? id)
         {
@@ -141,26 +153,26 @@ namespace InfoVideo.Controllers
 
 
 
-      
 
-      
+
+
         public async Task<ActionResult> Edit(int? id)
         {
 
             if (User.IsInRole("Administrator"))
             {
                 if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            History history = await _db.History.FindAsync(id);
-            if (history == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.IdEdition = new SelectList(_db.Edition, "Id", "Box", history.IdEdition);
-            ViewBag.IdUser = new SelectList(_db.Users, "Id", "Login", history.IdUser);
-            return View(history);
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                History history = await _db.History.FindAsync(id);
+                if (history == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.IdEdition = new SelectList(_db.Edition, "Id", "Box", history.IdEdition);
+                ViewBag.IdUser = new SelectList(_db.Users, "Id", "Login", history.IdUser);
+                return View(history);
             }
             return PartialView("AuthAdminError");
         }
@@ -173,20 +185,20 @@ namespace InfoVideo.Controllers
             if (User.IsInRole("Administrator"))
             {
                 if (ModelState.IsValid)
-            {
-                _db.Entry(history).State = System.Data.Entity.EntityState.Modified;
-                await _db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            ViewBag.IdEdition = new SelectList(_db.Edition, "Id", "Box", history.IdEdition);
-            ViewBag.IdUser = new SelectList(_db.Users, "Id", "Login", history.IdUser);
-            return View(history);
+                {
+                    _db.Entry(history).State = System.Data.Entity.EntityState.Modified;
+                    await _db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+                ViewBag.IdEdition = new SelectList(_db.Edition, "Id", "Box", history.IdEdition);
+                ViewBag.IdUser = new SelectList(_db.Users, "Id", "Login", history.IdUser);
+                return View(history);
             }
             return PartialView("AuthAdminError");
         }
 
 
- 
+
 
         protected override void Dispose(bool disposing)
         {
